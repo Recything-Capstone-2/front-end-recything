@@ -15,8 +15,8 @@ function Test(){
 
   return (
     <div>
-      <h1 className="text-3xl font-bold underline text-violet-400">
-      Hello world!
+      <h1 className="text-3xl font-bold underline text-blue-700">
+      Hello from branch develop
       </h1>
     </div>
   )
