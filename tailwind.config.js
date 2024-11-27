@@ -10,7 +10,11 @@ export default {
     flowbite.content()
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
+    },
   },
   plugins: [
     flowbite.plugin(),

@@ -7,6 +7,7 @@ const Button = ({
   disabled,
   variant = "primary",
   type = "button",
+  textPosition = "center",
 }) => {
   const sizeClasses = {
     xs: "py-2 px-3 text-xs",
@@ -14,6 +15,11 @@ const Button = ({
     default: "py-2.5 px-5 text-sm",
     large: "py-3 px-5 text-base",
     xl: "py-3.5 px-6 text-base",
+  };
+
+  const textPositionClasses = {
+    left: "justify-start",
+    center: "justify-center",
   };
 
   const variantClasses = {
@@ -24,7 +30,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={`inline-flex items-center justify-center gap-x-2 font-medium rounded-md ${
+      className={`inline-flex items-center ${textPositionClasses[textPosition]} gap-x-2 font-medium rounded-md ${
         fullWidth ? "w-full" : ""
       } ${sizeClasses[size]} ${
         variantClasses[variant]
