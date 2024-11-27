@@ -17,8 +17,8 @@ const Button = ({
   };
 
   const variantClasses = {
-    primary:
-      "border-transparent bg-green-700 text-white hover:bg-green-800 focus:ring-2 focus:ring-green-300",
+    primary: "border-transparent bg-green-700 text-white hover:bg-green-800 focus:ring-2 focus:ring-green-300",
+    transparent: "border-transparent bg-transparent text-gray-900 hover:bg-gray-200 focus:ring-2 focus:ring-gray-300",
   };
 
   return (

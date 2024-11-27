@@ -9,6 +9,8 @@ const FormInput = ({
   success,
   successMessage = 'Looks good!',
   startIcon,
+  endButton,
+  onEndButtonClick,
   type = 'text',
   defaultValue,
   placeholder,
@@ -16,9 +18,9 @@ const FormInput = ({
   pattern,
   className = '',
   disabled = false,
-  size = 'default', // Tambahkan properti size dengan default 'default'
+  size = 'default',
 }) => {
-  // Menentukan kelas input berdasarkan status error, success, dan size
+  // status error, success, dan size
   const sizeClass = {
     small: 'p-2 text-xs',
     default: 'p-2.5 text-sm',
@@ -26,14 +28,14 @@ const FormInput = ({
   }[size];
 
   const inputClass = `bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-slate-300 focus:border-slate-300 block w-full ${
-    startIcon ? 'ps-10' : sizeClass
+    startIcon || endButton ? 'ps-10 pe-10' : sizeClass
   } ${
     error
       ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
       : success
       ? 'border-teal-500 focus:border-teal-500 focus:ring-teal-500'
       : ''
-  } ${className} dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-slate-300 dark:focus:border-slate-300`;
+  } ${className}`;
 
   // Helper text untuk menampilkan pesan error atau success
   const helperText = error
@@ -47,7 +49,7 @@ const FormInput = ({
       {label && (
         <label
           htmlFor={id}
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="block mb-2 text-sm font-medium text-gray-900"
         >
           {label}
         </label>
@@ -55,7 +57,7 @@ const FormInput = ({
       <div className="relative">
         {/* Start Icon */}
         {startIcon && (
-          <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+          <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
             {startIcon}
           </div>
         )}
@@ -76,36 +78,15 @@ const FormInput = ({
           disabled={disabled}
         />
 
-        {/* End Icon (Error or Success) */}
-        {(error || success) && (
-          <div className="absolute inset-y-0 end-0 flex items-center pe-3">
-            {error && (
-              <svg
-                className="w-5 h-5 text-red-500"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" x2="12" y1="8" y2="12" />
-                <line x1="12" x2="12.01" y1="16" y2="16" />
-              </svg>
-            )}
-            {success && (
-              <svg
-                className="w-5 h-5 text-teal-500"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-            )}
-          </div>
+        {/* End Button */}
+        {endButton && (
+          <button
+            type="button"
+            onClick={onEndButtonClick}
+            className="absolute inset-y-0 end-0 flex items-center pe-3"
+          >
+            {endButton}
+          </button>
         )}
       </div>
 
