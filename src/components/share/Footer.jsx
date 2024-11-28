@@ -1,5 +1,4 @@
-import React from "react";
-import imglogosecond from "../../assets/logo-greenly-second.png";
+import imglogosecond from "../../assets/logo/logo-greenly-second.png";
 import { FaInstagram } from "react-icons/fa";
 import { MdOutlineLocalPhone } from "react-icons/md";
 

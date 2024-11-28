@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../ui/Button";
-import imglogo from "../../assets/logo-greenly.png";
+import imglogo from "../../assets/logo/logo-greenly.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Header = () => {
@@ -49,9 +49,8 @@ const Header = () => {
         <Button
           size="default"
           variant="primary"
-          onClick={() => alert("Daftar clicked!")} // Gais ganti action untuk Daftar di sini
         >
-          Daftar
+          <Link to="/register" className="text-sm font-medium text-white">Daftar</Link>
         </Button>
       </div>
 
@@ -102,10 +101,9 @@ const Header = () => {
               <Button
                 size="default"
                 variant="primary"
-                onClick={() => alert("Daftar clicked!")}
                 className="text-white text-xl bg-main-green hover:bg-light-green px-6 py-3 rounded-md"
               >
-                Daftar
+                <Link to="/register">Daftar</Link>
               </Button>
             </li>
           </ul>

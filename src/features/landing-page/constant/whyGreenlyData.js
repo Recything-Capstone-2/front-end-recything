@@ -1,7 +1,7 @@
-import imgwhy1 from "../../../assets/image-why1.png";
-import imgwhy2 from "../../../assets/image-why2.png";
-import imgwhy3 from "../../../assets/image-why3.png";
-import imgwhy4 from "../../../assets/image-why4.png";
+import imgwhy1 from "../../../assets/images/image-why1.png";
+import imgwhy2 from "../../../assets/images/image-why2.png";
+import imgwhy3 from "../../../assets/images/image-why3.png";
+import imgwhy4 from "../../../assets/images/image-why4.png";
 
 const whygreenlydata = [
   {
