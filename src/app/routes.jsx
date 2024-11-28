@@ -1,23 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LandingPage from "../features/landing-page/components";
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Test />} />
+        <Route path="/" element={<LandingPage />} />
       </Routes>
     </BrowserRouter>
-  )
-}
-
-// Can remove this later
-function Test(){
-
-  return (
-    <div>
-      <h1 className="text-3xl font-bold underline text-blue-700">
-      Hello from branch develop
-      </h1>
-    </div>
-  )
+  );
 }
