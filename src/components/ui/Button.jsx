@@ -23,16 +23,20 @@ const Button = ({
   };
 
   const variantClasses = {
-    primary: "border-transparent bg-green-700 text-white hover:bg-green-800 focus:ring-2 focus:ring-green-300",
-    transparent: "border-transparent bg-transparent text-gray-900 hover:bg-gray-200 focus:ring-2 focus:ring-gray-300",
+    primary:
+      "border-transparent bg-primary-05 text-white hover:bg-green-800 focus:ring-2 focus:ring-green-300",
+    transparent:
+      "border-transparent bg-transparent text-gray-900 hover:bg-gray-200 focus:ring-2 focus:ring-gray-300",
   };
 
   return (
     <button
       type={type}
-      className={`inline-flex items-center ${textPositionClasses[textPosition]} gap-x-2 font-medium rounded-md ${
-        fullWidth ? "w-full" : ""
-      } ${sizeClasses[size]} ${
+      className={`inline-flex items-center ${
+        textPositionClasses[textPosition]
+      } gap-x-2 font-medium rounded-md ${fullWidth ? "w-full" : ""} ${
+        sizeClasses[size]
+      } ${
         variantClasses[variant]
       } disabled:opacity-50 disabled:pointer-events-none`}
       onClick={onClick}
