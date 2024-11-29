@@ -27,11 +27,11 @@ const FormInput = ({
     large: 'p-4 text-base',
   }[size];
 
-  const inputClass = `bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-slate-300 focus:border-slate-300 block w-full ${
+  const inputClass = `bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ${
     startIcon || endButton ? 'ps-10 pe-10' : sizeClass
   } ${
     error
-      ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+      ? 'border-red-500 focus:border-red-500 focus:ring-red-500 bg-red-100'
       : success
       ? 'border-teal-500 focus:border-teal-500 focus:ring-teal-500'
       : ''

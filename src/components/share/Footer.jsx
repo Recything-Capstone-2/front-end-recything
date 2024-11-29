@@ -1,5 +1,4 @@
-import React from "react";
-import imglogosecond from "../../assets/logo-greenly-second.png";
+import imglogosecond from "../../assets/logo/logo-greenly-second.png";
 import { FaInstagram } from "react-icons/fa";
 import { MdOutlineLocalPhone } from "react-icons/md";
 
@@ -31,7 +30,7 @@ const Footer = () => {
             <div id="contact" className="pt-12">
               <button
                 type="button"
-                class="text-secondary-04 hover:text-white border border-secondary-04 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-1 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900"
+                className="text-secondary-04 hover:text-white border border-secondary-04 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-1 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900"
               >
                 Hubungi Kami
               </button>

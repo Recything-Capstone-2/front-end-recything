@@ -1,5 +1,5 @@
 import React from "react";
-import imghero from "../../../assets/image-hero.png";
+import imghero from "../../../assets/images/image-hero.png";
 
 const HeroSection = () => {
   return (
