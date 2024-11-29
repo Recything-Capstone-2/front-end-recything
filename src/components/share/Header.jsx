@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import imglogo from "../../assets/logo/logo-greenly.png";
 import { GiHamburgerMenu } from "react-icons/gi";
+import useUser from "../../store/userStore.js";
+import useLogout from "../../features/auth/hooks/useLogout.jsx";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useUser();
+  const {handleLogout} = useLogout()
 
   // Use to open mobile menu
   const handleToggleMenu = () => {
@@ -40,18 +44,32 @@ const Header = () => {
 
       {/* Right Buttons (Masuk and Daftar) */}
       <div className="hidden md:flex items-center space-x-4">
-        <Link
-          to="/login"
-          className="text-sm font-medium text-gray-900 hover:text-primary-05"
-        >
-          Masuk {/* Gais ganti path login di sini */}
-        </Link>
-        <Button
-          size="default"
-          variant="primary"
-        >
-          <Link to="/register" className="text-sm font-medium text-white">Daftar</Link>
-        </Button>
+        {user ? (
+          <Button
+            size="default"
+            variant="danger"
+            onClick={handleLogout}
+          >
+            <p className="text-sm font-medium text-white">Keluar</p>
+          </Button>
+        ) : (
+          <>
+          <Link
+            to="/login"
+            className="text-sm font-medium text-gray-900 hover:text-primary-05"
+            >
+            Masuk
+          </Link>
+          <Link to="/register" className="text-sm font-medium text-white">
+            <Button
+              size="default"
+              variant="primary"
+              >
+              <p className="text-sm font-medium text-white">Daftar</p>
+            </Button>
+          </Link>
+          </>
+        )}
       </div>
 
       {/* Mobile Menu Button */}

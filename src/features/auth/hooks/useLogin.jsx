@@ -42,18 +42,17 @@ export default function useLogin() {
     }
 
     // HIT API
-    const data = await apiLogin({ email, password });
-
-    if (!data) {
+    try {
+      const data = await apiLogin({ email, password });
+  
+      localStorage.setItem("token", data.data.token);
+      setUser(data.data);
+      navigate("/"); // ganti ke dashboard
+    } catch (error) {
+      setError(error.message);
+    } finally {
       setLoading(false);
-      return setError("Invalid credentials.");
     }
-
-    localStorage.setItem("token", data.data.token);
-
-    setUser(data.data);
-
-    navigate("/prompt");
   }
 
   return { loading, errorEmail, errorPassword, error, handleLogin };

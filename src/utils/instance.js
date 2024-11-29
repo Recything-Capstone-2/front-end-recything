@@ -1,12 +1,13 @@
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 const instance = axios.create({
- baseURL: 'http://13.239.136.180/api/v1/',
+ baseURL: `${BASE_URL}`,
  headers: {
    'Content-Type': 'application/json',
  },
 });
-
 
 // Interceptor untuk JWT ke setiap request
 instance.interceptors.request.use(
@@ -32,8 +33,8 @@ instance.interceptors.response.use(
 
      if (status === 401) {
        console.error('Unauthorized: Silakan login kembali.');
-       // Redirect login
-       window.location.href = '/login';
+       // Redirect login opsional
+      //  window.location.href = '/login';
      } else if (status === 403) {
        console.error('Forbidden: Anda tidak memiliki akses.');
      } else {
