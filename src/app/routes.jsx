@@ -1,23 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import LandingPage from "../features/landing-page/components";
+import Login from "../features/auth/components/login.jsx";
+import Register from "../features/auth/components/register.jsx";
+import MainLayout from "../layout/MainLayout.jsx";
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Test />} />
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<LandingPage />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
-  )
-}
-
-// Can remove this later
-function Test(){
-
-  return (
-    <div>
-      <h1 className="text-3xl font-bold underline text-violet-400">
-      Hello world!
-      </h1>
-    </div>
-  )
+  );
 }
