@@ -1,134 +1,195 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Button from "../ui/Button";
-import imglogo from "../../assets/logo/logo-greenly.png";
-import { GiHamburgerMenu } from "react-icons/gi";
+import logo from "../../assets/logo/logo-greenly.png";
+import { FaBell } from "react-icons/fa";
+import { MdOutlineWbSunny } from "react-icons/md";
+import { Link, NavLink } from "react-router-dom";
 import useUser from "../../store/userStore.js";
+import Button from "../ui/Button.jsx";
 import useLogout from "../../features/auth/hooks/useLogout.jsx";
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user } = useUser();
-  const {handleLogout} = useLogout()
+const MenuBeforeLogin = [
+  { name: "Beranda", path: "#home" },
+  { name: "Fitur", path: "#features" },
+  { name: "Tentang Kami", path: "#about" },
+  { name: "Testimoni", path: "#testimonials" },
+  { name: "Kontak", path: "#contact" },
+]
 
-  // Use to open mobile menu
-  const handleToggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+const MenuAfterLogin = [
+  { name: "Beranda", path: "/" },
+  { name: "Pelaporan", path: "/report" },
+  { name: "Edukasi", path: "/education" },
+  { name: "Faq", path: "/faq" },
+  { name: "Tentang", path: "/tentang" },
+]
+
+const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropDownBellOpen, setIsDropDownBellOpen] = useState(false);
+
+  const { user } = useUser();
+  const { handleLogout } = useLogout();
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
+
+  const toggleDropDownBell = () => {
+    setIsDropDownBellOpen((prev) => !prev);
   };
 
   return (
-    <header className="flex items-center justify-between md:px-20 px-6 py-4 bg-white shadow-md">
-      {/* Logo */}
-      <div className="hidden md:flex items-center space-x-2">
-        <img src={imglogo} alt="Greenly Logo" className="h-10 w-auto" />
-      </div>
+    <nav className="bg-white border-gray-200 border-b-2">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
+        {/* Logo Section */}
+        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src={logo} alt="Greenly Logo" className="" />
+        </a>
 
-      {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center justify-center space-x-6 text-sm font-medium text-gray-900">
-        <ul className="flex space-x-6 text-sm">
-          {[
-            { name: "Beranda", path: "#home" },
-            { name: "Fitur", path: "#features" },
-            { name: "Tentang Kami", path: "#about" },
-            { name: "Testimoni", path: "#testimonials" },
-            { name: "Kontak", path: "#contact" },
-          ].map((item, index) => (
-            <li key={index}>
-              <a href={item.path} className="hover:text-primary-05">
-                {item.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+        {/* User Menu & Mobile Menu Button */}
+        <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative md:gap-3 gap-0">
 
-      {/* Right Buttons (Masuk and Daftar) */}
-      <div className="hidden md:flex items-center space-x-4">
-        {user ? (
-          <Button
-            size="default"
-            variant="danger"
-            onClick={handleLogout}
-          >
-            <p className="text-sm font-medium text-white">Keluar</p>
-          </Button>
-        ) : (
-          <>
-          <Link
-            to="/login"
-            className="text-sm font-medium text-gray-900 hover:text-primary-05"
-            >
-            Masuk
-          </Link>
-          <Link to="/register" className="text-sm font-medium text-white">
-            <Button
-              size="default"
-              variant="primary"
-              >
-              <p className="text-sm font-medium text-white">Daftar</p>
-            </Button>
-          </Link>
-          </>
-        )}
-      </div>
+          <button type="button" className=""><MdOutlineWbSunny size={24} /></button>
 
-      {/* Mobile Menu Button */}
-      <button
-        className="md:hidden flex flex-col space-y-1 p-2"
-        onClick={handleToggleMenu}
-      >
-        <GiHamburgerMenu />
-      </button>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center z-50">
-          <button
-            className="absolute top-6 right-6 text-white text-2xl"
-            onClick={handleToggleMenu}
-          >
-            &times;
+          { user && 
+          <button type="button" className="flex text-sm rounded-full focus:ring-2 focus:ring-gray-300 relative" onClick={toggleDropDownBell}>
+            <span className="absolute -top-2 -right-2 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">1</span>
+            <FaBell size={24} className="text-secondary-04" />
           </button>
+          }
 
-          <ul className="flex flex-col items-center space-y-6 text-white">
-            {[
-              { name: "Beranda", path: "#home" },
-              { name: "Fitur", path: "#features" },
-              { name: "Tentang Kami", path: "#about" },
-              { name: "Testimoni", path: "#testimonials" },
-              { name: "Kontak", path: "#contact" },
-            ].map((item, index) => (
-              <li key={index}>
-                <a
-                  href={item.path}
-                  className="text-white text-xl hover:bg-white hover:text-primary-05 px-6 py-3 rounded-md"
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-            <li>
-              <Link
-                to="/login"
-                className="text-white text-xl hover:bg-white hover:text-primary-05 px-6 py-3 rounded-md"
-              >
-                Masuk
+          {isDropDownBellOpen && (
+            <div className="z-50 absolute top-full right-0 mt-2 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow">
+              <div className="px-4 py-3">
+                <span className="block text-sm text-gray-900">Notifications</span>
+              </div>
+              <ul className="py-2">
+                <li>
+                  <a href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Notifications
+                  </a>
+                </li>
+              </ul>
+            </div>
+          )}
+          
+          { user && 
+            <button
+              type="button"
+              className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
+              onClick={toggleDropdown}
+            >
+              <span className="sr-only">Open user menu</span>
+              <img
+                className="w-8 h-8 rounded-full"
+                src="https://i.pinimg.com/736x/cc/fa/3f/ccfa3fec766c5f333052c68d52223827.jpg"
+                alt="user photo"
+              />
+            </button>
+          }
+
+          { user ? (
+            <button className="md:block hidden text-sm font-medium px-3 py-2 rounded focus:ring-4 text-white bg-red-700" onClick={handleLogout}>Keluar</button> 
+          ) : (
+            <>
+              <Link to="/login" className="hover:text-primary-05 md:block hidden">Masuk</Link>
+              <Link to="/register">
+                <Button variant="primary">Daftar</Button>        
               </Link>
-            </li>
-            <li>
-              <Button
-                size="default"
-                variant="primary"
-                className="text-white text-xl bg-main-green hover:bg-light-green px-6 py-3 rounded-md"
-              >
-                <Link to="/register">Daftar</Link>
-              </Button>
-            </li>
-          </ul>
+            </>
+          )}
+          
+
+          {/* {isDropdownOpen && (
+            <div className="z-50 absolute top-full right-0 mt-2 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow">
+              <div className="px-4 py-3">
+                <span className="block text-sm text-gray-900">Bonnie Green</span>
+                <span className="block text-sm text-gray-500 truncate">name@flowbite.com</span>
+              </div>
+              <ul className="py-2">
+                <li>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Dashboard
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Sign out
+                  </a>
+                </li>
+              </ul>
+            </div>
+          )} */}
+
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            aria-controls="navbar-user"
+            aria-expanded={isMobileMenuOpen ? "true" : "false"}
+            onClick={toggleMobileMenu}
+          >
+            <span className="sr-only">Open main menu</span>
+            <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
         </div>
-      )}
-    </header>
+
+        {/* Mobile Menu */}
+          <div className={`${isMobileMenuOpen ? "block" : "hidden"} items-center justify-between w-full md:flex md:w-auto md:order-1`} id="navbar-user">
+            <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+              { !user && MenuBeforeLogin.map((item, index) => (
+                <li key={index}>
+                  <a href={item.path} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-05 md:p-0">
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+
+              { user && MenuAfterLogin.map((item, index) => (
+                <li key={index}>
+                  <MenuActive label={item.name} href={item.path} />
+                </li>
+              ))}
+
+              { user && 
+              <li className="md:hidden">
+                <button className="w-full text-sm font-medium px-3 py-2 rounded focus:ring-4 text-white bg-red-700" onClick={handleLogout}>Keluar</button>
+              </li>
+              }
+            </ul>
+          </div>
+      </div>
+    </nav>
   );
 };
 
 export default Header;
+
+
+const MenuActive = ({ label, href }) => {
+  return (
+    <NavLink
+      to={href}
+      className={({ isActive }) =>
+        `block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 ${
+          isActive ? "md:text-primary-05 md:bg-transparent bg-primary-05 text-white" : "md:hover:text-primary-05"
+        }`
+      }
+    >
+      {label}
+    </NavLink>
+  );
+};
