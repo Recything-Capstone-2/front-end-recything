@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import AccordionItem from "./AccordionItem";
 import { faqData } from "../constant/faqData";
 import bgimg from "../../../assets/images/bg-faq.png";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
 
 const FAQSection = () => {
+  const [openAccordion, setOpenAccordion] = useState(null);
+
+  const handleAccordionToggle = (index) => {
+    setOpenAccordion(openAccordion === index ? null : index);
+  };
+
   return (
-    <div className="relative min-h-screen bg-white overflow-hidden">
+    <div className="min-h-screen bg-white overflow-hidden">
       {/* Overlay Image */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-75 z-0"
@@ -55,8 +61,11 @@ const FAQSection = () => {
               {faqData.map((faq, index) => (
                 <AccordionItem
                   key={index}
+                  index={index}
                   question={faq.question}
                   answer={faq.answer}
+                  isOpen={openAccordion === index}
+                  onToggle={handleAccordionToggle}
                 />
               ))}
             </div>

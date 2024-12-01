@@ -1,13 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsQuestionCircleFill } from "react-icons/bs";
 
-const AccordionItem = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-
+const AccordionItem = ({ question, answer, index, isOpen, onToggle }) => {
   return (
     <div className="bg-white p-4 rounded-xl border border-gray-neutral03 shadow-md">
       <h3>
@@ -16,7 +10,7 @@ const AccordionItem = ({ question, answer }) => {
           className={`flex justify-between items-center w-full text-lg font-medium text-left focus:outline-none p-3 rounded-lg transition-colors ${
             isOpen ? "bg-gray-100 text-black" : "bg-white text-gray-neutral06"
           }`}
-          onClick={toggleAccordion}
+          onClick={() => onToggle(index)} // Trigger the toggle function
         >
           {/* Container untuk icon dan teks */}
           <div className="flex items-center gap-x-3">
