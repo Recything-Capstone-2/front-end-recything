@@ -10,7 +10,6 @@ export default function useMaps() {
   const fetchSuggestions = async (input) => {
     try {
       const data = await mapsApi(input);
-      console.log(data);
       setSuggestions(
         data.map((item) => ({
           label: item.title,

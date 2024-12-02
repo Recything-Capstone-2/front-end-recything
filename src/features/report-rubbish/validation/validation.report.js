@@ -8,7 +8,6 @@ export const reportRubbishSchema = zod.object({
 });
 
 export function reportRubbishSchemaValidation({date, location, description}) {
-  console.log(date, location, description);
   try {
     reportRubbishSchema.parse({date, location, description});
     return null;
