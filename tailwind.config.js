@@ -21,6 +21,7 @@ export default {
         "black-neutral08": "#141A1F",
         "gray-neutral03": "#BCC7D2",
         "gray-neutral06": "#627A93",
+        "red-eror": "#F30909",
       },
     },
   },

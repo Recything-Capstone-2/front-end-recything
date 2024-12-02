@@ -1,14 +1,20 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AccordionItem from "./AccordionItem";
-import { faqData } from "../constant/faqData";
-import bgimg from "../../../assets/images/bg-faq.png";
+import { faqData } from "../../constant/faqData";
+import bgimg from "../../../../assets/images/bg-faq.png";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
 
 const FAQSection = () => {
   const [openAccordion, setOpenAccordion] = useState(null);
+  const navigate = useNavigate();
 
   const handleAccordionToggle = (index) => {
     setOpenAccordion(openAccordion === index ? null : index);
+  };
+
+  const handleNavigate = () => {
+    navigate("/aichatbot");
   };
 
   return (
@@ -47,7 +53,10 @@ const FAQSection = () => {
                 Greenly Assistant dengan menekan tombol dibawah ini!
               </p>
               <div className="mt-8 flex justify-center">
-                <button className="w-full lg:w-auto flex items-center justify-center gap-2 bg-primary-05 text-white font-semibold py-3 px-5 rounded-md hover:bg-green-600 transition-all duration-300">
+                <button
+                  onClick={handleNavigate}
+                  className="w-full lg:w-auto flex items-center justify-center gap-2 bg-primary-05 text-white font-semibold py-3 px-5 rounded-md hover:bg-green-600 transition-all duration-300"
+                >
                   <HiChatBubbleLeftRight className="w-5 h-5" />
                   Tanya Greenly Assistant
                 </button>
