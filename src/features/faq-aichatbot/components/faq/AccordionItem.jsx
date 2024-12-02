@@ -10,7 +10,7 @@ const AccordionItem = ({ question, answer, index, isOpen, onToggle }) => {
           className={`flex justify-between items-center w-full text-lg font-medium text-left focus:outline-none p-3 rounded-lg transition-colors ${
             isOpen ? "bg-gray-100 text-black" : "bg-white text-gray-neutral06"
           }`}
-          onClick={() => onToggle(index)} // Trigger the toggle function
+          onClick={() => onToggle(index)}
         >
           {/* Container untuk icon dan teks */}
           <div className="flex items-center gap-x-3">

@@ -33,16 +33,16 @@ const AiChatbotSection = ({ user }) => {
   };
 
   return (
-    <div className="flex flex-col h-screen w-screen p-6">
+    <div className="flex flex-col h-screen w-full p-4 md:p-6 lg:px-10">
       {!isMessageSent && (
         <>
-          <div className="flex justify-center py-10 mt-10">
-            <img src={logo} alt="logo" />
+          <div className="flex justify-center py-8 md:py-10 mt-8">
+            <img src={logo} alt="logo" className="w-24 md:w-32 lg:w-40" />
           </div>
-          <h2 className="text-2xl font-bold mb-6 text-center">
+          <h2 className="text-lg md:text-2xl font-bold mb-6 text-center">
             Halo {user},<br /> Bagaimana kita bisa membantu hari ini?
           </h2>
-          <p className="text-gray-500 text-center py-4">
+          <p className="text-gray-500 text-center py-4 text-sm md:text-base">
             Gunakan topik dibawah untuk memulai:
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-6">
@@ -52,9 +52,9 @@ const AiChatbotSection = ({ user }) => {
                   "Halo, saya ingin mengecek status laporan sampah yang sudah saya kirim. Bisa bantu saya melacaknya?"
                 )
               }
-              className="bg-gray-200 text-sm px-4 py-2 rounded-lg flex flex-col items-start min-h-[100px] w-80 text-left"
+              className="bg-gray-200 text-sm px-4 py-2 rounded-lg flex flex-col items-start min-h-[100px] w-full max-w-xs md:w-80 text-left"
             >
-              <span className="font-bold mb-2 flex-shrink-0">
+              <span className="font-bold mb-2">
                 Laporan Sampah yang Saya Kirim
               </span>
               <span className="text-xs text-gray-600 mt-2">
@@ -69,9 +69,9 @@ const AiChatbotSection = ({ user }) => {
                   "Hai, bagaimana cara saya mendapatkan lebih banyak poin dan hadiah dengan Greenly?"
                 )
               }
-              className="bg-gray-200 text-sm px-4 py-2 rounded-lg flex flex-col items-start min-h-[100px] w-80 text-left"
+              className="bg-gray-200 text-sm px-4 py-2 rounded-lg flex flex-col items-start min-h-[100px] w-full max-w-xs md:w-80 text-left"
             >
-              <span className="font-bold mb-2 flex-shrink-0">
+              <span className="font-bold mb-2">
                 Mengumpulkan Poin dan Reward
               </span>
               <span className="text-xs text-gray-600 mt-2">
@@ -102,21 +102,21 @@ const AiChatbotSection = ({ user }) => {
       )}
 
       <div className="flex flex-col items-center mt-auto mb-8">
-        <div className="flex items-center gap-2 p-2 bg-gray-100 shadow-md rounded-md w-[626px] mx-auto mb-3">
+        <div className="flex items-center gap-2 p-2 bg-gray-100 shadow-md rounded-md w-full max-w-md md:max-w-lg mx-auto mb-3">
           <input
             type="text"
             placeholder="Tuliskan pertanyaan Anda disini ..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && onSendMessage()}
-            className="flex-1 p-3 ml-5 outline-none border-gray-300 rounded-lg text-gray-700 ring-primary-05"
+            className="flex-1 p-3 ml-5 outline-none border-gray-300 rounded-lg text-gray-700 ring-primary-05 text-sm md:text-base"
           />
           <IoMdSend
             onClick={onSendMessage}
-            className="text-primary-05 cursor-pointer hover:text-green-700 h-6 w-6"
+            className="text-primary-05 cursor-pointer hover:text-green-700 h-5 w-5 md:h-6 md:w-6"
           />
         </div>
-        <p className="text-gray-neutral06 text-sm">
+        <p className="text-gray-neutral06 text-xs md:text-sm text-center">
           Butuh bantuan? Ketik pertanyaan Anda, dan kami akan segera menjawab!
         </p>
         {isLoading && <p className="text-primary-05">Loading...</p>}
