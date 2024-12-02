@@ -16,8 +16,8 @@ const MenuBeforeLogin = [
 ]
 
 const MenuAfterLogin = [
-  { name: "Beranda", path: "/" },
-  { name: "Pelaporan", path: "/report" },
+  { name: "Beranda", path: "/beranda-user" },
+  { name: "Pelaporan", path: "/report-rubbish" },
   { name: "Edukasi", path: "/education" },
   { name: "Faq", path: "/faq" },
   { name: "Tentang", path: "/tentang" },
@@ -86,8 +86,8 @@ const Header = () => {
             >
               <span className="sr-only">Open user menu</span>
               <img
-                className="w-8 h-8 rounded-full"
-                src="https://i.pinimg.com/736x/cc/fa/3f/ccfa3fec766c5f333052c68d52223827.jpg"
+                className="w-8 h-8 rounded-full object-cover"
+                src={user?.photo || "https://i.pinimg.com/736x/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg"}
                 alt="user photo"
               />
             </button>

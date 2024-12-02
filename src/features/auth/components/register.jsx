@@ -38,6 +38,7 @@ export default function Register() {
                 <FormInput id="email" label="Email" type="email" placeholder="contoh: emailanda@example.com" startIcon={<IoMail size={20} color="gray" />} error={errorEmail} errorMessage={errorEmail} disabled={loading} />
                 <FormInput id="password" label="Password" type={showPassword ? "text" : "password"} placeholder="Minimal 8 karakter" startIcon={<FaLock size={20} color="gray" />} error={errorPassword} errorMessage={errorPassword} disabled={loading} endButton={showPassword ? <FaEyeSlash /> : <FaEye />}
           onEndButtonClick={() => togglePasswordVisibility(!showPassword)} />
+                <input type="hidden" name="photo" defaultValue={"https://i.pinimg.com/736x/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg"} />               
               </div>
               <Button type="submit" fullWidth disabled={loading}>{loading ? "Loading..." : "Daftar"}</Button>
             </form>
