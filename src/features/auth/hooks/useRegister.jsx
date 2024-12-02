@@ -56,7 +56,7 @@ export default function useRegister() {
     }
 
     // HIT API
-    const data = await apiRegister({nama_lengkap, tanggal_lahir, no_telepon, email, password});
+    const data = await apiRegister({nama_lengkap, email, tanggal_lahir, no_telepon, password});
     if(data) {
       setIsRegistered(true);
       setLoading(false);
