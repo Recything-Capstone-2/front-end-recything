@@ -37,7 +37,7 @@ const AiChatbotSection = ({ user }) => {
       {!isMessageSent && (
         <>
           <div className="flex justify-center py-8 md:py-10 mt-8">
-            <img src={logo} alt="logo" className="w-24 md:w-32 lg:w-40" />
+            <img src={logo} alt="logo" />
           </div>
           <h2 className="text-lg md:text-2xl font-bold mb-6 text-center">
             Halo {user},<br /> Bagaimana kita bisa membantu hari ini?
