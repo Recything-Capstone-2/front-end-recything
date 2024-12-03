@@ -30,6 +30,7 @@ export default function useRegister() {
     const no_telepon = dataForm.get("phone");
     const email = dataForm.get("email");
     const password = dataForm.get("password");
+    const photo = dataForm.get("photo");
 
     // VALIDATION
     const validationErrors = registerSchemaValidation({nama_lengkap, tanggal_lahir, no_telepon, email, password});
@@ -55,8 +56,8 @@ export default function useRegister() {
       return;
     }
 
-    // HIT API
-    const data = await apiRegister({nama_lengkap, email, tanggal_lahir, no_telepon, password});
+    // // HIT API
+    const data = await apiRegister({nama_lengkap, email, tanggal_lahir, no_telepon, password, photo});
     if(data) {
       setIsRegistered(true);
       setLoading(false);
