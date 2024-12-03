@@ -5,8 +5,13 @@ import Footer from "../components/share/Footer";
 
 const MainLayout = () => {
   const location = useLocation();
-  const hideHeaderPaths = ["/login", "/register"];
-  const hideFooterPaths = ["/login", "/register", "/aichatbot"];
+  const hideHeaderPaths = ["/login", "/register", "/dashboard-admin"];
+  const hideFooterPaths = [
+    "/login",
+    "/register",
+    "/aichatbot",
+    "/dashboard-admin",
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
