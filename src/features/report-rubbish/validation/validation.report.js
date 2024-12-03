@@ -2,14 +2,14 @@ import zod from "zod";
 import { fromError } from "zod-validation-error";
 
 export const reportRubbishSchema = zod.object({
-  date: zod.string().min(8, "Date must be at least 3 characters"),
+  tanggal_laporan: zod.string().min(8, "Date must be at least 3 characters"),
   location: zod.string().min(3, "Location must be at least 3 characters"),
   description: zod.string().min(3, "Description must be at least 3 characters"),
 });
 
-export function reportRubbishSchemaValidation({date, location, description}) {
+export function reportRubbishSchemaValidation({tanggal_laporan, location, description}) {
   try {
-    reportRubbishSchema.parse({date, location, description});
+    reportRubbishSchema.parse({tanggal_laporan, location, description});
     return null;
   } catch (error) {
     const validationError = fromError(error);

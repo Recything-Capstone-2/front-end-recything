@@ -2,7 +2,7 @@ import { useState } from "react";
 import { reportRubbishSchemaValidation } from "../validation/validation.report.js";
 import instance from "../../../utils/instance.js";
 
-export default function useReportRubbish(address) {
+export default function useReportRubbish(address,position) {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorDate, setErrorDate] = useState("");
@@ -18,13 +18,16 @@ export default function useReportRubbish(address) {
 
     const formData = new FormData(event.target);
     formData.append("location", address);
+    console.log("latitude", position[0]);
+    formData.append("latitude", position[0]);
+    formData.append("longitude", position[1]);
 
-    const date = formData.get("date");
+    const tanggal_laporan = formData.get("tanggal_laporan");
     const location = formData.get("location");
     const description = formData.get("description");
 
     // VALOIDATION
-    const validationErrors = reportRubbishSchemaValidation({date, location, description});
+    const validationErrors = reportRubbishSchemaValidation({tanggal_laporan, location, description});
     if (Array.isArray(validationErrors) && validationErrors.length > 0) {
       setLoading(false);
       validationErrors.map((error) => {

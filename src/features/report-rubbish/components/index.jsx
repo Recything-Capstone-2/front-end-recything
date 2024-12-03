@@ -14,7 +14,7 @@ import SuccessReport from "./successReport.jsx";
 export default function ReportRubbish() {
   const { address, suggestions, position, handleSelect, renderSuggestion, inputProps, fetchSuggestions, setSuggestions } = useMaps();
 
-  const { success, loading, errorDate, errorLocation, errorDescription, handleSubmitReport } = useReportRubbish(address);
+  const { success, loading, errorDate, errorLocation, errorDescription, handleSubmitReport } = useReportRubbish(address, position);
 
   return (
     <main className="bg-slate-50 font-inter">
@@ -22,13 +22,13 @@ export default function ReportRubbish() {
         <SuccessReport />
       ) : (
         <section className='container mx-auto grid grid-cols-12 font-inter py-20'>
-          <div className="col-span-12 flex gap-x-5 mb-5">
+          <div className="col-span-12 flex gap-x-5 mb-5 px-4">
             <MenuActive label="Laporan Sampah" href="/report-rubbish" />
             <MenuActive label="Laporan Sampah Sembarangan" href="/report-litter" />
             <MenuActive label="Riwayat Laporan" href="/" />
           </div>
 
-          <div className='col-span-5 flex items-center justify-center py-20 rounded-lg shadow-slate-300 drop-shadow-lg' style={{backgroundImage: `url(${background})`, backgroundSize: "cover"}}>
+          <div className='hidden md:col-span-5 md:flex items-center justify-center py-20 rounded-lg shadow-slate-300 drop-shadow-lg' style={{backgroundImage: `url(${background})`, backgroundSize: "cover"}}>
             <div className='w-56'>
               <h2 className='text-2xl font-bold leading-tight mb-14'>TAHAPAN LAPORAN</h2>
 
@@ -79,9 +79,9 @@ export default function ReportRubbish() {
           </div>
 
           {/* form */}
-          <div className='col-span-7 flex items-center justify-center'>
-            <form action="" className="w-3/4 mx-auto space-y-6" onSubmit={handleSubmitReport}>
-              <FormInput id="date" label="Tanggal" type="date" placeholder="Masukkan Tanggal" disabled={loading} error={errorDate} errorMessage={errorDate} />
+          <div className='col-span-12 md:col-span-7 flex items-center justify-center'>
+            <form action="" className=" md:w-3/4 mx-auto space-y-6" onSubmit={handleSubmitReport}>
+              <FormInput id="tanggal_laporan" label="Tanggal" type="date" placeholder="Masukkan Tanggal" disabled={loading} error={errorDate} errorMessage={errorDate} />
               <div>
                 <label htmlFor="" className="block mb-2 text-sm font-medium text-gray-900">Lokasi Sampah</label>
                 <div className="relative">
@@ -124,7 +124,7 @@ const MenuActive = ({ label, href }) => {
     <NavLink
       to={href}
       className={({ isActive }) =>
-        `text-base font-medium ${
+        `text-sm md:text-base font-medium ${
           isActive ? "text-primary-05 border-b-2 border-primary-05" : ""
         }`
       }

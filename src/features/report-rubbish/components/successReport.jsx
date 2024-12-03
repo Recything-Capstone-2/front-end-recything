@@ -15,7 +15,7 @@ export default function SuccessReport() {
       <div className="bg-[#C1E8BA]" style={{backgroundImage: `url(${background2})`, backgroundSize: "cover",}}>
         <div className="bg-transparent max-w-xl mx-auto flex justify-center items-center py-12">
           <div className="bg-white rounded-full p-12">
-            <HiThumbUp size={100} className="text-primary-05" />
+            <HiThumbUp size={100} className="text-primary-05 animate-bounce" />
           </div>
         </div>
       </div>
