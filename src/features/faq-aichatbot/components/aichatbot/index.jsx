@@ -4,12 +4,10 @@ import AiChatbotSection from "./AiChatbotSection";
 import { history } from "../../constant/history";
 
 const AiChatbotPage = () => {
-  const user = "User";
-
   return (
-    <div className="flex">
+    <div className="flex bg-green-50">
       {/* <ChatDrawer history={history} /> */}
-      <AiChatbotSection user={user} />
+      <AiChatbotSection />
     </div>
   );
 };

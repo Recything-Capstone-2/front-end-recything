@@ -19,7 +19,7 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-white overflow-hidden">
+    <div className="relative min-h-screen bg-green-50 overflow-hidden">
       {/* Overlay Image */}
       <div
         className="absolute w-[1200px] h-[1200px] inset-0 bg-cover bg-center opacity-75 z-0"
