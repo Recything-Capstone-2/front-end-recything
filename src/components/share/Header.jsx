@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/logo/logo-greenly.png";
 import { FaBell } from "react-icons/fa";
 import { MdOutlineWbSunny } from "react-icons/md";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useUser from "../../store/userStore.js";
 import Button from "../ui/Button.jsx";
 import useLogout from "../../features/auth/hooks/useLogout.jsx";
@@ -30,6 +30,7 @@ const Header = () => {
 
   const { user } = useUser();
   const { handleLogout } = useLogout();
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -82,7 +83,8 @@ const Header = () => {
             <button
               type="button"
               className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
-              onClick={toggleDropdown}
+              // onClick={toggleDropdown}
+              onClick={() => navigate("/profile")}
             >
               <span className="sr-only">Open user menu</span>
               <img

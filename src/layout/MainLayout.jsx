@@ -11,6 +11,7 @@ const MainLayout = () => {
     "/register",
     "/aichatbot",
     "/dashboard-admin",
+    "/profile",
   ];
 
   return (
