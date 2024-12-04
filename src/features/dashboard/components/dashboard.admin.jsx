@@ -8,8 +8,9 @@ import NavbarDashboard from "./header.dashboard.jsx";
 import { MdOutlineLogout } from "react-icons/md";
 import { MdHome } from "react-icons/md";
 import { FaFileCirclePlus } from "react-icons/fa6";
-import { BsStack } from "react-icons/bs";
 import { RiSettings5Fill } from "react-icons/ri";
+import { IoPersonSharp } from "react-icons/io5";
+import { IoNewspaperOutline } from "react-icons/io5";
 
 import logo from "../../../assets/logo/logo-only.png";
 import useLogout from "../../auth/hooks/useLogout.jsx";
@@ -79,48 +80,10 @@ export default function DashboardAdminContainer({ children }) {
               <span className="font-semibold text-2xl font-inter">Greenly</span>
             </Link>
             <ul className="mb-2 font-medium mt-4">
-              <li>
-                <Menu label="Beranda" href="/" icon={<MdHome size={24} />} />
-              </li>
-            </ul>
-
-            {/* Dropdown menu */}
-            <div>
-              <button
-                onClick={toggleDropdown}
-                className="flex items-center justify-between w-full text-gray-500 hover:bg-gray-100 p-2 rounded-lg"
-              >
-                <div className="flex items-center gap-3 px-1">
-                  <FaFileCirclePlus size={24} className="text-primary-05" />
-                  <span className="text-base font-medium">Pelaporan</span>
-                </div>
-                <svg
-                  className={`w-5 h-5 ${isDropdownOpen ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              {isDropdownOpen && (
-                <ul className="space-y-2 mt-2 pl-10">
-                  <li><Menu label="Laporan Proses" href="/" /></li>
-                  <li><Menu label="Laporan DiSetujui" href="/" /></li>
-                  <li><Menu label="Laporan Selesai" href="/" /></li>
-                </ul>
-              )}
-            </div>
-
-            <ul className="space-y-2 font-medium mt-2">
-              <li><Menu label="Data Pengguna" href="/" icon={<BsStack size={24} />} /></li>
-              <li><Menu label="Kelola Artikel" href="/" icon={<RiSettings5Fill size={24} />} /></li>
+              <li><Menu label="Beranda" href="/dashboard-admin" icon={<MdHome size={24} />} /></li>
+              <li><Menu label="Data Pengguna" href="/dashboard/user" icon={<IoPersonSharp size={24} />} /></li>
+              <li><Menu label="Data Pelaporan" href="/dashboard/report/all" icon={<FaFileCirclePlus size={24} />} /></li>
+              <li><Menu label="Kelola Artikel" href="/" icon={<IoNewspaperOutline size={24} />} /></li>
             </ul>
 
           </div>

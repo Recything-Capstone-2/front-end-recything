@@ -11,6 +11,11 @@ import PrivateRoute from "../middleware/PrivateRoute.jsx";
 import DashboardAdmin from "../features/admin-dashboard/components/index.jsx";
 import Profile from "../features/profile/components/index.jsx";
 import HistoryReport from "../features/report-rubbish/components/history.report.jsx";
+import DashboardAdminReportProcess from "../features/admin-dashboard-report/components/report.process.jsx";
+import DashboardAdminReportApprove from "../features/admin-dashboard-report/components/report.approve.jsx";
+import DashboardAdminReportDone from "../features/admin-dashboard-report/components/report.done.jsx";
+import DashboardAdminReportReject from "../features/admin-dashboard-report/components/report.reject.jsx";
+import DashboardAdminReportAll from "../features/admin-dashboard-report/components/index.jsx";
 
 export default function AppRoutes() {
   return (
@@ -71,6 +76,46 @@ export default function AppRoutes() {
             element={
               <PrivateRoute allowedRoles={["user"]}>
                 <Profile />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard/report/all"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <DashboardAdminReportAll />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard/report/process"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <DashboardAdminReportProcess />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard/report/approve"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <DashboardAdminReportApprove />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard/report/done"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <DashboardAdminReportDone />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard/report/reject"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <DashboardAdminReportReject />
               </PrivateRoute>
             }
           />
