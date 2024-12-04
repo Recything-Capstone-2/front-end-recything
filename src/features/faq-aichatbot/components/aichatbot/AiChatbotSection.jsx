@@ -4,13 +4,16 @@ import logo from "../../../../assets/logo/logo-only-big.png";
 import { IoMdSend } from "react-icons/io";
 import { useAI } from "../../hooks/useAI";
 import ReactMarkdown from "react-markdown";
+import useUser from "../../../../store/userStore";
 
-const AiChatbotSection = ({ user }) => {
+const AiChatbotSection = () => {
   const { handleSend, isLoading, error } = useAI();
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [isMessageSent, setIsMessageSent] = useState(false);
   const chatContainerRef = useRef(null);
+  const { user: currentUser } = useUser();
+  const userName = currentUser?.nama_lengkap || "User";
 
   const onSendMessage = async () => {
     if (input.trim()) {
@@ -40,7 +43,7 @@ const AiChatbotSection = ({ user }) => {
             <img src={logo} alt="logo" />
           </div>
           <h2 className="text-lg md:text-2xl font-bold mb-6 text-center">
-            Halo {user},<br /> Bagaimana kita bisa membantu hari ini?
+            Halo {userName},<br /> Bagaimana kita bisa membantu hari ini?
           </h2>
           <p className="text-gray-500 text-center py-4 text-sm md:text-base">
             Gunakan topik dibawah untuk memulai:
