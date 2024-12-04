@@ -10,6 +10,7 @@ import BerandaUser from "../features/beranda-user/components/index.jsx";
 import PrivateRoute from "../middleware/PrivateRoute.jsx";
 import DashboardAdmin from "../features/admin-dashboard/components/index.jsx";
 import Profile from "../features/profile/components/index.jsx";
+import HistoryReport from "../features/report-rubbish/components/history.report.jsx";
 
 export default function AppRoutes() {
   return (
@@ -42,10 +43,18 @@ export default function AppRoutes() {
             }
           />
           <Route
-            path="/report-rubbish"
+            path="/report"
             element={
               <PrivateRoute allowedRoles={["user"]}>
                 <ReportRubbish />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/history-report"
+            element={
+              <PrivateRoute allowedRoles={["user"]}>
+                <HistoryReport />
               </PrivateRoute>
             }
           />

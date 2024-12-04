@@ -17,7 +17,7 @@ const MenuBeforeLogin = [
 
 const MenuAfterLogin = [
   { name: "Beranda", path: "/beranda-user" },
-  { name: "Pelaporan", path: "/report-rubbish" },
+  { name: "Pelaporan", path: "/report" },
   { name: "Edukasi", path: "/education" },
   { name: "Faq", path: "/faq" },
   { name: "Tentang", path: "/tentang" },

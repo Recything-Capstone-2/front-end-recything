@@ -8,16 +8,13 @@ import NavbarDashboard from "./header.dashboard.jsx";
 import { MdOutlineLogout } from "react-icons/md";
 import { MdHome } from "react-icons/md";
 import { FaFileCirclePlus } from "react-icons/fa6";
-import { MdEditSquare } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
-import { IoMdChatboxes } from "react-icons/io";
 import { BsStack } from "react-icons/bs";
 import { RiSettings5Fill } from "react-icons/ri";
 
 import logo from "../../../assets/logo/logo-only.png";
 import useLogout from "../../auth/hooks/useLogout.jsx";
 
-export default function DashboardUserContainer({ children }) {
+export default function DashboardAdminContainer({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -114,22 +111,16 @@ export default function DashboardUserContainer({ children }) {
               </button>
               {isDropdownOpen && (
                 <ul className="space-y-2 mt-2 pl-10">
-                  <li><Menu label="Laporan Sampah" href="/" /></li>
-                  <li><Menu label="Pelaporan Sampah Sembarangan" href="/" /></li>
+                  <li><Menu label="Laporan Proses" href="/" /></li>
+                  <li><Menu label="Laporan DiSetujui" href="/" /></li>
+                  <li><Menu label="Laporan Selesai" href="/" /></li>
                 </ul>
               )}
             </div>
 
             <ul className="space-y-2 font-medium mt-2">
-              <li><Menu label="Edukasi Daur Ulang" href="/" icon={<MdEditSquare size={24} />} /></li>
-              <li><Menu label="Lokasi Daur Ulang" href="/" icon={<FaLocationDot size={24} />} /></li>
-            </ul>
-
-            <div className="mt-4 border-t-2 border-gray"></div>
-            <ul className="space-y-2 font-medium mt-2">
-              <li><Menu label="Faq/Chatbot" href="/" icon={<IoMdChatboxes size={24} />} /></li>
-              <li><Menu label="Tentang" href="/" icon={<BsStack size={24} />} /></li>
-              <li><Menu label="Pengaturan" href="/" icon={<RiSettings5Fill size={24} />} /></li>
+              <li><Menu label="Data Pengguna" href="/" icon={<BsStack size={24} />} /></li>
+              <li><Menu label="Kelola Artikel" href="/" icon={<RiSettings5Fill size={24} />} /></li>
             </ul>
 
           </div>

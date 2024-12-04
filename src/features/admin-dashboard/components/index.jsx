@@ -1,14 +1,13 @@
-import React from "react";
-import { DashboardUser } from "../../dashboard";
+import { DashboardAdminLayout } from "../../dashboard/index.js";
 
 const DashboardAdmin = () => {
   return (
     <div>
-      <DashboardUser>
+      <DashboardAdminLayout>
         <div className="flex justify-center">
           <h1 className="text-center text-2xl">Dashboard Admin</h1>
         </div>
-      </DashboardUser>
+      </DashboardAdminLayout>
     </div>
   );
 };
