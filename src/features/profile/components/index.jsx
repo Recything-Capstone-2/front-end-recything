@@ -22,21 +22,22 @@ export default function Profile() {
           <img src={image} alt="" className="h-64 object-cover w-full rounded" />
         </div>
 
-        <div className="col-span-10 col-start-2 grid grid-cols-10 px-4 items-end gap-x-4 absolute top-52">
-          <div className="col-span-2 relative">
-            <img src={user.photo || image2} alt="" className={`h-48 object-cover w-full rounded ${loadingChangePhoto ? "animate-pulse" : ""}`} />
+        <div className="col-span-10 col-start-2 grid grid-cols-10 md:px-4 px-2 items-end gap-x-4 absolute top-52">
+          <div className="col-span-6 md:col-span-2 relative">
+            <img src={user.photo || image2} alt="" className={`h-48 object-cover w-full rounded ${loadingChangePhoto ? "blur-sm" : ""}`} />
             <button className="bg-secondary-04 p-2 rounded-s absolute bottom-0 right-0 hover:bg-yellow-400" onClick={handleFileChange}><MdOutlineEdit size={24} /></button>
             <input type="file" id="photo" className="hidden" ref={fileInputRef} accept="jpg, png, jpeg" onChange={handleFileUpload} />
+            {loadingChangePhoto && <p className="text-white text-base font-semibold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Loading...</p> }
           </div>
           <div className="col-span-4">
-            <h2 className="text-3xl font-bold">{user.nama_lengkap}</h2>
-            <p className="text-base font-normal text-slate-500 flex items-center gap-x-2"> 
+            <h2 className="text-base md:text-3xl font-bold">{user.nama_lengkap}</h2>
+            <p className="text-sm md:text-base font-normal text-slate-500 flex items-center gap-x-2"> 
               <SiGooglemaps size={16} /> 
               {user.alamat || "Indonesia"}
             </p>
           </div>
 
-          <div className="col-span-4 flex items-center justify-end">
+          <div className="col-span-10 md:col-span-4 flex items-center justify-end my-3 md:my-0">
             <Button variant="secondary" size="sm" onClick={() => navigate("/profile/edit")}>
               <MdOutlineEdit size={20} />
               Edit
@@ -44,31 +45,31 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="col-span-10 col-start-2 space-y-4 px-4 mt-32">
+        <div className="col-span-10 col-start-2 space-y-4 px-4 md:mt-32 mt-40">
           {/* email */}
-          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 items-center border-b-2 border-slate-300 pb-3">
-            <div className="col-span-2 text-xl font-bold"><p>Email</p></div>
-            <div className="col-span-7 text-lg font-normal">
+          <div className="col-span-10 col-start-2 grid grid-cols-10 md:gap-x-5 gap-y-1 md:gap-y-0 items-center border-b-2 border-slate-300 pb-3">
+            <div className="col-span-7 md:col-span-2 text-base md:text-xl font-bold"><p>Email</p></div>
+            <div className="col-span-7 text-base md:text-lg font-normal">
               {user?.email}
             </div>
           </div>
           {/* password */}
-          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 items-center border-b-2 border-slate-300 pb-3">
-            <div className="col-span-2 text-xl font-bold"><p>Password</p></div>
-            <div className="col-span-7 text-lg font-normal">
+          <div className="col-span-10 col-start-2 grid grid-cols-10 md:gap-x-5 gap-y-1 md:gap-y-0 items-center border-b-2 border-slate-300 pb-3">
+            <div className="col-span-7 md:col-span-2 text-base md:text-xl font-bold"><p>Password</p></div>
+            <div className="col-span-7 text-base md:text-lg font-normal">
               ********
             </div>
           </div>
           {/* tanggal lahir */}
-          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 items-center border-b-2 border-slate-300 pb-3">
-            <div className="col-span-2 text-xl font-bold"><p>Tanggal Lahir</p></div>
-            <div className="col-span-7 text-lg font-normal">
+          <div className="col-span-10 col-start-2 grid grid-cols-10 md:gap-x-5 gap-y-1 md:gap-y-0 items-center border-b-2 border-slate-300 pb-3">
+            <div className="col-span-7 md:col-span-2 text-base md:text-xl font-bold"><p>Tanggal Lahir</p></div>
+            <div className="col-span-7 text-base md:text-lg font-normal">
               {user?.tanggal_lahir}
             </div>
           </div>
           {/* nomor telepon */}
-          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 items-center border-b-2 border-slate-300 pb-3">
-            <div className="col-span-2 text-xl font-bold"><p>Nomor Telepon</p></div>
+          <div className="col-span-10 col-start-2 grid grid-cols-10 md:gap-x-5 gap-y-1 md:gap-y-0 items-center border-b-2 border-slate-300 pb-3">
+            <div className="col-span-7 md:col-span-2 text-base md:text-xl font-bold"><p>Nomor Telepon</p></div>
             <div className="col-span-7">
               {user?.no_telepon}
             </div>
