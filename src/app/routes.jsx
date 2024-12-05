@@ -17,6 +17,7 @@ import DashboardAdminReportDone from "../features/admin-dashboard-report/compone
 import DashboardAdminReportReject from "../features/admin-dashboard-report/components/report.reject.jsx";
 import DashboardAdminReportAll from "../features/admin-dashboard-report/components/index.jsx";
 import ProfileEdit from "../features/profile/components/form.edit,profile.jsx";
+import AboutUsPage from "../features/about-us/components/index.jsx";
 
 export default function AppRoutes() {
   return (
@@ -125,6 +126,14 @@ export default function AppRoutes() {
             element={
               <PrivateRoute allowedRoles={["user"]}>
                 <ProfileEdit />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/tentang"
+            element={
+              <PrivateRoute allowedRoles={["user"]}>
+                <AboutUsPage />
               </PrivateRoute>
             }
           />
