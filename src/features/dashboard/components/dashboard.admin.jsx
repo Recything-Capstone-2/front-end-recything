@@ -45,7 +45,7 @@ export default function DashboardAdminContainer({ children, header }) {
   };
 
   return (
-    <div className="h-screen">
+    <div className="h-screen bg-green-50">
       {/* Button untuk membuka sidebar */}
       <button
         onClick={toggleSidebar}
