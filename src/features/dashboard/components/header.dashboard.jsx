@@ -4,7 +4,7 @@ import { FaBell } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
 import { MdOutlineWbSunny } from "react-icons/md";
 
-const NavbarDashboard = ( ) => {
+const NavbarDashboard = ( {title} ) => {
   // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropDownBellOpen, setIsDropDownBellOpen] = useState(false);
@@ -26,7 +26,7 @@ const NavbarDashboard = ( ) => {
       <div className="max-w-screen-xl flex flex-col md:flex-row flex-wrap md:items-center justify-between mx-auto p-0 md:py-5 md:px-10 relative gap-3 md:gap-0">
         {/* Logo Section */}
         <p className="flex items-center space-x-3 rtl:space-x-reverse">
-          <span className="self-center text-2xl font-semibold whitespace-nowrap"></span>
+          <span className="self-center text-2xl font-semibold whitespace-nowrap">{title}</span>
         </p>
 
         {/* User Menu & Mobile Menu Button */}

@@ -15,6 +15,7 @@ export default {
         inter: ["Inter", "sans-serif"],
       },
       colors: {
+        "primary-01": "#C1E8BA",
         "primary-05": "#45A135",
         "secondary-04": "#FCCD2A",
         "white-feature": "#FFFBE6",
