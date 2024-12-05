@@ -6,7 +6,12 @@ import selesai from "../../../assets/images/icon_selesai.png";
 import ditolak from "../../../assets/images/icon_ditolak.png";
 
 const useStatus = () => {
-  const [statusCounts, setStatusCounts] = useState([]);
+  const [statusCounts, setStatusCounts] = useState([
+    { label: "Diterima", count: 0, icon: diterima },
+    { label: "Diproses", count: 0, icon: diproses },
+    { label: "Selesai", count: 0, icon: selesai },
+    { label: "Ditolak", count: 0, icon: ditolak },
+  ]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,11 +19,14 @@ const useStatus = () => {
     const fetchStatusData = async () => {
       try {
         const response = await instance.get("/report-rubbish/history");
-        const reports = response.data.data;
+
+        const reports = response.data?.data || [];
         console.log("Data reports:", reports);
 
         const statusMap = reports.reduce((acc, report) => {
-          acc[report.status] = (acc[report.status] || 0) + 1;
+          if (report && report.status) {
+            acc[report.status] = (acc[report.status] || 0) + 1;
+          }
           return acc;
         }, {});
         console.log("Status Map:", statusMap);
