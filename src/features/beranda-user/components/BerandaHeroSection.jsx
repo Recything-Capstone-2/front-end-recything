@@ -11,7 +11,7 @@ const BerandaHeroSection = () => {
   const navigate = useNavigate();
 
   const handleReportClick = () => {
-    navigate("/report-rubbish");
+    navigate("/report");
   };
 
   if (loading) {
