@@ -1,37 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import developdata from "../constant/developdata";
+import useCarousel from "../hooks/useCarousel";
 
 const DevelopCardSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0); // Index elemen pertama yang ditampilkan
-  const visibleCards = 4; // Jumlah kartu yang terlihat sekaligus
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? developdata.length - visibleCards : prevIndex - 1
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === developdata.length - visibleCards ? 0 : prevIndex + 1
-    );
-  };
-
-  // Menampilkan kartu sesuai indeks yang aktif
-  const displayedCards = developdata.slice(
+  const {
     currentIndex,
-    currentIndex + visibleCards
-  );
-
-  // Menangani wrapping data jika mencapai akhir array
-  if (displayedCards.length < visibleCards) {
-    displayedCards.push(
-      ...developdata.slice(0, visibleCards - displayedCards.length)
-    );
-  }
-
-  // Menghitung jumlah total halaman
-  const totalPages = Math.ceil(developdata.length / visibleCards);
+    handlePrev,
+    handleNext,
+    displayedCards,
+    totalDots,
+    setCurrentIndex,
+  } = useCarousel(developdata);
 
   return (
     <section className="bg-white py-20 px-6">
@@ -89,15 +68,15 @@ const DevelopCardSection = () => {
 
         {/* Dots Navigation */}
         <div className="flex justify-center items-center mt-4">
-          {Array.from({ length: totalPages }).map((_, pageIndex) => (
+          {Array.from({ length: totalDots }).map((_, pageIndex) => (
             <div
               key={pageIndex}
               className={`w-3 h-3 mx-2 rounded-full cursor-pointer ${
-                pageIndex === Math.floor(currentIndex / visibleCards)
+                pageIndex === Math.floor(currentIndex)
                   ? "bg-gray-800"
                   : "bg-gray-400"
               }`}
-              onClick={() => setCurrentIndex(pageIndex * visibleCards)}
+              onClick={() => setCurrentIndex(pageIndex)}
             ></div>
           ))}
         </div>
