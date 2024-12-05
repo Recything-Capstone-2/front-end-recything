@@ -34,13 +34,11 @@ const BerandaHistoryCardSection = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* Menampilkan status dan ikon */}
         {statusCounts.map((status) => (
           <div
             key={status.label}
             className="bg-primary-01 flex flex-col items-start py-4 px-6 sm:py-6 sm:px-8 lg:py-8 lg:px-10 rounded-lg shadow-md space-y-4"
           >
-            {/* Menampilkan ikon status */}
             <img
               src={status.icon}
               alt={`${status.label} icon`}
