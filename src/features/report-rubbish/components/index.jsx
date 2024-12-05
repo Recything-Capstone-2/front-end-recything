@@ -1,5 +1,4 @@
 import { SiGooglemaps } from "react-icons/si";
-import { NavLink } from "react-router-dom";
 import FormTextarea from "../../../components/ui/FormTextarea.jsx";
 import FormInput from "../../../components/ui/FormInput.jsx";
 import Button from "../../../components/ui/Button.jsx";
@@ -10,6 +9,14 @@ import useMaps from "../hooks/useMaps.jsx";
 import Autosuggest from "react-autosuggest";
 import useReportRubbish from "../hooks/useReportRubbish.jsx";
 import SuccessReport from "./successReport.jsx";
+import FormSelect from "../../../components/ui/FormSelect.jsx";
+import { MenuActive } from "./menu.active.jsx";
+
+const options = [
+  { value: '', label: 'Pilih jenis laporan' },
+  { value: 'rubbish', label: 'Report Rubbish' },
+  { value: 'littering', label: 'Report Littering' },
+]
 
 export default function ReportRubbish() {
   const { address, suggestions, position, handleSelect, renderSuggestion, inputProps, fetchSuggestions, setSuggestions } = useMaps();
@@ -23,9 +30,8 @@ export default function ReportRubbish() {
       ) : (
         <section className='container mx-auto grid grid-cols-12 font-inter py-20'>
           <div className="col-span-12 flex gap-x-5 mb-5 px-4">
-            <MenuActive label="Laporan Sampah" href="/report-rubbish" />
-            <MenuActive label="Laporan Sampah Sembarangan" href="/report-litter" />
-            <MenuActive label="Riwayat Laporan" href="/" />
+            <MenuActive label="Laporan Sampah" href="/report" />
+            <MenuActive label="Riwayat Laporan" href="/history-report" />
           </div>
 
           <div className='hidden md:col-span-5 md:flex items-center justify-center py-20 rounded-lg shadow-slate-300 drop-shadow-lg' style={{backgroundImage: `url(${background})`, backgroundSize: "cover"}}>
@@ -104,6 +110,7 @@ export default function ReportRubbish() {
                 </div>
                 {errorLocation && <p className="text-red-500 text-sm mt-1">{errorLocation}</p>}
               </div>
+              <FormSelect id={"jenis_sampah"} label="Jenis Sampah" options={options} disabled={loading} />
               <FormTextarea id="description" label="Deskripsi" type="text" placeholder="Masukkan Deskripsi Sampah" disabled={loading} error={errorDescription} errorMessage={errorDescription} />
               <FormInput id="photo" label="Upload Gambar" type="file" size="" disabled={loading} required />
 
@@ -117,19 +124,3 @@ export default function ReportRubbish() {
     </main>
   )
 }
-
-// eslint-disable-next-line react/prop-types
-const MenuActive = ({ label, href }) => {
-  return (
-    <NavLink
-      to={href}
-      className={({ isActive }) =>
-        `text-sm md:text-base font-medium ${
-          isActive ? "text-primary-05 border-b-2 border-primary-05" : ""
-        }`
-      }
-    >
-      {label}
-    </NavLink>
-  );
-};

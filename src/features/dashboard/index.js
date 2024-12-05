@@ -1,3 +1,3 @@
-import DashboardUser from "./components/dashboard.user.jsx";
+import DashboardAdminLayout from "./components/dashboard.admin.jsx";
 
-export { DashboardUser }
+export { DashboardAdminLayout }

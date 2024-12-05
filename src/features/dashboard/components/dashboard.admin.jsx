@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu } from "./layout.menu.jsx";
 import Button from "../../../components/ui/Button.jsx";
 import NavbarDashboard from "./header.dashboard.jsx";
@@ -8,20 +8,23 @@ import NavbarDashboard from "./header.dashboard.jsx";
 import { MdOutlineLogout } from "react-icons/md";
 import { MdHome } from "react-icons/md";
 import { FaFileCirclePlus } from "react-icons/fa6";
-import { MdEditSquare } from "react-icons/md";
-import { FaLocationDot } from "react-icons/fa6";
-import { IoMdChatboxes } from "react-icons/io";
-import { BsStack } from "react-icons/bs";
-import { RiSettings5Fill } from "react-icons/ri";
+import { IoPersonSharp } from "react-icons/io5";
+import { IoNewspaperOutline } from "react-icons/io5";
 
 import logo from "../../../assets/logo/logo-only.png";
 import useLogout from "../../auth/hooks/useLogout.jsx";
 
-export default function DashboardUserContainer({ children }) {
+export default function DashboardAdminContainer({ children, header }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const { handleLogout } = useLogout();
+  const location = useLocation();
+  let dropdownActive = false
+
+  if(location.pathname === "/dashboard/report/done" || location.pathname === "/dashboard/report/reject" || location.pathname === "/dashboard/report/approve" || location.pathname === "/dashboard/report/process" || location.pathname === "/dashboard/report/all") {
+    dropdownActive = true
+  }
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -82,20 +85,20 @@ export default function DashboardUserContainer({ children }) {
               <span className="font-semibold text-2xl font-inter">Greenly</span>
             </Link>
             <ul className="mb-2 font-medium mt-4">
-              <li>
-                <Menu label="Beranda" href="/" icon={<MdHome size={24} />} />
-              </li>
+              <li><Menu label="Beranda" href="/dashboard-admin" icon={<MdHome size={24} />} /></li>
+              <li><Menu label="Data Pengguna" href="/dashboard/user" icon={<IoPersonSharp size={24} />} /></li>
             </ul>
-
             {/* Dropdown menu */}
             <div>
               <button
                 onClick={toggleDropdown}
-                className="flex items-center justify-between w-full text-gray-500 hover:bg-gray-100 p-2 rounded-lg"
+                className={`flex items-center justify-between w-full ${dropdownActive ? 'text-primary-05' : 'text-gray-500'} hover:bg-gray-100 p-2 rounded-lg`}
               >
                 <div className="flex items-center gap-3 px-1">
-                  <FaFileCirclePlus size={24} className="text-primary-05" />
-                  <span className="text-base font-medium">Pelaporan</span>
+                  <FaFileCirclePlus size={24} />
+                  <span className={`text-base font-medium`}>
+                    Data Pelaporan
+                  </span>
                 </div>
                 <svg
                   className={`w-5 h-5 ${isDropdownOpen ? 'rotate-180' : ''}`}
@@ -114,22 +117,17 @@ export default function DashboardUserContainer({ children }) {
               </button>
               {isDropdownOpen && (
                 <ul className="space-y-2 mt-2 pl-10">
-                  <li><Menu label="Laporan Sampah" href="/" /></li>
-                  <li><Menu label="Pelaporan Sampah Sembarangan" href="/" /></li>
+                  <li><Menu label="Semua Laporan" href="/dashboard/report/all" /></li>
+                  <li><Menu label="Laporan Diterima" href="/dashboard/report/approve" /></li>
+                  <li><Menu label="Laporan Diproses" href="/dashboard/report/process" /></li>
+                  <li><Menu label="Laporan Selesai" href="/dashboard/report/done" /></li>
+                  <li><Menu label="Laporan Ditolak" href="/dashboard/report/reject" /></li>
                 </ul>
               )}
             </div>
 
-            <ul className="space-y-2 font-medium mt-2">
-              <li><Menu label="Edukasi Daur Ulang" href="/" icon={<MdEditSquare size={24} />} /></li>
-              <li><Menu label="Lokasi Daur Ulang" href="/" icon={<FaLocationDot size={24} />} /></li>
-            </ul>
-
-            <div className="mt-4 border-t-2 border-gray"></div>
-            <ul className="space-y-2 font-medium mt-2">
-              <li><Menu label="Faq/Chatbot" href="/" icon={<IoMdChatboxes size={24} />} /></li>
-              <li><Menu label="Tentang" href="/" icon={<BsStack size={24} />} /></li>
-              <li><Menu label="Pengaturan" href="/" icon={<RiSettings5Fill size={24} />} /></li>
+            <ul className="mb-2 font-medium mt-2">
+              <li><Menu label="Kelola Artikel" href="/" icon={<IoNewspaperOutline size={24} />} /></li>
             </ul>
 
           </div>
@@ -142,7 +140,7 @@ export default function DashboardUserContainer({ children }) {
 
       {/* Konten Utama */}
       <div className="md:p-0 sm:ml-64">
-        <NavbarDashboard />
+        <NavbarDashboard title={header} />
         {children}
       </div>
     </div>
