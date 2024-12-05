@@ -2,16 +2,20 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import point from "../../../assets/images/poin.png";
 import useUser from "../../../store/userStore";
+import usePoints from "../hooks/usePoints";
 
 const BerandaHeroSection = () => {
   const { user: currentUser } = useUser();
   const userName = currentUser?.nama_lengkap || "User";
-  const userPoints = 12000;
+  const { points: userPoints, loading, error } = usePoints();
   const navigate = useNavigate();
 
   const handleReportClick = () => {
     navigate("/report-rubbish");
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className="flex flex-col lg:flex-row bg-green-50 pt-8 lg:pt-16 pb-8 px-6 lg:px-24 rounded-lg gap-4 lg:items-end">
