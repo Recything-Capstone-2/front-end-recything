@@ -16,6 +16,7 @@ import DashboardAdminReportApprove from "../features/admin-dashboard-report/comp
 import DashboardAdminReportDone from "../features/admin-dashboard-report/components/report.done.jsx";
 import DashboardAdminReportReject from "../features/admin-dashboard-report/components/report.reject.jsx";
 import DashboardAdminReportAll from "../features/admin-dashboard-report/components/index.jsx";
+import ProfileEdit from "../features/profile/components/form.edit,profile.jsx";
 
 export default function AppRoutes() {
   return (
@@ -72,14 +73,6 @@ export default function AppRoutes() {
             }
           />
           <Route
-            path="/profile"
-            element={
-              <PrivateRoute allowedRoles={["user"]}>
-                <Profile />
-              </PrivateRoute>
-            }
-          />
-          <Route
             path="/dashboard/report/all"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
@@ -116,6 +109,22 @@ export default function AppRoutes() {
             element={
               <PrivateRoute allowedRoles={["admin"]}>
                 <DashboardAdminReportReject />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute allowedRoles={["user"]}>
+                <Profile />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/profile/edit"
+            element={
+              <PrivateRoute allowedRoles={["user"]}>
+                <ProfileEdit />
               </PrivateRoute>
             }
           />

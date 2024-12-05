@@ -17,6 +17,7 @@ const MainLayout = () => {
     "/dashboard/report/approve",
     "/dashboard/report/done",
     "/dashboard/report/reject",
+    "/profile/edit",
   ];
 
   return (
