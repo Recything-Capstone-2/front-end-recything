@@ -14,8 +14,23 @@ const BerandaHeroSection = () => {
     navigate("/report-rubbish");
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-xl font-medium">Memuat data points.....</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-xl font-medium text-red-600">
+          Terjadi kesalahan saat memuat data: {JSON.stringify(error)}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col lg:flex-row bg-green-50 pt-8 lg:pt-16 pb-8 px-6 lg:px-24 rounded-lg gap-4 lg:items-end">
