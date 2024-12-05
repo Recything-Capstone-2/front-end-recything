@@ -5,8 +5,10 @@ import BerandaHistoryCardSection from "./BerandaHistoryCardSection";
 export default function BerandaUser() {
   return (
     <div className="bg-green-50">
-      <BerandaHeroSection />
-      <BerandaHistoryCardSection />
+      <div className="max-w-[1440px] mx-auto">
+        <BerandaHeroSection />
+        <BerandaHistoryCardSection />
+      </div>
     </div>
   );
 }
