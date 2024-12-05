@@ -37,7 +37,9 @@ instance.interceptors.response.use(
       const { status } = error.response;
 
       if (status === 401) {
-        console.error('Unauthorized: Silakan login kembali.');
+        console.error(error.response.data.meta.message);
+        return error.response;
+        // console.error('Unauthorized: Token tidak valid.');
         // Redirect login opsional
         // window.location.href = '/login';
       } else if (status === 403) {

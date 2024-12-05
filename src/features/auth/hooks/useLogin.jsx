@@ -53,7 +53,7 @@ export default function useLogin() {
         navigate("/beranda-user");
       }
     } catch (error) {
-      setError(error.message);
+      setError("Invalid Credentials");
     } finally {
       setLoading(false);
     }

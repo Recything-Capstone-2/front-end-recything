@@ -1,6 +1,12 @@
 import Swal from 'sweetalert2';
 
-export const showAlert = ({ icon = 'success', title = 'Success', text = '', confirmButtonColor = 'bg-primary-05' }) => {
+export const showAlert = ({ 
+  icon = 'success', 
+  title = 'Success', 
+  text = '', 
+  confirmButtonColor = 'bg-primary-05',
+  onConfirm = null 
+}) => {
   return Swal.fire({
     icon,
     title,
@@ -9,5 +15,9 @@ export const showAlert = ({ icon = 'success', title = 'Success', text = '', conf
       confirmButton: `${confirmButtonColor} hover:bg-green-800 text-white font-bold py-2 px-4 rounded`,
     },
     buttonsStyling: false,
+  }).then((result) => {
+    if (result.isConfirmed && onConfirm) {
+      onConfirm(); 
+    }
   });
 };
