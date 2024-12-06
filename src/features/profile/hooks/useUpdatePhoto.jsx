@@ -1,14 +1,12 @@
 import { useRef, useState } from "react";
 import instance from "../../../utils/instance.js";
 import { showAlert } from "../../../components/share/Alert.jsx";
-import { useNavigate } from "react-router-dom";
 import useUser from "../../../store/userStore.js";
 
 export default function useUpdatePhoto(userId) {
-  const navigate = useNavigate();
-  const { clearUser } = useUser();
   const fileInputRef = useRef(null);
   const [loadingChangePhoto, setLoadingChangePhoto] = useState(false);
+  const { updateUser } = useUser();
 
   const handleFileChange = () => {
     fileInputRef.current.click();
@@ -32,15 +30,10 @@ export default function useUpdatePhoto(userId) {
         showAlert({ 
           icon: 'success', 
           title: 'Berhasil', 
-          text: "Berhasil Mengganti Foto Profil, Silahkan Login Kembali",
-          onConfirm: () => {
-            clearUser();
-            localStorage.removeItem("token");
-            localStorage.removeItem("user");
-            navigate("/login"); 
-          }
+          text: "Berhasil Mengganti Foto Profil",
         });
       }
+      updateUser({ photo: res.data.photo });
     } catch (error) {
       showAlert({ icon: 'error', title: 'Error', text: "Terjadi kesalahan saat mengganti foto" });
     } finally {

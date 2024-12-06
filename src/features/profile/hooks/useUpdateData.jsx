@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { updateData } from "../service/update.data.js";
 
 export default function useUpdateData(user) {
-  const { clearUser } = useUser();
+  const { updateUser } = useUser();
   const navigate = useNavigate();
 
   const [name, setName] = useState(user?.nama_lengkap);
@@ -117,7 +117,7 @@ export default function useUpdateData(user) {
 
     try {
       const response = await updateData(user.id_user, formData);
-
+      console.log("Data berhasil diupdate:", response.data.data);
       if (response.status !== 200) {
         showAlert({ 
           icon: 'error', 
@@ -130,10 +130,8 @@ export default function useUpdateData(user) {
           title: 'Berhasil', 
           text: "Berhasil Mengganti Data Profil, Silahkan Login Kembali",
           onConfirm: () => {
-            clearUser();
-            localStorage.removeItem("token");
-            localStorage.removeItem("user");
-            navigate("/login"); 
+            navigate("/profile"); 
+            updateUser(response.data.data);
           }
         });
       }

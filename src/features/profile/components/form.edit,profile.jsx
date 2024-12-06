@@ -29,11 +29,12 @@ export default function ProfileEdit() {
           <img src={image} alt="" className="h-64 object-cover w-full rounded" />
         </div>
 
-        <div className="col-span-10 col-start-2 grid grid-cols-10 px-4 items-end gap-x-4 absolute top-52">
-          <div className="col-span-2 relative">
-            <img src={user.photo || image2} alt="" className={`h-48 object-cover w-full rounded ${loadingChangePhoto ? "animate-pulse" : ""}`} />
+        <div className="col-span-10 col-start-2 grid grid-cols-10 md:px-4 items-end gap-x-4 absolute top-52">
+          <div className="col-span-6 md:col-span-2 relative">
+            <img src={user.photo || image2} alt="" className={`h-48 object-cover w-full rounded ${loadingChangePhoto ? "blur-sm" : ""}`} />
             <button className="bg-secondary-04 p-2 rounded-s absolute bottom-0 right-0 hover:bg-yellow-400" onClick={handleFileChange}><MdOutlineEdit size={24} /></button>
             <input type="file" id="photo" className="hidden" ref={fileInputRef} accept="jpg, png, jpeg" onChange={handleFileUpload} />
+            {loadingChangePhoto && <p className="text-white text-base font-semibold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Loading...</p> }
           </div>
           <div className="col-span-4">
             <FormInput type="text" placeholder="Nama Lengkap" defaultValue={user?.nama_lengkap} onChange={handleNameChange} startIcon={<IoPersonSharp size={20} className="text-slate-500" />} error={errorName} errorMessage={errorName} />
@@ -43,7 +44,7 @@ export default function ProfileEdit() {
             </div>
           </div>
 
-          <div className="col-span-4 flex items-center gap-x-2 justify-end">
+          <div className="col-span-10 md:col-span-4 flex items-center gap-x-2 justify-end my-3 md:my-0">
             <Button variant="danger" size="sm" onClick={() => navigate(-1)}>
               <IoClose size={20} /> Batal
             </Button>
@@ -53,39 +54,39 @@ export default function ProfileEdit() {
           </div>
         </div>
 
-        <div className="col-span-10 col-start-2 space-y-4 px-4 mt-32">
+        <div className="col-span-10 col-start-2 space-y-4 px-4 md:mt-32 mt-40">
           {/* email */}
-          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 items-center border-b-2 border-slate-300 pb-3">
-            <div className="col-span-2 text-xl font-bold"><p>Email</p></div>
-            <div className="col-span-4">
+          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 gap-y-2 md:gap-y-0 items-center border-b-2 border-slate-300 pb-3">
+            <div className="col-span-6 md:col-span-2 text-base md:text-xl font-bold"><p>Email</p></div>
+            <div className="col-span-10 md:col-span-4">
               <FormInput type="email" placeholder="Email" defaultValue={user?.email} startIcon={<IoMail size={18} color="gray" />} onChange={handleEmailChange} error={errorEmail} errorMessage={errorEmail} />
             </div>
           </div>
           {/* password baru */}
-          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 items-center border-b-2 border-slate-300 pb-3">
-            <div className="col-span-2 text-xl font-bold"><p>Password Baru</p></div>
-            <div className="col-span-4">
+          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 gap-y-2 md:gap-y-0 items-center border-b-2 border-slate-300 pb-3">
+            <div className="col-span-6 md:col-span-2 text-base md:text-xl font-bold"><p>Password Baru</p></div>
+            <div className="col-span-10 md:col-span-4">
               <FormInput type={showNewPassword ? "text" : "password"} placeholder="Password" endButton={showNewPassword ? <FaEyeSlash className="text-gray-500" /> : <FaEye className="text-gray-500" />} onEndButtonClick={handleShowNewPassword} startIcon={<FaLock size={18} color="gray" />} onChange={handleNewPasswordChange} error={errorNewPassword} errorMessage={errorNewPassword} />
             </div>
           </div>
           {/* password lama*/}
-          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 items-center border-b-2 border-slate-300 pb-3">
-            <div className="col-span-2 text-xl font-bold"><p>Password Lama</p></div>
-            <div className="col-span-4">
+          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 gap-y-2 md:gap-y-0 items-center border-b-2 border-slate-300 pb-3">
+            <div className="col-span-6 md:col-span-2 text-base md:text-xl font-bold"><p>Password Lama</p></div>
+            <div className="col-span-10 md:col-span-4">
               <FormInput type={showOldPassword ? "text" : "password"} placeholder="Password" endButton={showOldPassword ? <FaEyeSlash className="text-gray-500" /> : <FaEye className="text-gray-500" />} onEndButtonClick={handleShowOldPassword} startIcon={<FaLock size={18} color="gray" />} onChange={handleOldPasswordChange} error={errorOldPassword} errorMessage={errorOldPassword} />
             </div>
           </div>
           {/* tanggal lahir */}
-          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 items-center border-b-2 border-slate-300 pb-3">
-            <div className="col-span-2 text-xl font-bold"><p>Tanggal Lahir</p></div>
-            <div className="col-span-4">
+          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 gap-y-2 md:gap-y-0 items-center border-b-2 border-slate-300 pb-3">
+            <div className="col-span-6 md:col-span-2 text-base md:text-xl font-bold"><p>Tanggal Lahir</p></div>
+            <div className="col-span-10 md:col-span-4">
               <FormInput type="date" placeholder="Tanggal Lahir" defaultValue={user?.tanggal_lahir} onChange={handleDateChange} error={errorDate} errorMessage={errorDate} />  
             </div>
           </div>
           {/* phone */}
-          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 items-center border-b-2 border-slate-300 pb-3">
-            <div className="col-span-2 text-xl font-bold"><p>Nomor Telepon</p></div>
-            <div className="col-span-4">
+          <div className="col-span-10 col-start-2 grid grid-cols-10 gap-x-5 gap-y-2 md:gap-y-0 items-center border-b-2 border-slate-300 pb-3">
+            <div className="col-span-6 md:col-span-2 text-base md:text-xl font-bold"><p>Nomor Telepon</p></div>
+            <div className="col-span-10 md:col-span-4">
               <FormInput type="text" placeholder="Nomor Telepon" defaultValue={user?.no_telepon} startIcon={<FaPhoneAlt size={18} color="gray" />} onChange={handlePhoneChange} error={errorPhone} errorMessage={errorPhone} />
             </div>
           </div>
