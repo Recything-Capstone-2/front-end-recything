@@ -14,14 +14,14 @@ import { MenuActive } from "./menu.active.jsx";
 
 const options = [
   { value: '', label: 'Pilih jenis laporan' },
-  { value: 'rubbish', label: 'Report Rubbish' },
-  { value: 'littering', label: 'Report Littering' },
+  { value: 'report_rubbish', label: 'Report Rubbish' },
+  { value: 'report_littering', label: 'Report Littering' },
 ]
 
 export default function ReportRubbish() {
   const { address, suggestions, position, handleSelect, renderSuggestion, inputProps, fetchSuggestions, setSuggestions } = useMaps();
 
-  const { success, loading, errorDate, errorLocation, errorDescription, handleSubmitReport } = useReportRubbish(address, position);
+  const { success, loading, errorDate, errorLocation, errorDescription, handleSubmitReport, errorCategory } = useReportRubbish(address, position);
 
   return (
     <main className="bg-slate-50 font-inter">
@@ -110,7 +110,7 @@ export default function ReportRubbish() {
                 </div>
                 {errorLocation && <p className="text-red-500 text-sm mt-1">{errorLocation}</p>}
               </div>
-              <FormSelect id={"jenis_sampah"} label="Jenis Sampah" options={options} disabled={loading} />
+              <FormSelect id="category" label="Jenis Sampah" options={options} disabled={loading} error={errorCategory} errorMessage={errorCategory} />
               <FormTextarea id="description" label="Deskripsi" type="text" placeholder="Masukkan Deskripsi Sampah" disabled={loading} error={errorDescription} errorMessage={errorDescription} />
               <FormInput id="photo" label="Upload Gambar" type="file" size="" disabled={loading} required />
 

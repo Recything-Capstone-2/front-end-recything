@@ -8,7 +8,7 @@ export default function SuccessReport() {
   const navigate = useNavigate();
 
   return (
-    <section className="space-y-6 pt-20 min-h-screen">
+    <section className="space-y-6 pt-20 pb-10 min-h-screen">
       <h1 className="text-5xl font-bold text-center text-primary-05">
         Terima Kasih !
       </h1>

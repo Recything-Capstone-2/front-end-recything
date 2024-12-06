@@ -5,11 +5,12 @@ export const reportRubbishSchema = zod.object({
   tanggal_laporan: zod.string().min(8, "Date must be at least 3 characters"),
   location: zod.string().min(3, "Location must be at least 3 characters"),
   description: zod.string().min(3, "Description must be at least 3 characters"),
+  category: zod.string().min(3, "Category must be at least 3 characters"),
 });
 
-export function reportRubbishSchemaValidation({tanggal_laporan, location, description}) {
+export function reportRubbishSchemaValidation({tanggal_laporan, location, description, category}) {
   try {
-    reportRubbishSchema.parse({tanggal_laporan, location, description});
+    reportRubbishSchema.parse({tanggal_laporan, location, description, category});
     return null;
   } catch (error) {
     const validationError = fromError(error);
