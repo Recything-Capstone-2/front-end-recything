@@ -1,7 +1,11 @@
 import { MenuActive } from "./menu.active.jsx";
 import background from "../../../assets/images/background-2.png";
+import StatusBadge from "../../../components/ui/StatusBadge.jsx";
+import useHistoryReport from "../hooks/useHistoryReport.jsx";
 
 export default function ReportRubbish() {
+  const { reports, isLoading, error } = useHistoryReport();
+
   return (
     <main className="bg-slate-50 font-inter">
       <section className="container mx-auto grid grid-cols-12 font-inter py-20">
@@ -10,25 +14,22 @@ export default function ReportRubbish() {
           <MenuActive label="Riwayat Laporan" href="/history-report" />
         </div>
 
-        <div className="col-span-3 min-h-screen rounded-s-xl overflow-hidden">
+        <div className="hidden md:block md:col-span-3 min-h-screen rounded-s-xl overflow-hidden">
           <img src={background} alt="" className="w-full h-full object-cover" />
         </div>
 
-        <div className="col-span-9 rounded-e-xl bg-white shadow-lg">
-          <div className="relative overflow-x-auto sm:rounded-e-lg">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-200">
+        <div className="col-span-12 md:col-span-9 rounded-e-xl bg-white shadow-lg px-4 md:px-0">
+          <div className="relative overflow-x-auto sm:rounded-e-lg max-h-screen">
+            <table className="w-full text-xs md:text-sm text-left rtl:text-right text-gray-500">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-200 sticky top-0">
                 <tr>
-                  <th scope="col" className="px-6 py-3 whitespace-nowrap w-6">
-                    No
-                  </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className="px-6 py-3 md:w-52">
                     Tanggal Laporan
                   </th>
                   <th scope="col" className="px-6 py-3">
                     Lokasi
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className="px-6 py-3 w-40">
                     Jenis Laporan
                   </th>
                   <th scope="col" className="px-6 py-3">
@@ -37,62 +38,36 @@ export default function ReportRubbish() {
                 </tr>
               </thead>
               <tbody>
-                <tr className="">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    1
-                  </th>
-                  <td className="px-6 py-4">22/11/2022</td>
-                  <td className="px-6 py-4">
-                    Jl Jend Sudirman Kav 29-31 World Trade Center, Dki Jakarta
-                  </td>
-                  <td className="px-6 py-4">Report Rubbish</td>
-                  <td className="px-6 py-4">
-                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                      Ditolak
-                    </span>
-                  </td>
-                </tr>
-
-                <tr className="">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    2
-                  </th>
-                  <td className="px-6 py-4">22/11/2022</td>
-                  <td className="px-6 py-4">
-                    Jl Jend Sudirman Kav 29-31 World Trade Center, Dki Jakarta
-                  </td>
-                  <td className="px-6 py-4">Report Rubbish</td>
-                  <td className="px-6 py-4">
-                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                      Diproses
-                    </span>
-                  </td>
-                </tr>
-
-                <tr className="">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    3
-                  </th>
-                  <td className="px-6 py-4">22/11/2022</td>
-                  <td className="px-6 py-4">
-                    Jl Jend Sudirman Kav 29-31 World Trade Center, Dki Jakarta
-                  </td>
-                  <td className="px-6 py-4">Report Rubbish</td>
-                  <td className="px-6 py-4">
-                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                      Diterima
-                    </span>
-                  </td>
-                </tr>
+                { isLoading ?(
+                  <tr>
+                    <td colSpan="5" className="text-center py-4">
+                      Memuat data laporan sampah...
+                    </td>
+                  </tr>
+                ) : error ? (
+                  <tr>
+                    <td colSpan="5" className="text-center py-4">
+                      Terjadi kesalahan: {error.message}
+                    </td>
+                  </tr>
+                ) : reports.length === 0 ? (
+                  <tr>
+                    <td colSpan="5" className="text-center py-4">
+                      Tidak ada laporan sampah
+                    </td>
+                  </tr>
+                ) : (
+                  reports.map((report, index) => (
+                    <tr className="" key={index}>
+                      <td className="px-6 py-4">{formatDate(report.tanggal_laporan)}</td>
+                      <td className="px-6 py-4">{report.location}</td>
+                      <td className="px-6 py-4">{report.category === "report_rubbish" ? "Report Rubbish" : "Report Littering"}</td>
+                      <td className="px-6 py-4">
+                        <StatusBadge status={report.status} />
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
@@ -101,3 +76,14 @@ export default function ReportRubbish() {
     </main>
   );
 }
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('id-ID', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  });
+}
+
+console.log(formatDate("2024-12-05")); // Output: 5 Desember 2024

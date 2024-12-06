@@ -5,7 +5,17 @@ import Footer from "../components/share/Footer";
 
 const MainLayout = () => {
   const location = useLocation();
-  const hideHeaderPaths = ["/login", "/register", "/dashboard-admin", "/dashboard/report/process", "/dashboard/report/approve", "/dashboard/report/done", "/dashboard/report/reject", "/dashboard/report/all"];
+  const hideHeaderPaths = [
+    "/login",
+    "/register",
+    "/dashboard-admin",
+    "/dashboard/report/process",
+    "/dashboard/report/approve",
+    "/dashboard/report/done",
+    "/dashboard/report/reject",
+    "/dashboard/report/all",
+    "/dashboard/user",
+  ];
   const hideFooterPaths = [
     "/login",
     "/register",
@@ -18,6 +28,7 @@ const MainLayout = () => {
     "/dashboard/report/done",
     "/dashboard/report/reject",
     "/profile/edit",
+    "/dashboard/user",
   ];
 
   return (
