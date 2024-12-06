@@ -96,7 +96,12 @@ const Header = () => {
               type="button"
               className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
               // onClick={toggleDropdown}
-              onClick={() => navigate("/profile")}
+              onClick={() => {
+                if (user.role === "admin") {
+                  navigate("/dashboard-admin");
+                }
+                navigate("/profile")
+              }}
             >
               <span className="sr-only">Open user menu</span>
               <img
@@ -188,7 +193,7 @@ const Header = () => {
           id="navbar-user"
         >
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
-            {!user &&
+            {!user || user.role === "admin" &&
               MenuBeforeLogin.map((item, index) => (
                 <li key={index}>
                   <a
@@ -200,7 +205,7 @@ const Header = () => {
                 </li>
               ))}
 
-            {user &&
+            {user.role !== "admin" &&
               MenuAfterLogin.map((item, index) => (
                 <li key={index}>
                   <MenuActive label={item.name} href={item.path} />
