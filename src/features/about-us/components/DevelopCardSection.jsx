@@ -1,6 +1,6 @@
 import React from "react";
-import developdata from "../constant/developdata";
 import useCarousel from "../hooks/useCarousel";
+import developdata from "../constant/developData.js";
 
 const DevelopCardSection = () => {
   const {
