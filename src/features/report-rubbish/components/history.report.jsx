@@ -2,6 +2,7 @@ import { MenuActive } from "./menu.active.jsx";
 import background from "../../../assets/images/background-2.png";
 import StatusBadge from "../../../components/ui/StatusBadge.jsx";
 import useHistoryReport from "../hooks/useHistoryReport.jsx";
+import { formatDate } from "../../../utils/formatdate.js";
 
 export default function ReportRubbish() {
   const { reports, isLoading, error } = useHistoryReport();
@@ -76,14 +77,3 @@ export default function ReportRubbish() {
     </main>
   );
 }
-
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('id-ID', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-  });
-}
-
-console.log(formatDate("2024-12-05")); // Output: 5 Desember 2024

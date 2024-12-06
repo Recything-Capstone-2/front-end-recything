@@ -26,5 +26,5 @@ export default {
       },
     },
   },
-  plugins: [flowbite.plugin(), flowbitePlugin],
+  plugins: [flowbite.plugin(), flowbitePlugin, flowbitePlugin({ charts: true })],
 };
