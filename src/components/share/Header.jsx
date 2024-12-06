@@ -193,7 +193,7 @@ const Header = () => {
           id="navbar-user"
         >
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
-            {!user || user.role === "admin" &&
+            {(!user || user?.role === "admin") &&
               MenuBeforeLogin.map((item, index) => (
                 <li key={index}>
                   <a
@@ -205,7 +205,7 @@ const Header = () => {
                 </li>
               ))}
 
-            {user.role !== "admin" &&
+            {user?.role === "user" &&
               MenuAfterLogin.map((item, index) => (
                 <li key={index}>
                   <MenuActive label={item.name} href={item.path} />

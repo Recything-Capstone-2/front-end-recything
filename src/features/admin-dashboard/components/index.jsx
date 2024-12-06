@@ -3,8 +3,13 @@ import { DashboardAdminLayout } from "../../dashboard/index.js";
 import LineChart from "./LineChart.jsx";
 import { MdPeopleAlt } from "react-icons/md";
 import { IoNewspaperOutline } from "react-icons/io5";
+import { formatDate } from "../../../utils/formatdate.js";
+import { Link } from "react-router-dom";
+import useDashboardData from "../hooks/useDashboardData.jsx";
 
 const DashboardAdmin = () => {
+  const { latestReport, reportCount, userCount, error, isLoading } = useDashboardData();
+
   return (
     <div>
       <DashboardAdminLayout>
@@ -27,13 +32,29 @@ const DashboardAdmin = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b text-sm">
-                      <td className="px-4 py-4 leading-light font-normal text-neutral-500">John Doe</td>
-                      <td className="px-4 py-4 md:whitespace-nowrap leading-light font-normal text-neutral-500">5 Desember 2024</td>
-                      <td className="px-4 py-4  leading-light font-normal text-neutral-500">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto, explicabo.</td>
-                      <td className="px-4 py-4"><StatusBadge status="approved" /></td>
-                      <td className="px-4 py-4 leading-light font-normal text-neutral-800"><a href="" className="underline whitespace-nowrap">Lihat Detail</a></td>
-                    </tr>
+                    { isLoading ? (
+                      <tr>
+                        <td className="p-4 text-center" colSpan="5">Loading...</td>
+                      </tr>
+                    ) : error ? (
+                      <tr>
+                        <td className="p-4 text-center" colSpan="5">Error: {error}</td>
+                      </tr>
+                    ) : latestReport.length === 0 ? (
+                      <tr>
+                        <td className="p-4 text-center" colSpan="5">Tidak ada laporan baru</td>
+                      </tr>
+                    ) : (
+                      latestReport.map((report, index) => (
+                        <tr key={index} className="border-b text-sm">
+                          <td className="px-4 py-4 leading-light font-normal text-neutral-500">{report.user.nama_lengkap}</td>
+                          <td className="px-4 py-4 md:whitespace-nowrap leading-light font-normal text-neutral-500">{formatDate(report.tanggal_laporan)}</td>
+                          <td className="px-4 py-4  leading-light font-normal text-neutral-500">{report.location}</td>
+                          <td className="px-4 py-4"><StatusBadge status={report.status} /></td>
+                          <td className="px-4 py-4 leading-light font-normal text-neutral-800"><Link to={`/dashboard/report/all`} className="underline whitespace-nowrap">Lihat Detail</Link></td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>
@@ -50,7 +71,7 @@ const DashboardAdmin = () => {
                   </div>
                   <div>
                     <h1 className="text-base md:text-2xl font-bold">Total User</h1>
-                    <h1 className="text-base md:text-2xl font-bold">35</h1>
+                    <h1 className="text-base md:text-2xl font-bold">{ isLoading ? "Loading..." : userCount }</h1>
                   </div>
                 </div>
               </div>
@@ -61,7 +82,7 @@ const DashboardAdmin = () => {
                   </div>
                   <div>
                     <h1 className="text-base md:text-2xl font-bold">Total Laporan</h1>
-                    <h1 className="text-base md:text-2xl font-bold">35</h1>
+                    <h1 className="text-base md:text-2xl font-bold">{ isLoading ? "Loading..." : reportCount }</h1>
                   </div>
                 </div>
               </div>
