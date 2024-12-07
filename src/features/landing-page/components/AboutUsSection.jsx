@@ -3,10 +3,13 @@ import React from "react";
 const AboutUsSection = () => {
   return (
     <div>
-      <section id="about" className="bg-white relative px-24 py-16">
+      <section
+        id="about"
+        className="bg-white dark:bg-gray-800 relative px-24 py-16"
+      >
         {/* Title */}
         <div className="text-center py-8">
-          <h2 className="text-3xl font-extrabold text-center mb-20 text-gray-900">
+          <h2 className="text-3xl font-extrabold text-center mb-20 text-gray-900 dark:text-white">
             Tentang Kami
           </h2>
         </div>

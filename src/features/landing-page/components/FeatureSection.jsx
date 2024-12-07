@@ -3,10 +3,10 @@ import features from "../constant/featuresData";
 
 const FeatureSection = () => {
   return (
-    <section id="features" className="py-12 bg-white">
+    <section id="features" className="py-12 bg-white dark:bg-gray-800">
       <div className="container mx-auto px-6 lg:px-20 ">
         {/* Title */}
-        <h2 className="text-3xl font-extrabold text-center mb-12 text-gray-900">
+        <h2 className="text-3xl font-extrabold text-center mb-12 text-gray-900 dark:text-white">
           Fitur Unggulan Aplikasi
         </h2>
         {/* Cards Grid */}

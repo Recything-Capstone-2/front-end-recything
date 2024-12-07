@@ -66,7 +66,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-white border-gray-200 border-b-2">
+    <nav className="bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-700 border-b-2">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
         {/* Logo Section */}
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -74,7 +74,7 @@ const Header = () => {
         </a>
 
         {/* User Menu & Mobile Menu Button */}
-        <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative md:gap-3 gap-0">
+        <div className="dark:bg-gray-700 dark:text-white flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative md:gap-3 gap-0">
           <button
             type="button"
             onClick={toggleDarkMode}
@@ -221,13 +221,13 @@ const Header = () => {
           } items-center justify-between w-full md:flex md:w-auto md:order-1`}
           id="navbar-user"
         >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-700 dark:text-white">
             {(!user || user?.role === "admin") &&
               MenuBeforeLogin.map((item, index) => (
                 <li key={index}>
                   <a
                     href={item.path}
-                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-05 md:p-0"
+                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-05 md:p-0 dark:text-white"
                   >
                     {item.name}
                   </a>
@@ -265,10 +265,10 @@ const MenuActive = ({ label, href }) => {
     <NavLink
       to={href}
       className={({ isActive }) =>
-        `block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 ${
+        `block py-2 pl-3 pr-4 text-gray-900 dark:text-white rounded hover:bg-gray-100 dark:hover:bg-gray-700 dark:bg-gray-700 md:hover:bg-transparent md:border-0 md:p-0 ${
           isActive
-            ? "md:text-primary-05 md:bg-transparent bg-primary-05 text-white"
-            : "md:hover:text-primary-05"
+            ? "md:text-primary-05 md:bg-transparent bg-primary-05 dark:text-primary-05 text-white dark:bg-gray-700"
+            : "md:hover:text-primary-05 dark:text-white"
         }`
       }
     >

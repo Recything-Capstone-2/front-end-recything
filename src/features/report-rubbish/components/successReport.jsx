@@ -28,9 +28,11 @@ export default function SuccessReport() {
       <div className="max-w-xl mx-auto text-center space-y-5">
         <div className="flex gap-x-2 justify-center items-center">
           <FaCheckCircle size={40} className="text-primary-05" />
-          <h2 className="text-2xl font-medium">Laporan Berhasil Dikirim</h2>
+          <h2 className="text-2xl font-medium dark:text-white">
+            Laporan Berhasil Dikirim
+          </h2>
         </div>
-        <p className="text-base font-normal pb-5">
+        <p className="text-base font-normal pb-5 dark:text-gray-200">
           Greenly akan segera memproses laporan Anda hingga selesai. Pantau
           terus prosesnya, dan jangan khawatir, poin Anda akan segera diperoleh
           setelah laporan selesai. Bersama Greenly, mari kita wujudkan
