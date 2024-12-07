@@ -6,7 +6,7 @@ import { IoNewspaperOutline } from "react-icons/io5";
 import { formatDate } from "../../../utils/formatdate.js";
 import { Link } from "react-router-dom";
 import useDashboardData from "../hooks/useDashboardData.jsx";
-import LoadingSpinner from "../../../components/ui/loadingspinner.jsx";
+import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
 
 const DashboardAdmin = () => {
   const { latestReport, reportCount, userCount, error, isLoading } =

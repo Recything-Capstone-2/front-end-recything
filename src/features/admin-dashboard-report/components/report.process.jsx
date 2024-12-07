@@ -2,7 +2,7 @@ import { DashboardAdminLayout } from "../../dashboard/index.js";
 import useAllDataReport from "../hooks/useAllDataReport.jsx";
 import usePagination from "../hooks/usePagination.jsx";
 import { LuExternalLink } from "react-icons/lu";
-import LoadingSpinner from "../../../components/ui/loadingspinner.jsx";
+import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
 
 const DashboardAdminReportProcess = () => {
   const { reports, loading, error } = useAllDataReport();

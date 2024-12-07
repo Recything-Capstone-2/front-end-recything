@@ -1,6 +1,6 @@
 import React from "react";
 import useFetchUsers from "../hooks/useFetchUsers";
-import LoadingSpinner from "../../../components/ui/loadingspinner";
+import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
 
 const DataUsersTabel = () => {
   const { users, loading, error } = useFetchUsers();

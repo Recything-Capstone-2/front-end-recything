@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import point from "../../../assets/images/poin.png";
 import useUser from "../../../store/userStore";
 import usePoints from "../hooks/usePoints";
-import LoadingSpinner from "../../../components/ui/loadingspinner";
+import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
 
 const BerandaHeroSection = () => {
   const { user: currentUser } = useUser();

@@ -3,7 +3,7 @@ import background from "../../../assets/images/background-2.png";
 import StatusBadge from "../../../components/ui/StatusBadge.jsx";
 import useHistoryReport from "../hooks/useHistoryReport.jsx";
 import { formatDate } from "../../../utils/formatdate.js";
-import LoadingSpinner from "../../../components/ui/loadingspinner.jsx";
+import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
 
 export default function ReportRubbish() {
   const { reports, isLoading, error } = useHistoryReport();
