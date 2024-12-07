@@ -15,6 +15,7 @@ const MainLayout = () => {
     "/dashboard/report/reject",
     "/dashboard/report/all",
     "/dashboard/user",
+    "/dashboard/coin",
   ];
   const hideFooterPaths = [
     "/login",
@@ -29,6 +30,7 @@ const MainLayout = () => {
     "/dashboard/report/reject",
     "/profile/edit",
     "/dashboard/user",
+    "/dashboard/coin",
   ];
 
   return (

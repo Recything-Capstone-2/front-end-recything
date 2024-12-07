@@ -10,6 +10,7 @@ import { MdHome } from "react-icons/md";
 import { FaFileCirclePlus } from "react-icons/fa6";
 import { IoPersonSharp } from "react-icons/io5";
 import { IoNewspaperOutline } from "react-icons/io5";
+import { FaCoins } from "react-icons/fa";
 
 import logo from "../../../assets/logo/logo-only.png";
 import useLogout from "../../auth/hooks/useLogout.jsx";
@@ -178,12 +179,20 @@ export default function DashboardAdminContainer({ children, header }) {
               )}
             </div>
 
-            <ul className="mb-2 font-medium mt-2">
+            <ul className="mb-2 font-medium space-y-2 mt-2">
               <li>
                 <Menu
                   label="Kelola Artikel"
                   href="/"
                   icon={<IoNewspaperOutline size={24} />}
+                  className="hover:bg-[#F8FCF7]"
+                />
+              </li>
+              <li>
+                <Menu
+                  label="Kelola Koin"
+                  href="/dashboard/coin"
+                  icon={<FaCoins size={24} />}
                   className="hover:bg-[#F8FCF7]"
                 />
               </li>
