@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../assets/logo/logo-greenly.png";
 import { FaBell } from "react-icons/fa";
-import { MdOutlineWbSunny } from "react-icons/md";
+import { MdOutlineWbSunny, MdNightlightRound } from "react-icons/md";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useUser from "../../store/userStore.js";
 import Button from "../ui/Button.jsx";
@@ -31,6 +31,7 @@ const Header = () => {
   const { user } = useUser();
   const { handleLogout } = useLogout();
   const navigate = useNavigate();
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -43,6 +44,26 @@ const Header = () => {
   const toggleDropDownBell = () => {
     setIsDropDownBellOpen((prev) => !prev);
   };
+  // Toggle Dark Mode
+  const handleToggleDarkMode = () => {
+    setIsDarkMode((prev) => !prev);
+  };
+
+  // Apply dark mode class to <html>
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === "dark");
+    }
+  }, []);
+
+  // Toggle dark mode and save preference to localStorage
+  const toggleDarkMode = () => {
+    const newTheme = !isDarkMode ? "dark" : "light";
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem("theme", newTheme); // Save theme preference
+    document.documentElement.classList.toggle("dark", !isDarkMode); // Toggle dark class
+  };
 
   return (
     <nav className="bg-white border-gray-200 border-b-2">
@@ -54,8 +75,16 @@ const Header = () => {
 
         {/* User Menu & Mobile Menu Button */}
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative md:gap-3 gap-0">
-          <button type="button" className="">
-            <MdOutlineWbSunny size={24} />
+          <button
+            type="button"
+            onClick={toggleDarkMode}
+            className="flex text-sm rounded-full focus:ring-2 focus:ring-gray-300"
+          >
+            {isDarkMode ? (
+              <MdNightlightRound size={24} className="text-yellow-400" />
+            ) : (
+              <MdOutlineWbSunny size={24} className="text-secondary-04" />
+            )}
           </button>
 
           {user && (
@@ -100,7 +129,7 @@ const Header = () => {
                 if (user.role === "admin") {
                   navigate("/dashboard-admin");
                 }
-                navigate("/profile")
+                navigate("/profile");
               }}
             >
               <span className="sr-only">Open user menu</span>

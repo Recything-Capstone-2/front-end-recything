@@ -13,13 +13,13 @@ const DevelopCardSection = () => {
   } = useCarousel(developdata);
 
   return (
-    <section className="bg-white py-20 px-6">
+    <section className="bg-white dark:bg-gray-900 py-20 px-6">
       {/* Header Section */}
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">
+        <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">
           Tim Pengembang
         </h2>
-        <p className="text-gray-700 max-w-4xl mx-auto">
+        <p className="text-gray-700 dark:text-gray-200 max-w-4xl mx-auto">
           Tim kami mengembangkan solusi teknologi untuk mendukung keberlanjutan
           dan inovasi ramah lingkungan.
         </p>
@@ -32,20 +32,20 @@ const DevelopCardSection = () => {
           {displayedCards.map((data, index) => (
             <div
               key={index}
-              className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg p-5 transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+              className="max-w-sm bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-500 rounded-lg shadow-lg p-5 transform transition-transform duration-300 hover:scale-105 cursor-pointer"
             >
               <img
                 className="rounded-lg w-64 h-48 mx-auto mb-4"
                 src={data.image}
                 alt={data.name}
               />
-              <h5 className="text-xl font-bold text-gray-900 mb-2">
+              <h5 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 {data.name}
               </h5>
               <p className="text-sm text-primary-05 font-normal mb-4">
                 {data.job}
               </p>
-              <p className="text-gray-700">{data.comment}</p>
+              <p className="text-gray-700 dark:text-gray-200">{data.comment}</p>
             </div>
           ))}
         </div>
@@ -53,13 +53,13 @@ const DevelopCardSection = () => {
         {/* Navigation Buttons */}
         <div className="flex justify-between items-center mt-6">
           <button
-            className="w-8 h-8 flex justify-center items-center rounded-full border bg-white shadow-md text-gray-500 hover:text-white hover:bg-gray-800"
+            className="w-8 h-8 flex justify-center items-center rounded-full border bg-white shadow-md dark:border-gray-800 text-gray-500 hover:text-white hover:bg-gray-800 dark:hover:bg-black"
             onClick={handlePrev}
           >
             ❮
           </button>
           <button
-            className="w-8 h-8 flex justify-center items-center rounded-full border bg-white shadow-md text-gray-500 hover:text-white hover:bg-gray-800"
+            className="w-8 h-8 flex justify-center items-center rounded-full border bg-white shadow-md dark:border-gray-800 text-gray-500 hover:text-white hover:bg-gray-800 dark:hover:bg-black"
             onClick={handleNext}
           >
             ❯
@@ -73,7 +73,7 @@ const DevelopCardSection = () => {
               key={pageIndex}
               className={`w-3 h-3 mx-2 rounded-full cursor-pointer ${
                 pageIndex === Math.floor(currentIndex)
-                  ? "bg-gray-800"
+                  ? "bg-gray-800 dark:bg-black"
                   : "bg-gray-400"
               }`}
               onClick={() => setCurrentIndex(pageIndex)}

@@ -4,11 +4,16 @@ import logo from "../../../assets/logo/logo-only-big.png";
 const SolutionSection = () => {
   return (
     <div>
-      <section id="about" className="bg-white relative px-24 py-16">
+      <section
+        id="about"
+        className="bg-white dark:bg-gray-800 relative px-24 py-16"
+      >
         {/* Title */}
         <div className="flex items-center justify-center py-8 pb-10">
           <img src={logo} alt="logo" className="h-12 w-12 mr-4" />
-          <h2 className="text-3xl font-extrabold text-gray-900">Greenly</h2>
+          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white">
+            Greenly
+          </h2>
         </div>
 
         {/* Photo Grid (Hidden on mobile) */}

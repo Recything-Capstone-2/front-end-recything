@@ -2,7 +2,7 @@ import React from "react";
 
 const MissionSection = () => {
   return (
-    <section className="bg-green-50 py-16 px-8 md:px-24">
+    <section className="bg-green-50 dark:bg-gray-800 py-16 px-8 md:px-24">
       <div className="flex flex-col md:flex-row items-center gap-12">
         {/* Section Kiri (Gambar) */}
         <div className="md:w-1/2">
@@ -15,10 +15,10 @@ const MissionSection = () => {
 
         {/* Section Kanan (Judul dan Deskripsi) */}
         <div className="md:w-1/2 text-center md:text-left">
-          <h2 className="text-4xl font-extrabold text-center text-gray-900 mb-6">
+          <h2 className="text-4xl font-extrabold text-center text-gray-900 dark:text-white mb-6">
             Misi
           </h2>
-          <p className="text-lg leading-relaxed text-gray-700 pl-12">
+          <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-200 pl-12">
             1. Meningkatkan Kesadaran tentang pentingnya daur ulang. <br />
             2. Memudahkan Daur Ulang melalui platform praktis. <br />
             3. Mendukung Kebiasaan Sehat dalam daur ulang. <br />

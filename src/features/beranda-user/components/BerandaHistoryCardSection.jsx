@@ -5,12 +5,12 @@ const BerandaHistoryCardSection = () => {
   const { statusCounts, loading, error } = useStatus();
 
   return (
-    <div className="bg-green-50 pb-20 mt-16 px-6 sm:px-12 lg:px-24 rounded-lg">
+    <div className="bg-green-50 dark:bg-gray-800 pb-20 mt-16 px-6 sm:px-12 lg:px-24 rounded-lg">
       <div className="text-center mb-8">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold pb-3">
+        <h2 className="text-black-neutral08 dark:text-white text-2xl sm:text-3xl lg:text-4xl font-bold pb-3">
           Pelaporan
         </h2>
-        <p className="text-gray-600 text-sm sm:text-base">
+        <p className="text-gray-600 dark:text-gray-200 text-sm sm:text-base">
           Lihat Jumlah dan Status Laporan
         </p>
       </div>
