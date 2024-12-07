@@ -33,8 +33,8 @@ const useStatus = () => {
 
         const categorizedStatus = [
           "process",
-          "approved",
           "completed",
+          "approved",
           "rejected",
         ].map((statusType) => ({
           label: getStatusLabel(statusType),
@@ -60,9 +60,9 @@ const useStatus = () => {
     switch (label) {
       case "process":
         return diterima;
-      case "approved":
-        return diproses;
       case "completed":
+        return diproses;
+      case "approved":
         return selesai;
       case "rejected":
         return ditolak;
@@ -74,9 +74,9 @@ const useStatus = () => {
     switch (label) {
       case "process":
         return "Diterima";
-      case "approved":
-        return "Diproses";
       case "completed":
+        return "Diproses";
+      case "approved":
         return "Selesai";
       case "rejected":
         return "Ditolak";

@@ -9,8 +9,8 @@ const DashboardAdminReportAll = () => {
 
   const statusMapping = {
     process: "Diterima",
-    approved: "Diproses",
-    completed: "Selesai",
+    completed: "Diproses",
+    approved: "Selesai",
     rejected: "Ditolak",
   };
 
@@ -97,9 +97,9 @@ const DashboardAdminReportAll = () => {
                             className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-lg ${
                               dbStatus === "process"
                                 ? "bg-slate-200 text-grey-800"
-                                : dbStatus === "approved"
-                                ? "bg-yellow-100 text-yellow-800"
                                 : dbStatus === "completed"
+                                ? "bg-yellow-100 text-yellow-800"
+                                : dbStatus === "approved"
                                 ? "bg-green-100 text-green-800"
                                 : "bg-red-100 text-red-800"
                             }`}
@@ -117,9 +117,9 @@ const DashboardAdminReportAll = () => {
                         className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-lg ${
                           report.status === "process"
                             ? "bg-slate-200 text-grey-800"
-                            : report.status === "approved"
-                            ? "bg-yellow-100 text-yellow-800"
                             : report.status === "completed"
+                            ? "bg-yellow-100 text-yellow-800"
+                            : report.status === "approved"
                             ? "bg-green-100 text-green-800"
                             : "bg-red-100 text-red-800"
                         }`}
