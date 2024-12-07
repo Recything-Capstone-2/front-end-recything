@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import point from "../../../assets/images/poin.png";
 import useUser from "../../../store/userStore";
 import usePoints from "../hooks/usePoints";
-import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
+import LoadingSpinnerInComponent from "../../../components/ui/LoadingSpinnerInComponent";
 
 const BerandaHeroSection = () => {
   const { user: currentUser } = useUser();
@@ -48,7 +48,7 @@ const BerandaHeroSection = () => {
                 <span className="text-4xl lg:text-5xl font-bold">
                   {loading ? (
                     <span className="text-lg font-medium">
-                      <LoadingSpinner />
+                      <LoadingSpinnerInComponent />
                     </span>
                   ) : error ? (
                     <span className="text-lg font-medium text-red-600">

@@ -1,8 +1,8 @@
 import React from "react";
 
-const LoadingSpinner = () => {
+const LoadingSpinnerInComponent = () => {
   return (
-    <div className="flex justify-center items-center w-full h-screen">
+    <div className="flex justify-center items-center w-full h-full">
       <svg
         aria-hidden="true"
         className="w-12 h-12 text-gray-200 animate-spin dark:text-gray-600 fill-primary-05"
@@ -24,4 +24,4 @@ const LoadingSpinner = () => {
   );
 };
 
-export default LoadingSpinner;
+export default LoadingSpinnerInComponent;

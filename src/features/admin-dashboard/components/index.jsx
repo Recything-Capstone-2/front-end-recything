@@ -6,7 +6,7 @@ import { IoNewspaperOutline } from "react-icons/io5";
 import { formatDate } from "../../../utils/formatdate.js";
 import { Link } from "react-router-dom";
 import useDashboardData from "../hooks/useDashboardData.jsx";
-import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
+import LoadingSpinnerInComponent from "../../../components/ui/LoadingSpinnerInComponent.jsx";
 
 const DashboardAdmin = () => {
   const { latestReport, reportCount, userCount, error, isLoading } =
@@ -15,8 +15,8 @@ const DashboardAdmin = () => {
   return (
     <div>
       <DashboardAdminLayout>
-        <div className="px-4 md:px-24 py-10">
-          <div className="grid grid-cols-12 bg-white shadow-md gap-4 px-4 py-5">
+        <div className="px-4 md:px-24 py-10 bg-green-50">
+          <div className="grid grid-cols-12 bg-white shadow-md gap-4 px-4 py-5 rounded-lg">
             <div className="col-span-12 space-y-3">
               <h1 className="text-2xl font-bold">Laporan Terbaru</h1>
               {/* <p className="text-base font-normal">Admin hebat bergerak cepat! <span className="text-primary-05">18 laporan baru</span> sudah siap untuk ditindaklanjuti.</p> */}
@@ -41,7 +41,7 @@ const DashboardAdmin = () => {
                     {isLoading ? (
                       <tr>
                         <td className="p-4 text-center" colSpan="5">
-                          <LoadingSpinner />
+                          <LoadingSpinnerInComponent />
                         </td>
                       </tr>
                     ) : error ? (
@@ -65,7 +65,7 @@ const DashboardAdmin = () => {
                           <td className="px-4 py-4 md:whitespace-nowrap leading-light font-normal text-neutral-500">
                             {formatDate(report.tanggal_laporan)}
                           </td>
-                          <td className="px-4 py-4  leading-light font-normal text-neutral-500">
+                          <td className="px-4 py-4 leading-light font-normal text-neutral-500">
                             {report.location}
                           </td>
                           <td className="px-4 py-4">
