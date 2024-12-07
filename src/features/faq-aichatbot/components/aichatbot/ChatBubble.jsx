@@ -28,7 +28,7 @@ const ChatBubble = ({ message, user, time }) => {
       {/* Bubble chat */}
       <div
         className={`flex flex-col w-full max-w-[90%] sm:max-w-[70%] lg:max-w-[320px] p-4 ${
-          isUser ? "bg-gray-100" : "bg-primary-05"
+          isUser ? "bg-gray-200" : "bg-primary-05"
         } ${
           isUser
             ? "rounded-s-xl rounded-ss-xl rounded-ee-xl"
