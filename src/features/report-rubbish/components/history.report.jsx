@@ -3,6 +3,7 @@ import background from "../../../assets/images/background-2.png";
 import StatusBadge from "../../../components/ui/StatusBadge.jsx";
 import useHistoryReport from "../hooks/useHistoryReport.jsx";
 import { formatDate } from "../../../utils/formatdate.js";
+import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
 
 export default function ReportRubbish() {
   const { reports, isLoading, error } = useHistoryReport();
@@ -39,10 +40,10 @@ export default function ReportRubbish() {
                 </tr>
               </thead>
               <tbody>
-                { isLoading ?(
+                {isLoading ? (
                   <tr>
                     <td colSpan="5" className="text-center py-4">
-                      Memuat data laporan sampah...
+                      <LoadingSpinner />
                     </td>
                   </tr>
                 ) : error ? (
@@ -60,9 +61,15 @@ export default function ReportRubbish() {
                 ) : (
                   reports.map((report, index) => (
                     <tr className="" key={index}>
-                      <td className="px-6 py-4">{formatDate(report.tanggal_laporan)}</td>
+                      <td className="px-6 py-4">
+                        {formatDate(report.tanggal_laporan)}
+                      </td>
                       <td className="px-6 py-4">{report.location}</td>
-                      <td className="px-6 py-4">{report.category === "report_rubbish" ? "Report Rubbish" : "Report Littering"}</td>
+                      <td className="px-6 py-4">
+                        {report.category === "report_rubbish"
+                          ? "Report Rubbish"
+                          : "Report Littering"}
+                      </td>
                       <td className="px-6 py-4">
                         <StatusBadge status={report.status} />
                       </td>

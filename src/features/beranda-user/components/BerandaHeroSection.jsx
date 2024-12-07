@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import point from "../../../assets/images/poin.png";
 import useUser from "../../../store/userStore";
 import usePoints from "../hooks/usePoints";
+import LoadingSpinnerInComponent from "../../../components/ui/LoadingSpinnerInComponent";
 
 const BerandaHeroSection = () => {
   const { user: currentUser } = useUser();
@@ -13,24 +14,6 @@ const BerandaHeroSection = () => {
   const handleReportClick = () => {
     navigate("/report");
   };
-
-  if (loading) {
-    return (
-      <div className="text-center py-20">
-        <p className="text-xl font-medium">Memuat data points.....</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="text-center py-20">
-        <p className="text-xl font-medium text-red-600">
-          Terjadi kesalahan saat memuat data: {JSON.stringify(error)}
-        </p>
-      </div>
-    );
-  }
 
   return (
     <div className="flex flex-col lg:flex-row bg-green-50 pt-8 lg:pt-16 pb-8 px-6 lg:px-24 rounded-lg gap-4 lg:items-end">
@@ -63,7 +46,17 @@ const BerandaHeroSection = () => {
             <div className="bg-primary-01 pb-4 rounded-lg">
               <div className="flex flex-col">
                 <span className="text-4xl lg:text-5xl font-bold">
-                  {userPoints}
+                  {loading ? (
+                    <span className="text-lg font-medium">
+                      <LoadingSpinnerInComponent />
+                    </span>
+                  ) : error ? (
+                    <span className="text-lg font-medium text-red-600">
+                      {JSON.stringify(error)}
+                    </span>
+                  ) : (
+                    userPoints
+                  )}
                 </span>
                 <button className="mt-5 text-sm text-green-600 hover:text-green-800 text-right">
                   Tukar Poin &gt;
