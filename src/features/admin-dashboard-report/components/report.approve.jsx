@@ -1,6 +1,7 @@
 import { DashboardAdminLayout } from "../../dashboard/index.js";
 import useAllDataReport from "../hooks/useAllDataReport.jsx";
 import usePagination from "../hooks/usePagination.jsx";
+import { LuExternalLink } from "react-icons/lu";
 
 const DashboardAdminReportApprove = () => {
   const { reports, loading, error } = useAllDataReport();
@@ -69,7 +70,18 @@ const DashboardAdminReportApprove = () => {
                         }
                       )}
                     </td>
-                    <td className="px-6 py-4">{report.location}</td>
+                    <td
+                      className="px-6 py-4 text-black-neutral08 hover:text-blue-600 cursor-pointer"
+                      onClick={() => {
+                        const googleMapsUrl = `https://www.google.com/maps?q=${report.latitude},${report.longitude}`;
+                        window.open(googleMapsUrl, "_blank");
+                      }}
+                    >
+                      <div className="flex items-center gap-2">
+                        <LuExternalLink className=" flex-none w-4 h-4" />
+                        <span className="flex-1">{report.location}</span>
+                      </div>
+                    </td>
                     <td className="px-6 py-4">
                       <div className="size-52 overflow-hidden">
                         <img
