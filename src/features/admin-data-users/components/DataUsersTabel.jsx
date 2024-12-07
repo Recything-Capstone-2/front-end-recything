@@ -1,12 +1,15 @@
 import React from "react";
 import useFetchUsers from "../hooks/useFetchUsers";
+import LoadingSpinner from "../../../components/ui/loadingspinner";
 
 const DataUsersTabel = () => {
   const { users, loading, error } = useFetchUsers();
   return (
     <div className="flex justify-center max-w-[1440px] py-2 px-6 md:py-10 md:px-24 bg-green-50">
       {loading ? (
-        <p>Memuat data...</p>
+        <p>
+          <LoadingSpinner />
+        </p>
       ) : error ? (
         <p className="text-red-500">{error}</p>
       ) : (

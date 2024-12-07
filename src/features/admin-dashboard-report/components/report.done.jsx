@@ -2,6 +2,7 @@ import { DashboardAdminLayout } from "../../dashboard/index.js";
 import useAllDataReport from "../hooks/useAllDataReport.jsx";
 import usePagination from "../hooks/usePagination.jsx";
 import { LuExternalLink } from "react-icons/lu";
+import LoadingSpinner from "../../../components/ui/loadingspinner.jsx";
 
 const DashboardAdminReportDone = () => {
   const { reports, loading, error } = useAllDataReport();
@@ -17,7 +18,9 @@ const DashboardAdminReportDone = () => {
     <div>
       <DashboardAdminLayout header="Laporan Selesai">
         {loading ? (
-          <p>Memuat data...</p>
+          <p>
+            <LoadingSpinner />
+          </p>
         ) : error ? (
           <p className="text-red-500">{error}</p>
         ) : (
@@ -85,9 +88,17 @@ const DashboardAdminReportDone = () => {
                     <td className="px-6 py-4">
                       <div className="size-52 overflow-hidden">
                         <img
-                          src={report.photo}
-                          alt=""
+                          src={
+                            report.photo ||
+                            "https://fakeimg.pl/600x400?text=Image"
+                          }
+                          alt="Report"
                           className="w-full object-cover h-full"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src =
+                              "https://fakeimg.pl/600x400?text=Image";
+                          }}
                         />
                       </div>
                     </td>
