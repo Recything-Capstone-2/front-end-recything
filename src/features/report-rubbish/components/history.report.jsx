@@ -9,9 +9,9 @@ export default function ReportRubbish() {
   const { reports, isLoading, error } = useHistoryReport();
 
   return (
-    <main className="bg-slate-50 font-inter">
+    <main className="bg-slate-50 dark:bg-gray-800 font-inter">
       <section className="container mx-auto grid grid-cols-12 font-inter py-20">
-        <div className="col-span-12 flex gap-x-5 mb-5 px-4">
+        <div className="col-span-12 flex gap-x-5 mb-5 px-4 dark:text-white">
           <MenuActive label="Laporan Sampah" href="/report" />
           <MenuActive label="Riwayat Laporan" href="/history-report" />
         </div>
@@ -20,10 +20,10 @@ export default function ReportRubbish() {
           <img src={background} alt="" className="w-full h-full object-cover" />
         </div>
 
-        <div className="col-span-12 md:col-span-9 rounded-e-xl bg-white shadow-lg px-4 md:px-0">
+        <div className="col-span-12 md:col-span-9 rounded-e-xl bg-white dark:bg-gray-700 shadow-lg px-4 md:px-0">
           <div className="relative overflow-x-auto sm:rounded-e-lg max-h-screen">
-            <table className="w-full text-xs md:text-sm text-left rtl:text-right text-gray-500">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-200 sticky top-0">
+            <table className="w-full text-xs md:text-sm text-left rtl:text-right text-gray-500 dark:text-white">
+              <thead className="text-xs text-gray-700 dark:text-white uppercase bg-gray-200 dark:bg-gray-500 sticky top-0">
                 <tr>
                   <th scope="col" className="px-6 py-3 md:w-52">
                     Tanggal Laporan

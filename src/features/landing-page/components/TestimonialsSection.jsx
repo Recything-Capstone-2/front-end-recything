@@ -3,15 +3,15 @@ import testimonials from "../constant/testimonialsData";
 
 const TestimonialsSection = () => {
   return (
-    <section id="testimonials" className="bg-white py-20 px-6">
+    <section id="testimonials" className="bg-white dark:bg-gray-800 py-20 px-6">
       {/* Main Section */}
       <div className="text-center mb-8">
         {/* Title */}
-        <h2 className="text-3xl font-extrabold text-gray-900 mb-4">
+        <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-4">
           Apa Kata Mereka?
         </h2>
         {/* Description */}
-        <p className="text-gray-700 max-w-4xl mx-auto">
+        <p className="text-gray-700 max-w-4xl mx-auto dark:text-gray-200">
           Kami percaya bahwa setiap langkah kecil untuk menjaga lingkungan dapat
           memberikan dampak besar. Jangan hanya percaya kata kami, lihat apa
           yang dikatakan oleh pengguna Greenly yang telah merasakan manfaatnya!
@@ -23,20 +23,22 @@ const TestimonialsSection = () => {
         {testimonials.map((testimonial, index) => (
           <div
             key={index}
-            className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg p-5 transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+            className="max-w-sm bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-500 rounded-lg shadow-lg p-5 transform transition-transform duration-300 hover:scale-105 cursor-pointer"
           >
             <img
               className="rounded-lg w-64 h-48 mx-auto mb-4"
               src={testimonial.image}
               alt={testimonial.name}
             />
-            <h5 className="text-xl font-bold text-gray-900 mb-2">
+            <h5 className="text-xl font-bold text-gray-900 mb-2 dark:text-white">
               {testimonial.name}
             </h5>
             <p className="text-sm text-primary-05 font-normal mb-4">
               {testimonial.job}
             </p>
-            <p className="text-gray-700">{testimonial.comment}</p>
+            <p className="text-gray-700 dark:text-gray-200">
+              {testimonial.comment}
+            </p>
           </div>
         ))}
       </div>

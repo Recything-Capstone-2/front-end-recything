@@ -5,7 +5,7 @@ import { history } from "../../constant/history";
 
 const AiChatbotPage = () => {
   return (
-    <div className="flex bg-green-50">
+    <div className="flex bg-green-50 dark:bg-gray-800">
       {/* <ChatDrawer history={history} /> */}
       <AiChatbotSection />
     </div>
