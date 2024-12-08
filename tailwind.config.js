@@ -3,6 +3,7 @@ import flowbite from "flowbite-react/tailwind";
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -15,6 +16,7 @@ export default {
         inter: ["Inter", "sans-serif"],
       },
       colors: {
+        "primary-01": "#C1E8BA",
         "primary-05": "#45A135",
         "secondary-04": "#FCCD2A",
         "white-feature": "#FFFBE6",
@@ -25,5 +27,9 @@ export default {
       },
     },
   },
-  plugins: [flowbite.plugin(), flowbitePlugin],
+  plugins: [
+    flowbite.plugin(),
+    flowbitePlugin,
+    flowbitePlugin({ charts: true }),
+  ],
 };

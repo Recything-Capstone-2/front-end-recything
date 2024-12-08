@@ -44,12 +44,16 @@ export default function useLogin() {
     // HIT API
     try {
       const data = await apiLogin({ email, password });
-  
       localStorage.setItem("token", data.data.token);
       setUser(data.data);
-      navigate("/"); // ganti ke dashboard
+
+      if (data.data.role === "admin") {
+        navigate("/dashboard-admin");
+      } else {
+        navigate("/beranda-user");
+      }
     } catch (error) {
-      setError(error.message);
+      setError("Invalid Credentials");
     } finally {
       setLoading(false);
     }

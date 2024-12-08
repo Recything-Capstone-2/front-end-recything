@@ -3,12 +3,14 @@ import { BsQuestionCircleFill } from "react-icons/bs";
 
 const AccordionItem = ({ question, answer, index, isOpen, onToggle }) => {
   return (
-    <div className="bg-white p-4 rounded-xl border border-gray-neutral03 shadow-md">
+    <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-neutral03 dark:border-gray-600 shadow-md">
       <h3>
         <button
           type="button"
           className={`flex justify-between items-center w-full text-lg font-medium text-left focus:outline-none p-3 rounded-lg transition-colors ${
-            isOpen ? "bg-gray-100 text-black" : "bg-white text-gray-neutral06"
+            isOpen
+              ? "bg-gray-100 dark:bg-gray-700 text-black dark:text-white"
+              : "bg-white dark:bg-gray-700 text-gray-neutral06 dark:text-gray-500"
           }`}
           onClick={() => onToggle(index)}
         >
@@ -16,7 +18,9 @@ const AccordionItem = ({ question, answer, index, isOpen, onToggle }) => {
           <div className="flex items-center gap-x-3">
             <BsQuestionCircleFill
               className={`w-6 h-6 flex-shrink-0 transition-colors ${
-                isOpen ? "text-black" : "text-gray-500"
+                isOpen
+                  ? "text-black dark:text-white"
+                  : "text-gray-500 dark:text-gray-500"
               }`}
             />
             <span>{question}</span>
@@ -45,7 +49,9 @@ const AccordionItem = ({ question, answer, index, isOpen, onToggle }) => {
           isOpen ? "block" : "hidden"
         }`}
       >
-        <p className="text-black bg-white p-3 rounded-lg">{answer}</p>
+        <p className="text-black dark:text-white bg-white dark:bg-slate-800 p-3 rounded-lg">
+          {answer}
+        </p>
       </div>
     </div>
   );

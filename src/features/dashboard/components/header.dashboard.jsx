@@ -2,17 +2,12 @@ import React, { useState } from "react";
 import FormInput from "../../../components/ui/FormInput.jsx";
 import { FaBell } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
-import { useLocation } from "react-router-dom";
 import { MdOutlineWbSunny } from "react-icons/md";
 
-const NavbarDashboard = ( ) => {
+const NavbarDashboard = ( {title} ) => {
   // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropDownBellOpen, setIsDropDownBellOpen] = useState(false);
-
-  let title = useLocation().pathname;
-  title = title.split('/');
-  title = title[title.length - 1];
 
   // const toggleMobileMenu = () => {
   //   setIsMobileMenuOpen((prev) => !prev);
@@ -69,12 +64,12 @@ const NavbarDashboard = ( ) => {
             <span className="sr-only">Open user menu</span>
             <img
               className="w-8 md:w-10 md:h-10 rounded-full"
-              src="https://i.pinimg.com/736x/cc/fa/3f/ccfa3fec766c5f333052c68d52223827.jpg"
+              src="https://i.pinimg.com/736x/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg"
               alt="user photo"
             />
           </button>
 
-          {isDropdownOpen && (
+          {/* {isDropdownOpen && (
             <div className="z-50 absolute top-full right-0 mt-2 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow">
               <div className="px-4 py-3">
                 <span className="block text-sm text-gray-900">Bonnie Green</span>
@@ -98,7 +93,7 @@ const NavbarDashboard = ( ) => {
                 </li>
               </ul>
             </div>
-          )}
+          )} */}
         </div>
         {/* </div> */}
 
