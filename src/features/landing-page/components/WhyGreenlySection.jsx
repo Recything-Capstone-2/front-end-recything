@@ -5,7 +5,7 @@ const WhyGreenlySection = () => {
   return (
     <section className="py-20 bg-white dark:bg-gray-800 text-center">
       {/* Title */}
-      <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-8">
+      <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-8 px-10">
         Kenapa Memilih Greenly?
       </h2>
       {/* Cards Grid */}
