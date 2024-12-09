@@ -28,24 +28,26 @@ const DevelopCardSection = () => {
       {/* Carousel Section */}
       <div className="relative max-w-7xl mx-auto">
         {/* Card Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto pt-6">
           {displayedCards.map((data, index) => (
             <div
               key={index}
-              className="max-w-sm bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-500 rounded-lg shadow-lg p-5 transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+              className="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-500 rounded-lg shadow-lg p-3 transform transition-transform duration-300 hover:scale-105 cursor-pointer"
             >
               <img
-                className="rounded-lg w-64 h-48 mx-auto mb-4"
+                className="rounded-lg w-full h-32 md:h-48 object-cover mx-auto mb-2"
                 src={data.image}
                 alt={data.name}
               />
-              <h5 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <h5 className="text-sm md:text-xl font-bold text-gray-900 mb-1 dark:text-white">
                 {data.name}
               </h5>
-              <p className="text-sm text-primary-05 font-normal mb-4">
+              <p className="text-xs md:text-base text-primary-05 font-normal mb-1">
                 {data.job}
               </p>
-              <p className="text-gray-700 dark:text-gray-200">{data.comment}</p>
+              <p className="text-gray-700 text-xs md:text-base dark:text-gray-200">
+                {data.comment}
+              </p>
             </div>
           ))}
         </div>

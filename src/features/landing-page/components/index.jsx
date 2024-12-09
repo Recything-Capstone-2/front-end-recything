@@ -7,7 +7,7 @@ import TestimonialsSection from "./TestimonialsSection";
 
 const LandingPage = () => {
   return (
-    <main>
+    <main className="max-w-[1440px]">
       {/* Hero */}
       <HeroSection />
 
