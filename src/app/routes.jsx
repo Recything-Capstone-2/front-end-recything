@@ -19,6 +19,7 @@ import DashboardAdminReportAll from "../features/admin-dashboard-report/componen
 import ProfileEdit from "../features/profile/components/form.edit,profile.jsx";
 import AboutUsPage from "../features/about-us/components/index.jsx";
 import AdminDataUsersPage from "../features/admin-data-users/components/index.jsx";
+import Education from "../features/education/components/index.jsx";
 
 export default function AppRoutes() {
   return (
@@ -31,6 +32,14 @@ export default function AppRoutes() {
             element={
               <PrivateRoute allowedRoles={["user"]}>
                 <FAQChatbotAI />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/education"
+            element={
+              <PrivateRoute allowedRoles={["user"]}>
+                <Education />
               </PrivateRoute>
             }
           />
