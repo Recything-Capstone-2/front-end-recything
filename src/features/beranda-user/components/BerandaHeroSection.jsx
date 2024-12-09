@@ -17,7 +17,7 @@ const BerandaHeroSection = () => {
 
   return (
     <div className="flex flex-col lg:flex-row bg-green-50 dark:bg-gray-800 pt-8 lg:pt-16 pb-8 px-6 lg:px-24 rounded-lg gap-4 lg:items-end">
-      <div className="flex flex-col bg-green-50 dark:bg-gray-800 px-6 rounded-lg space-y-4 basis-full lg:basis-5/12">
+      <div className="flex flex-col bg-green-50 dark:bg-gray-800 px-0 md:px-6 rounded-lg space-y-4 basis-full lg:basis-5/12">
         <div>
           <h1 className="dark:text-white text-3xl lg:text-4xl font-bold pb-3">
             Hallo, {userName}
