@@ -9,7 +9,7 @@ const useAllDataReport = () => {
   useEffect(() => {
     const fetchAllDataReport = async () => {
       try {
-        const response = await instance.get("/report-rubbish");
+        const response = await instance.get("/admin/report-rubbish");
         if (response.status === 200) {
           setReports(response.data.data);
         } else {
