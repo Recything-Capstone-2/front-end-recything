@@ -7,7 +7,7 @@ import DevelopCardSection from "./DevelopCardSection";
 
 const AboutUsPage = () => {
   return (
-    <div>
+    <div className="max-w-[1440px]">
       <AboutUsHeroSection />
       <SolutionSection />
       <VisionSection />
