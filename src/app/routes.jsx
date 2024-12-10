@@ -71,7 +71,9 @@ export default function AppRoutes() {
             path="/dashboard-admin"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DashboardAdmin />
+                <FilterProvider>
+                  <DashboardAdmin />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -89,7 +91,9 @@ export default function AppRoutes() {
             path="/dashboard/report/process"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DashboardAdminReportProcess />
+                <FilterProvider>
+                  <DashboardAdminReportProcess />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -97,7 +101,9 @@ export default function AppRoutes() {
             path="/dashboard/report/approve"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DashboardAdminReportApprove />
+                <FilterProvider>
+                  <DashboardAdminReportApprove />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -105,7 +111,9 @@ export default function AppRoutes() {
             path="/dashboard/report/done"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DashboardAdminReportDone />
+                <FilterProvider>
+                  <DashboardAdminReportDone />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -113,7 +121,9 @@ export default function AppRoutes() {
             path="/dashboard/report/reject"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DashboardAdminReportReject />
+                <FilterProvider>
+                  <DashboardAdminReportReject />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -145,7 +155,9 @@ export default function AppRoutes() {
             path="/dashboard/user"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <AdminDataUsersPage />
+                <FilterProvider>
+                  <AdminDataUsersPage />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
