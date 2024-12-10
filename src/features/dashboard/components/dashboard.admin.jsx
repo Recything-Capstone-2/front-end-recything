@@ -182,7 +182,7 @@ export default function DashboardAdminContainer({ children, header }) {
               <li>
                 <Menu
                   label="Kelola Artikel"
-                  href="/"
+                  href="/dashboard/article"
                   icon={<IoNewspaperOutline size={24} />}
                   className="hover:bg-[#F8FCF7]"
                 />

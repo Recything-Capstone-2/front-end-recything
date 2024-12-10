@@ -20,6 +20,7 @@ import ProfileEdit from "../features/profile/components/form.edit,profile.jsx";
 import AboutUsPage from "../features/about-us/components/index.jsx";
 import AdminDataUsersPage from "../features/admin-data-users/components/index.jsx";
 import Education from "../features/education/components/index.jsx";
+import AdminArticlesPage from "../features/admin-article/components/index.jsx";
 
 export default function AppRoutes() {
   return (
@@ -156,6 +157,15 @@ export default function AppRoutes() {
             }
           />
         </Route>
+        <Route
+            path="/dashboard/article"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <AdminArticlesPage />
+              </PrivateRoute>
+            }
+          />
+        
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
