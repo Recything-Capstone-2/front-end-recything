@@ -1,17 +1,39 @@
 import { useState, useEffect } from "react";
 import instance from "../../../utils/instance";
 
-const useAllDataReport = () => {
+const useAllDataReport = (
+  startDate,
+  endDate,
+  sortOrder,
+  page = 1,
+  perPage = 10
+) => {
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchAllDataReport = async () => {
+      setLoading(true);
       try {
-        const response = await instance.get("/admin/report-rubbish");
+        const response = await instance.get("/admin/report-rubbish", {
+          params: {
+            sort: sortOrder,
+            start_date: startDate,
+            end_date: endDate,
+            page,
+            per_page: perPage,
+          },
+        });
+
         if (response.status === 200) {
-          setReports(response.data.data);
+          setReports(response.data.data.reports);
+          const totalReports = response.data.data.total || 0;
+          const totalPageCount = Math.ceil(totalReports / perPage);
+          setTotalPages(totalPageCount); // Memperbarui totalPages setelah data dimuat
+          console.log("Response Data: ", response.data);
+          console.log("Total Pages: ", totalPageCount);
         } else {
           setError(response.data.meta.message || "Terjadi kesalahan.");
         }
@@ -23,7 +45,7 @@ const useAllDataReport = () => {
     };
 
     fetchAllDataReport();
-  }, []);
+  }, [startDate, endDate, sortOrder, page, perPage]);
 
   const updateReportStatus = async (id, newStatus) => {
     try {
@@ -45,7 +67,13 @@ const useAllDataReport = () => {
     }
   };
 
-  return { reports, loading, error, updateReportStatus };
+  return {
+    reports,
+    loading,
+    error,
+    totalPages,
+    updateReportStatus,
+  };
 };
 
 export default useAllDataReport;
