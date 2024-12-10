@@ -20,7 +20,14 @@ const NavbarDashboard = ({ title, onSortChange }) => {
     setIsDropDownBellOpen((prev) => !prev);
   };
 
-  const showSortButton = location.pathname === "/dashboard/report/all";
+  const pathsToShowSortButton = [
+    "/dashboard/report/all",
+    "/dashboard/report/approve",
+    "/dashboard/report/process",
+    "/dashboard/report/done",
+    "/dashboard/report/reject",
+  ];
+  const showSortButton = pathsToShowSortButton.includes(location.pathname);
 
   return (
     <nav className="bg-white border-gray-200 p-3 md:p-0">
