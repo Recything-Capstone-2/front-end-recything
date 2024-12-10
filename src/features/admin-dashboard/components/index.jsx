@@ -90,9 +90,9 @@ const DashboardAdmin = () => {
             <div className="col-span-12 md:col-span-6">
               <LineChart />
             </div>
-            <div className="col-span-12 md:col-span-6 flex flex-col p-6 md:gap-y-0 gap-y-4">
+            <div className="col-span-12 md:col-span-6 flex flex-col md:gap-y-4 gap-y-3 md:gap-0">
               <div className="md:h-1/2 flex justify-center items-center">
-                <div className="flex items-center gap-4 rounded-3xl h-fit p-4 md:p-8 bg-blue-600 text-white shadow-lg w-full">
+                <div className="flex items-center gap-4 rounded-3xl h-full p-4 md:p-8 bg-primary-05 text-white shadow-lg w-full">
                   <div>
                     <MdPeopleAlt size={70} />
                   </div>
@@ -107,7 +107,7 @@ const DashboardAdmin = () => {
                 </div>
               </div>
               <div className="md:h-1/2 flex justify-center items-center">
-                <div className="flex items-center gap-4 rounded-3xl bg-violet-500 text-white h-fit p-4 md:p-8 w-full">
+                <div className="flex items-center gap-4 rounded-3xl bg-secondary-04 p-4 md:p-8 w-full h-full">
                   <div>
                     <IoNewspaperOutline size={70} />
                   </div>

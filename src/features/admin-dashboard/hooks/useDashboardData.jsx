@@ -11,7 +11,8 @@ const useDashboardData = () => {
   const getLatestReport = async () => {
     try {
       const response = await instance.get("/admin/latest-report");
-      setLatestReport(response.data.data.slice(0, 5));
+      const data = response.data.data?.slice(0, 5) || [];
+      setLatestReport(data);
     } catch (error) {
       setError("Gagal memuat laporan terbaru. Silakan coba lagi.");
     }
@@ -20,7 +21,8 @@ const useDashboardData = () => {
   const getReportCount = async () => {
     try {
       const response = await instance.get("/admin/report-rubbish");
-      setReportCount(response.data.data.length);
+      const dataReport = response.data.data;
+      setReportCount(dataReport.length);
     } catch (error) {
       setError("Gagal memuat jumlah laporan. Silakan coba lagi.");
     }
@@ -29,7 +31,8 @@ const useDashboardData = () => {
   const getUserCount = async () => {
     try {
       const response = await instance.get("/admin/users");
-      setUserCount(response.data.data.length);
+      const dataUser = response.data.data;
+      setUserCount(dataUser.length);
     } catch (error) {
       setError("Gagal memuat jumlah pengguna. Silakan coba lagi.");
     }

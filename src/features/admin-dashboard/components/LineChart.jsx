@@ -52,7 +52,7 @@ const LineChart = () => {
       enabled: false,
     },
     stroke: {
-      width: 6,
+      width: 4,
       curve: 'smooth',
     },
     grid: {
@@ -68,12 +68,12 @@ const LineChart = () => {
       {
         name: "User",
         data: seriesData.user,
-        color: "#1A56DB",
+        color: "#45A135",
       },
       {
         name: "Laporan",
         data: seriesData.laporan,
-        color: "#7E3AF2",
+        color: "#FCCD2A",
       },
     ],
     legend: {
@@ -96,7 +96,8 @@ const LineChart = () => {
       },
     },
     yaxis: {
-      show: false,
+      show: true,
+      tickAmount: 4,
     },
   };
 
@@ -115,17 +116,17 @@ const LineChart = () => {
 
       {/* Chart */}
       <div id="line-chart">
-        <ApexCharts options={options} series={options.series} type="line" height="350" />
+        <ApexCharts options={options} series={options.series} type="line" height="200" />
       </div>
 
       {/* Chart Footer */}
       <div className="mt-4 flex text-sm font-bold gap-x-3">
         <div className='flex items-center gap-x-2'>
-          <span className='p-2 rounded-full bg-[#1A56DB]'></span>
+          <span className='p-2 rounded-full bg-[#45A135]'></span>
           <p>Jumlah User</p>
         </div>
         <div className='flex items-center gap-x-2'>
-          <span className='p-2 rounded-full bg-[#7E3AF2]'></span>
+          <span className='p-2 rounded-full bg-[#FCCD2A]'></span>
           <p>Jumlah Laporan</p>
         </div>
       </div>
