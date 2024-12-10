@@ -10,8 +10,8 @@ export default function useHistoryReport() {
     setIsLoading(true);
     try {
       const response = await historyReportApi();
-      console.log(response);
-      setReports(response);
+      const data = response?.data || [];
+      setReports(data);
     } catch (error) {
       setError(error);
       console.error(error);

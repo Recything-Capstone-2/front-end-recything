@@ -5,46 +5,46 @@ const FormSelect = ({
   value,
   onChange,
   error,
-  errorMessage = 'There was an error.',
+  errorMessage = "There was an error.",
   success,
-  successMessage = 'Looks good!',
+  successMessage = "Looks good!",
   options = [],
   startIcon,
   required = false,
-  className = '',
+  className = "",
   disabled = false,
-  size = 'default',
+  size = "default",
 }) => {
   // status error, success, dan size
   const sizeClass = {
-    small: 'p-2 text-xs',
-    default: 'p-2.5 text-sm',
-    large: 'p-4 text-base',
+    small: "p-2 text-xs",
+    default: "p-2.5 text-sm",
+    large: "p-4 text-base",
   }[size];
 
   const selectClass = `bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ${
-    startIcon ? 'ps-10' : sizeClass
+    startIcon ? "ps-10" : sizeClass
   } ${
     error
-      ? 'border-red-500 focus:border-red-500 focus:ring-red-500 bg-red-100'
+      ? "border-red-500 focus:border-red-500 focus:ring-red-500 bg-red-100"
       : success
-      ? 'border-teal-500 focus:border-teal-500 focus:ring-teal-500'
-      : ''
+      ? "border-teal-500 focus:border-teal-500 focus:ring-teal-500"
+      : ""
   } ${className}`;
 
   // Helper text untuk menampilkan pesan error atau success
-  const helperText = error
-    ? <p className="text-sm text-red-600 mt-2">{errorMessage}</p>
-    : success 
-      ? <p className="text-sm text-teal-600 mt-2">{successMessage}</p>
-      : null;
+  const helperText = error ? (
+    <p className="text-sm text-red-600 mt-2">{errorMessage}</p>
+  ) : success ? (
+    <p className="text-sm text-teal-600 mt-2">{successMessage}</p>
+  ) : null;
 
   return (
     <div className="relative">
       {label && (
         <label
           htmlFor={id}
-          className="block mb-2 text-sm font-medium text-gray-900"
+          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           {label}
         </label>

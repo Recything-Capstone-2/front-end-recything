@@ -3,25 +3,25 @@ const features = [
     title: "Pelaporan Sampah Cepat dan Akurat",
     description:
       "Laporkan sampah yang tidak terkelola dengan mudah melalui foto dan lokasi, langsung dari aplikasi.",
-    img: "https://s3-alpha-sig.figma.com/img/2966/7eaf/41923fc1d88f3bc638ec404956d68cc0?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=CSp--RHRZ0sqcIkje6TDP2mn6ovylwhJNxoaUiP5zyB0Aa3eMNeZ6BEsznde-q151t1iNZvWPf640u~vJjeO4f0TZI6ljMh6tYWCQ~fYnVYlHUzCkpQ-8UmwltkcIrfZGzULNL-rJme4XlnzAiwPeBOB5tUuPh7EkkdbMsNl~NwLKa-XKk~d3~N7lUPnydPDoqFmMiFcnVvSnse3nKTFGrc-rSBPR5FyNGdI1BDbaD3VOpecb-umMNQqVT8nBL3FCXvogwdDQ80959o8P0GFHuu4UklRjy1z9UPXyjypqlvJ5M0zjMUTajkYrnzoh7u7wePppviBOqSgXprslCJtGw__",
+    img: "https://s3-alpha-sig.figma.com/img/2966/7eaf/41923fc1d88f3bc638ec404956d68cc0?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=XohkU8b-aIsqTf4Z2LKO2AYofMRrpWOq-xde1XLLY6ELRRIfSl8szh~SJyQuWehxWyM45NUakApds0MtRcfjLdA8xWLVymIN0QZ9RgaOsyDB4SRFIDf5E~zO1Cs6eaoA4OScggdj5KS9L9dhG-C3VW0S6yjm4eAKpiKyXixBxghtXmiCcHYjzxBvvhmA2FJsHCly7GXefdy3yJivWZtMqKpyIkGIbTsZNK~LbcBNftRKzJwm3cnHwJG0Ip6k12HXe~SnUz0uMwVVUSKeSVhvhREXdL2gWD5l2aYbv-435tuyDNFyTnTYvAULchUsTeyTI5Ad9GnQoI9HfjJ95zO72w__",
   },
   {
     title: "Panduan Daur Ulang Interaktif",
     description:
       "Edukasi pengguna dengan tutorial dan tips mendaur ulang berbagai jenis sampah, lengkap dengan lokasi daur ulang terdekat.",
-    img: "https://s3-alpha-sig.figma.com/img/f07a/6a30/ed4c07e7a5b4520dff7ecd7d6df08fb7?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Mp-kOiCTnRyJfLQ4OmrEdTxIL-A07CVjoJ-ZhaEnVrMceBzGzw-TLUi2pUIdc3TPWffflwvsWxNKXUDXYWItm4iLL-0CkeCPp7~NXiX5aDcxcR0uLULmYH4mABoWHPCbnPBxaMRwl9wMItBMIrf~wfohzYlzxjZme31FdWggdJB9ChcG22BZmJmqsHv9Qzg7KRtKjka9MLSZ0SnDG4ehxV4SB3bH~wDZO8kwToPGVMwEHIsSoH0YSnGU9GQcfcUEPC5t2O9Ck2EAwgSM2PkIqnTeFn1P7V3te~AfShXxl7KfPKKfzg1fJtxXswWNBM2Lonf4Qmqq07YafFPHnEWcrw__",
+    img: "https://s3-alpha-sig.figma.com/img/f07a/6a30/ed4c07e7a5b4520dff7ecd7d6df08fb7?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ldycN-GVo2V6ZapuoDziqH0zds5Qh~T4GEtIpTaNY~qMyUc6HQbk1qFZlTVTH6BymuVkGvv5B4vWxFGZt1aaWAO7xyins2vZk9DLeqzRmOwKpvpcfMIOB1PlZqVcaO4ki~SzTiWslWU~uOFBIKkJdaPdnN3Wlcz5IUTz5Sm8-MHMKoDVRPFmNm8SJlQOwWrfQsOdzTDlhqsyiiEMhoceaMgUExFvzaqnKBE7xgwljXm~rxERw--zo8ZPBZD0GWv3SgZyW64XCm1Dw-mgGw2~npxPvP4elZlMCdtNQLDQ5Be83byBzfhickNYoe6AG0l4jUCsfEkpBc07drCet58Nig__",
   },
   {
     title: "Sistem Poin dan Reward",
     description:
       "Dapatkan poin dan reward setiap kali melaporkan sampah atau menyelesaikan tugas, dan jadikan kontribusi Anda lebih bermakna.",
-    img: "https://s3-alpha-sig.figma.com/img/b33a/98a8/3bea635ed2d74bf43d3bcdfd854e3154?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JQRZmkcR-asPLN43jkI1OuUaEzmor-KuXX70DPeExJ-mtrhyIyMi1mXx44gvc4uAM1qXpJnWx9YPkJSKnIzaAko~f77PncxUJxnlWIwHD3zBe2RMvJJzoD-1r2kdbFACVoYJUn9AXhOFIrlGrrqwSKkvnxWp-NODAtRnqIQgaH1l11S6tHx-p7mgxep2fOwiYemrKabf5n1DN5L1hbkoNTZnEa~-tYg21TnNKC0CKv~0ogtCRgeVaG6rvD0OomHBj3m2ZMWqy9X2arlXY~rBdMC~UqRP4RCfOpf2Lgt~J16dVfEDC1E3LyA2FOFhn0zgwAAxcXmYFQN97XKqxPDP1w__",
+    img: "https://s3-alpha-sig.figma.com/img/b33a/98a8/3bea635ed2d74bf43d3bcdfd854e3154?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=b6Zi2ZR2dpttRotht5haXOV5UuSN6t1HxJ1bX8pybjTEi~2iG74CGP7mM5ZbhmrsL9kX1gG1EPl-EpZaFIw5PbcpkzIBzkiaDGKrquVbxdnE4Ek~85rJhSbDejxsXcO0DB7kV4Jr~lS39rdXxVkPTl3vPZdmV8sKcIwY9ff0ArQCB2OUvdZj8uvipYsCqd-z9sFsGq0up4S1WxZ5rnTZ-87XrqjRgP3uJ6jZggD5aj~Ii5z6Hgm7hI-n7RkDxXj~WCIZMay8Fmn5PT82GcbmqhnJk6Xxs8B1kkKY0TtGO2ttLGeKrZXJjCD2ZGSQZJZbNhe9SgnfhpFPA8n8bATZ9g__",
   },
   {
     title: "Layanan Pelanggan Responsif",
     description:
       "Fitur chatbot Greenly Assistant siap menjawab semua pertanyaan Anda, kapan saja, dengan cepat dan ramah.",
-    img: "https://s3-alpha-sig.figma.com/img/cdaf/6adf/46c81726bc7c50f4dac37f68a5792f4b?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YnIfSvEbJZ0pTW~wzK9826anfg9JCKKid-FjnWCimF6tEZvTuIni0Z0aeHT~OHFxZf~Z7E7QS07AErUzUGBLw8h8UtjnirwfuKNyJybA1RkwiG6BH4coivJWZNKvu3m1BnsVIGl2tppfe~Do~w4JrfWgRFAJ8sE9MqJ7NeVUm3VnAlcWwdGPsyb8B2XOr44QwxpUnsH720q7JV5iAQEnDjQ9NvaWsjpDUA3C-FzcZsV3FWAc8DjnswKz-AE9uDTrVPUsk0yk0ZJYCzJMSJVCaHk8ryVdIV0HaLZgDWCZBEMCloRejUE2stIEzeaZ~tWuNLS2mVTR6mAzb4OxXrXOvA__",
+    img: "https://s3-alpha-sig.figma.com/img/cdaf/6adf/46c81726bc7c50f4dac37f68a5792f4b?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=f3ETE2tfTi9-KxMABJ8ZVdSrSgPTosv5LGoC-okQARxir25-q1bpktkQDuCP6yd4yR8qoF3ixSTw5ETDUNDqWhkNrEeRXcIGDbcRZ3W8E200Akfu6OqpGrIXtMwvzuBTlG93jYsE7UEyEJ8lEad1seMsdo9~kBKQgO9Y3foOIK5F3oBYw7bn5Cym2wTjHQ6kOgTs2Hn75I8hCrmpzsYi8AQJzzEBMn-uTMDxSAS5rByG96gQiTbJtu6c9p12mqlQqC1pWthWXmUwI-uizagP6RC5QeBx4ZbS8qrlmuOeSnIKaMgyjxyf9VJgmzYGhEftGB0F5RvGK2BLMaFA1-h2fg__",
   },
 ];
 
