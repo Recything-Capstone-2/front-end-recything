@@ -11,7 +11,7 @@ const useAllDataReport = (
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(1); // Tetap ada state totalPages
 
   useEffect(() => {
     const fetchAllDataReport = async () => {
@@ -29,11 +29,12 @@ const useAllDataReport = (
 
         if (response.status === 200) {
           setReports(response.data.data.reports);
-          const totalReports = response.data.data.total || 0;
-          const totalPageCount = Math.ceil(totalReports / perPage);
-          setTotalPages(totalPageCount); // Memperbarui totalPages setelah data dimuat
-          console.log("Response Data: ", response.data);
-          console.log("Total Pages: ", totalPageCount);
+
+          // Pastikan totalPages tersedia dan bukan undefined
+          const totalPagesFromApi = response.data.data.totalPages;
+          setTotalPages(
+            totalPagesFromApi !== undefined ? totalPagesFromApi : 1
+          );
         } else {
           setError(response.data.meta.message || "Terjadi kesalahan.");
         }
@@ -71,7 +72,7 @@ const useAllDataReport = (
     reports,
     loading,
     error,
-    totalPages,
+    totalPages, // Return totalPages yang berasal dari API
     updateReportStatus,
   };
 };
