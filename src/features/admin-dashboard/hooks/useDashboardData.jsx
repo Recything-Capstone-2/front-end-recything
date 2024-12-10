@@ -21,8 +21,14 @@ const useDashboardData = () => {
   const getReportCount = async () => {
     try {
       const response = await instance.get("/admin/report-rubbish");
-      const dataReport = response.data.data;
-      setReportCount(dataReport.length);
+      const dataReport = response?.data.data; 
+      const total = dataReport?.length;
+      if(!total) {
+        setReportCount(0);
+        return;
+      }
+
+      setReportCount(total);
     } catch (error) {
       setError("Gagal memuat jumlah laporan. Silakan coba lagi.");
     }
@@ -32,7 +38,12 @@ const useDashboardData = () => {
     try {
       const response = await instance.get("/admin/users");
       const dataUser = response.data.data;
-      setUserCount(dataUser.length);
+      const total = dataUser?.length;
+      if(!total) {
+        setUserCount(0);
+        return;
+      }
+      setUserCount(total);
     } catch (error) {
       setError("Gagal memuat jumlah pengguna. Silakan coba lagi.");
     }

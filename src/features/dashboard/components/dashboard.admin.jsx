@@ -6,18 +6,19 @@ import NavbarDashboard from "./header.dashboard.jsx";
 
 // Icon
 import { MdOutlineLogout } from "react-icons/md";
-import { MdHome } from "react-icons/md";
+import { FaHouse } from "react-icons/fa6";
 import { FaFileCirclePlus } from "react-icons/fa6";
-import { IoPersonSharp } from "react-icons/io5";
-import { IoNewspaperOutline } from "react-icons/io5";
+import { FaUser } from "react-icons/fa6";
+import { FaNewspaper } from "react-icons/fa6";
 import { FaGift } from "react-icons/fa6";
 
 import logo from "../../../assets/logo/logo-only.png";
 import useLogout from "../../auth/hooks/useLogout.jsx";
+import useDropdownStore from "../../../store/useDropdownStore.js";
 
 export default function DashboardAdminContainer({ children, header }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { isDropdownOpen, toggleDropdown } = useDropdownStore();
 
   const { handleLogout } = useLogout();
   const location = useLocation();
@@ -35,10 +36,6 @@ export default function DashboardAdminContainer({ children, header }) {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
   };
 
   const closeSidebar = () => {
@@ -91,12 +88,12 @@ export default function DashboardAdminContainer({ children, header }) {
               <img src={logo} alt="" className="w-8" />
               <span className="font-semibold text-2xl font-inter">Greenly</span>
             </Link>
-            <ul className="mb-2 font-medium mt-4">
+            <ul className="font-medium space-y-2">
               <li>
                 <Menu
                   label="Beranda"
                   href="/dashboard-admin"
-                  icon={<MdHome size={24} />}
+                  icon={<FaHouse size={24} />}
                   className="hover:bg-[#F8FCF7]"
                 />
               </li>
@@ -104,20 +101,21 @@ export default function DashboardAdminContainer({ children, header }) {
                 <Menu
                   label="Data Pengguna"
                   href="/dashboard/user"
-                  icon={<IoPersonSharp size={24} />}
+                  icon={<FaUser size={24} />}
                   className="hover:bg-[#F8FCF7]"
                 />
               </li>
-            </ul>
+            {/* </ul> */}
+
             {/* Dropdown menu */}
-            <div>
+            <li>
               <button
                 onClick={toggleDropdown}
                 className={`flex items-center justify-between w-full ${
                   dropdownActive ? "text-primary-05" : "text-gray-500"
                 } hover:bg-[#F8FCF7] p-2 rounded-lg`}
               >
-                <div className="flex items-center gap-3 px-1">
+                <div className="flex items-center gap-x-3">
                   <FaFileCirclePlus size={24} />
                   <span className={`text-base font-medium`}>
                     Data Pelaporan
@@ -177,14 +175,14 @@ export default function DashboardAdminContainer({ children, header }) {
                   </li>
                 </ul>
               )}
-            </div>
+            </li>
 
-            <ul className="mb-2 font-medium space-y-2 mt-2">
+            {/* <ul className="font-medium"> */}
               <li>
                 <Menu
                   label="Kelola Artikel"
                   href="/"
-                  icon={<IoNewspaperOutline size={24} />}
+                  icon={<FaNewspaper size={24} />}
                   className="hover:bg-[#F8FCF7]"
                 />
               </li>
