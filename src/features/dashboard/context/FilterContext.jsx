@@ -5,7 +5,7 @@ const FilterContext = createContext();
 export const useFilter = () => useContext(FilterContext);
 
 export const FilterProvider = ({ children }) => {
-  const [filter, setFilter] = useState("desc"); // Default filter
+  const [filter, setFilter] = useState("desc");
 
   const changeFilter = (newFilter) => {
     if (newFilter === "asc" || newFilter === "desc") {

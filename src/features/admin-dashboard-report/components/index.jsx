@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom"; // Menggunakan useNavigate
+import { useLocation, useNavigate } from "react-router-dom";
 import { DashboardAdminLayout } from "../../dashboard/index.js";
 import useAllDataReport from "../hooks/useAllDataReport.jsx";
 import { LuExternalLink } from "react-icons/lu";
@@ -10,19 +10,24 @@ const DashboardAdminReportAll = () => {
   const { filter } = useFilter();
   const [currentPage, setCurrentPage] = useState(1);
   const location = useLocation();
-  const navigate = useNavigate(); // Menggunakan useNavigate
-
-  // Ambil page dari query params di URL, default page=1
-  const queryParams = new URLSearchParams(location.search);
-  const pageFromUrl = parseInt(queryParams.get("page")) || 1;
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setCurrentPage(pageFromUrl); // Update state dengan nilai page dari URL
-  }, [pageFromUrl]);
+    const queryParams = new URLSearchParams(location.search);
+    const pageFromUrl = parseInt(queryParams.get("page")) || 1;
+    setCurrentPage(pageFromUrl);
+  }, [location.search]);
 
-  // Ambil data dari hook dengan parameter sort dan pagination
-  const { reports, loading, error, totalPages, updateReportStatus } =
-    useAllDataReport(null, null, filter, currentPage, 10);
+  const {
+    reports,
+    loading,
+    error,
+    totalPages,
+    totalReport,
+    updateReportStatus,
+  } = useAllDataReport(null, null, filter, currentPage, 10);
+
+  console.log("Reports Data:", reports);
 
   const statusMapping = {
     process: "Diterima",
@@ -37,29 +42,13 @@ const DashboardAdminReportAll = () => {
 
   const nextPage = () => {
     if (currentPage < totalPages) {
-      const nextPage = currentPage + 1;
-      console.log(
-        "Next page clicked. Current page:",
-        currentPage,
-        "Next page:",
-        nextPage
-      );
-      setCurrentPage(nextPage);
-      navigate(`?page=${nextPage}`); // Update URL dengan halaman baru
+      navigate(`?page=${currentPage + 1}`);
     }
   };
 
   const prevPage = () => {
     if (currentPage > 1) {
-      const prevPage = currentPage - 1;
-      console.log(
-        "Previous page clicked. Current page:",
-        currentPage,
-        "Previous page:",
-        prevPage
-      );
-      setCurrentPage(prevPage);
-      navigate(`?page=${prevPage}`); // Update URL dengan halaman baru
+      navigate(`?page=${currentPage - 1}`);
     }
   };
 
@@ -191,26 +180,39 @@ const DashboardAdminReportAll = () => {
                 ))}
               </tbody>
             </table>
-
             {/* Pagination Controls */}
-            <div className="flex justify-between mt-4">
-              <button
-                className="px-4 py-2 bg-primary-05 text-white rounded-lg disabled:bg-gray-400"
-                onClick={prevPage}
-                disabled={currentPage === 1}
-              >
-                Prev
-              </button>
-              <span>
-                Page {currentPage} of {totalPages}
+            <div className="flex flex-col mt-4">
+              <span className="text-sm text-gray-700">
+                Showing{" "}
+                <span className="font-semibold text-gray-900">
+                  {(currentPage - 1) * 10 + 1}
+                </span>{" "}
+                to{" "}
+                <span className="font-semibold text-gray-900">
+                  {Math.min(currentPage * 10, totalReport)}
+                </span>{" "}
+                of{" "}
+                <span className="font-semibold text-gray-900">
+                  {totalReport}
+                </span>{" "}
+                entries
               </span>
-              <button
-                className="px-4 py-2 bg-primary-05 text-white rounded-lg disabled:bg-gray-400"
-                onClick={nextPage}
-                disabled={currentPage === totalPages}
-              >
-                Next
-              </button>
+              <div className="inline-flex mt-2">
+                <button
+                  className="px-4 py-2 bg-primary-05 text-white rounded-l hover:bg-primary-01 disabled:bg-gray-400"
+                  onClick={prevPage}
+                  disabled={currentPage === 1}
+                >
+                  Prev
+                </button>
+                <button
+                  className="px-4 py-2 bg-primary-05 text-white rounded-r hover:bg-primary-01 disabled:bg-gray-400"
+                  onClick={nextPage}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         )}

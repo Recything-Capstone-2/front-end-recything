@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu } from "./layout.menu.jsx";
 import Button from "../../../components/ui/Button.jsx";
 import NavbarDashboard from "./header.dashboard.jsx";
-import { useFilter } from "../context/FilterContext.jsx";
 
 // Icon
 import { MdOutlineLogout } from "react-icons/md";
@@ -18,8 +17,6 @@ import useLogout from "../../auth/hooks/useLogout.jsx";
 export default function DashboardAdminContainer({ children, header }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { filter } = useFilter();
-  console.log("Filter aktif:", filter);
 
   const { handleLogout } = useLogout();
   const location = useLocation();

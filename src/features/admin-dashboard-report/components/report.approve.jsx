@@ -1,18 +1,43 @@
 import { DashboardAdminLayout } from "../../dashboard/index.js";
-import useAllDataReport from "../hooks/useAllDataReport.jsx";
-import usePagination from "../hooks/usePagination.jsx";
+import { useLocation, useNavigate } from "react-router-dom";
+import useStatusDataReport from "../hooks/useStatusDataReport.jsx";
 import { LuExternalLink } from "react-icons/lu";
 import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
+import { useState, useEffect } from "react";
 
 const DashboardAdminReportApprove = () => {
-  const { reports, loading, error } = useAllDataReport();
+  const status = "process";
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredReports = reports.filter(
-    (report) => report.status === "process"
-  );
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const pageFromUrl = parseInt(queryParams.get("page")) || 1;
+    setCurrentPage(pageFromUrl);
+  }, [location.search]);
 
-  const { currentPage, totalPages, currentData, nextPage, prevPage } =
-    usePagination(filteredReports, 10);
+  const { reports, loading, error, totalPages, totalReport } =
+    useStatusDataReport(status, currentPage, 10);
+
+  const statusMapping = {
+    process: "Diterima",
+    completed: "Diproses",
+    approved: "Selesai",
+    rejected: "Ditolak",
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      navigate(`?page=${currentPage + 1}`);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      navigate(`?page=${currentPage - 1}`);
+    }
+  };
 
   return (
     <div>
@@ -52,7 +77,7 @@ const DashboardAdminReportApprove = () => {
                 </tr>
               </thead>
               <tbody>
-                {currentData.map((report, index) => (
+                {reports.map((report, index) => (
                   <tr
                     key={report.id}
                     className="odd:bg-white even:bg-primary-01 rounded-lg"
@@ -105,7 +130,7 @@ const DashboardAdminReportApprove = () => {
                     <td className="px-6 py-4">{report.description}</td>
                     <td className="px-6 py-4">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-lg bg-slate-200 text-grey-800">
-                        Diterima
+                        {statusMapping[report.status] || "None"}
                       </span>
                     </td>
                   </tr>
@@ -122,11 +147,11 @@ const DashboardAdminReportApprove = () => {
                 </span>{" "}
                 to{" "}
                 <span className="font-semibold text-gray-900">
-                  {Math.min(currentPage * 10, filteredReports.length)}
+                  {Math.min(currentPage * 10, totalReport)}
                 </span>{" "}
                 of{" "}
                 <span className="font-semibold text-gray-900">
-                  {filteredReports.length}
+                  {totalReport}
                 </span>{" "}
                 entries
               </span>
