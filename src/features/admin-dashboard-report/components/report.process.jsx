@@ -4,9 +4,11 @@ import useStatusDataReport from "../hooks/useStatusDataReport.jsx";
 import { LuExternalLink } from "react-icons/lu";
 import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
 import { useState, useEffect } from "react";
+import { useFilter } from "../../dashboard/context/FilterContext.jsx";
 
 const DashboardAdminReportApprove = () => {
   const status = "completed";
+  const { filter } = useFilter();
   const location = useLocation();
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +20,7 @@ const DashboardAdminReportApprove = () => {
   }, [location.search]);
 
   const { reports, loading, error, totalPages, totalReport } =
-    useStatusDataReport(status, currentPage, 10);
+    useStatusDataReport(status, null, null, filter, "desc", currentPage, 10);
 
   const statusMapping = {
     process: "Diterima",
