@@ -13,6 +13,7 @@ const options = [
 
 export default function AdminManageCoins() {
   const { points, userCoins, loading, loadingAccept, error, handleCoinsChange, handleAcceptCoins } = useAdminPoints();
+  console.log(points);
 
   return (
     <DashboardAdminLayout>

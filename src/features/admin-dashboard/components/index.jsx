@@ -76,7 +76,7 @@ const DashboardAdmin = () => {
                               to={`/dashboard/report/all`}
                               className="underline whitespace-nowrap"
                             >
-                              Lihat Detail
+                              Tanggapi
                             </Link>
                           </td>
                         </tr>

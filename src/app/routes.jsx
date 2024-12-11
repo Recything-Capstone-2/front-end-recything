@@ -20,6 +20,7 @@ import ProfileEdit from "../features/profile/components/form.edit,profile.jsx";
 import AboutUsPage from "../features/about-us/components/index.jsx";
 import AdminDataUsersPage from "../features/admin-data-users/components/index.jsx";
 import AdminManageCoins from "../features/admin-manage-coins/components/index.jsx";
+import DetailUser from "../features/admin-data-users/components/DetailUser.jsx";
 
 export default function AppRoutes() {
   return (
@@ -147,11 +148,22 @@ export default function AppRoutes() {
               </PrivateRoute>
             }
           />
-          <Route path="dashboard/coin" element={
-            <PrivateRoute allowedRoles={["admin"]}>
-              <AdminManageCoins />
-            </PrivateRoute>  
-          } />
+          <Route
+            path="dashboard/coin"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <AdminManageCoins />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="dashboard/user/:id"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <DetailUser />
+              </PrivateRoute>
+            }
+          />
         </Route>
 
         <Route path="/login" element={<Login />} />

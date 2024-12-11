@@ -21,8 +21,9 @@ const useDashboardData = () => {
   const getReportCount = async () => {
     try {
       const response = await instance.get("/admin/report-rubbish");
-      const dataReport = response?.data.data; 
-      const total = dataReport?.length;
+      const dataReport = response?.data.data.data; 
+      const total = dataReport?.pagination.total_report;
+
       if(!total) {
         setReportCount(0);
         return;
