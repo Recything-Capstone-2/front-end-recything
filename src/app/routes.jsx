@@ -19,6 +19,7 @@ import DashboardAdminReportAll from "../features/admin-dashboard-report/componen
 import ProfileEdit from "../features/profile/components/form.edit,profile.jsx";
 import AboutUsPage from "../features/about-us/components/index.jsx";
 import AdminDataUsersPage from "../features/admin-data-users/components/index.jsx";
+import DetailReport from "../features/admin-dashboard-report/components/DetailReport.jsx";
 import { FilterProvider } from "../features/dashboard/context/FilterContext.jsx";
 
 export default function AppRoutes() {
@@ -162,6 +163,16 @@ export default function AppRoutes() {
             }
           />
         </Route>
+        <Route
+          path="/dashboard/report/all/:id"
+          element={
+            <PrivateRoute allowedRoles={["admin"]}>
+              <FilterProvider>
+                <DetailReport />
+              </FilterProvider>
+            </PrivateRoute>
+          }
+        />
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

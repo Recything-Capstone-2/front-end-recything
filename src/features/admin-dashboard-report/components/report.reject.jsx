@@ -1,10 +1,12 @@
 import { DashboardAdminLayout } from "../../dashboard/index.js";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import useStatusDataReport from "../hooks/useStatusDataReport.jsx";
 import { LuExternalLink } from "react-icons/lu";
 import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
 import { useState, useEffect } from "react";
 import { useFilter } from "../../dashboard/context/FilterContext.jsx";
+import Button from "../../../components/ui/Button.jsx";
+import StatusBadge from "../../../components/ui/StatusBadge.jsx";
 
 const DashboardAdminReportApprove = () => {
   const status = "rejected";
@@ -55,26 +57,20 @@ const DashboardAdminReportApprove = () => {
             <table className="w-full table-fixed text-sm text-left text-black-neutral08 border-collapse rounded-lg">
               <thead className="text-sm text-black-neutral08 uppercase bg-primary-01 rounded-t-lg">
                 <tr>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 whitespace-nowrap w-12 rounded-tl-lg"
-                  >
-                    No
+                  <th scope="col" className="px-6 py-3 w-12 rounded-tl-lg">
+                    ID
                   </th>
                   <th scope="col" className="px-6 py-4 w-36">
                     Tanggal
                   </th>
-                  <th scope="col" className="px-6 py-4 w-52">
+                  <th scope="col" className="px-6 py-4 w-80">
                     Lokasi
                   </th>
-                  <th scope="col" className="px-6 py-4 w-60">
-                    Photo
-                  </th>
-                  <th scope="col" className="px-6 py-4 w-96">
-                    Deskripsi
+                  <th scope="col" className="px-6 py-4 w-32">
+                    Status
                   </th>
                   <th scope="col" className="px-6 py-4 w-32 rounded-tr-lg">
-                    Status
+                    Detail
                   </th>
                 </tr>
               </thead>
@@ -88,7 +84,7 @@ const DashboardAdminReportApprove = () => {
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                     >
-                      {(currentPage - 1) * 10 + index + 1}
+                      {report.id}
                     </th>
                     <td className="px-6 py-4">
                       {new Date(report.tanggal_laporan).toLocaleDateString(
@@ -113,27 +109,14 @@ const DashboardAdminReportApprove = () => {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="size-52 overflow-hidden">
-                        <img
-                          src={
-                            report.photo ||
-                            "https://fakeimg.pl/600x400?text=Image"
-                          }
-                          alt="Report"
-                          className="w-full object-cover h-full"
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src =
-                              "https://fakeimg.pl/600x400?text=Image";
-                          }}
-                        />
-                      </div>
+                      <StatusBadge status={report.status} />
                     </td>
-                    <td className="px-6 py-4">{report.description}</td>
-                    <td className="px-6 py-4">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-lg bg-red-100 text-red-800">
-                        {statusMapping[report.status] || "None"}
-                      </span>
+                    <td className="px-4 py-4">
+                      <Link to={`/dashboard/report/all/${report.id}`}>
+                        <Button variant="primary" size="sm">
+                          Lihat Detail Laporan
+                        </Button>
+                      </Link>
                     </td>
                   </tr>
                 ))}
