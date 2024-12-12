@@ -12,6 +12,7 @@ const useFetchUsers = () => {
         const response = await instance.get("/admin/users");
         if (response.status === 200) {
           setUsers(response.data.data);
+          console.log(response.data.data);
         } else {
           setError(response.data.meta.message || "Terjadi kesalahan.");
         }

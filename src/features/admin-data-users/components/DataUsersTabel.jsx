@@ -9,9 +9,7 @@ const DataUsersTabel = () => {
   return (
     <div className="flex justify-center max-w-[1440px] py-2 px-6 md:py-10 md:px-24 bg-green-50">
       {loading ? (
-        <p>
-          <LoadingSpinner />
-        </p>
+        <LoadingSpinner />
       ) : error ? (
         <p className="text-red-500">{error}</p>
       ) : (
@@ -21,7 +19,7 @@ const DataUsersTabel = () => {
               <tr className="bg-primary-01 border text-left text-sm">
                 <th className="px-4 py-4 rounded-tl-lg">ID</th>
                 <th className="px-4 py-4">NAMA LENGKAP</th>
-                <th className="px-4 py-4">TANGGAL LAHIR</th>
+                <th className="px-4 py-4 whitespace-nowrap">TANGGAL LAHIR</th>
                 <th className="px-4 py-4">NO. TELEPON</th>
                 <th className="px-4 py-4 rounded-tr-lg">EMAIL</th>
                 <th className="px-4 py-4">Detail</th>
