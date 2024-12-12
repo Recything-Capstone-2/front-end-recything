@@ -11,7 +11,7 @@ export default function DetailReport() {
 
   return (
     <DashboardAdminContainer header={"Detail Laporan"}>
-      <div className="py-2 px-6 md:py-10 md:px-24 bg-green-50">
+      <div className="py-2 px-6 md:py-10 md:px-24 bg-green-50 max-w-[1440px]">
         <button
           className="flex items-center space-x-2 mb-10 hover:bg-slate-200 px-2 py-2 rounded"
           onClick={() => window.history.back()}

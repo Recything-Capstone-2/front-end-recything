@@ -5,7 +5,7 @@ const AdminDataUsersPage = () => {
   return (
     <div>
       <DashboardAdminLayout className="bg-green-50" header="Data Pengguna">
-        <DataUsersTabel />
+        <DataUsersTabel className="max-w-[1440px]" />
       </DashboardAdminLayout>
     </div>
   );

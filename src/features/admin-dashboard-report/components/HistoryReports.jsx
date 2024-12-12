@@ -14,7 +14,7 @@ export default function HistoryReports({ report }) {
   const reportData = isEmpty ? [defaultReport] : [report];
 
   return (
-    <div className="relative overflow-x-auto bg-white border py-10 px-6 rounded-lg shadow-lg">
+    <div className="relative max-w-[1440px] overflow-x-auto bg-white border py-10 px-6 rounded-lg shadow-lg">
       <h1 className="text-2xl font-extrabold font-inter mb-5">Laporan</h1>
       <table className="w-full table-fixed text-xs md:text-sm text-left rtl:text-right text-gray-500 dark:text-white">
         <thead className="text-xs text-gray-700 dark:text-white uppercase bg-gray-100/50 dark:bg-gray-500 sticky top-0">

@@ -168,7 +168,9 @@ export default function AppRoutes() {
             path="dashboard/coin"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <AdminManageCoins />
+                <FilterProvider>
+                  <AdminManageCoins />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -176,7 +178,9 @@ export default function AppRoutes() {
             path="dashboard/user/:id"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DetailUser />
+                <FilterProvider>
+                  <DetailUser />
+                </FilterProvider>
               </PrivateRoute>
             }
           />

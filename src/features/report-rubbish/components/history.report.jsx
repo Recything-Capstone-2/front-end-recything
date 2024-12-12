@@ -9,7 +9,7 @@ export default function ReportRubbish() {
   const { reports, isLoading, error } = useHistoryReport();
 
   return (
-    <main className="bg-slate-50 dark:bg-gray-800 font-inter">
+    <main className="bg-slate-50 dark:bg-gray-800 font-inter max-w-[1440px]">
       <section className="container mx-auto grid grid-cols-12 font-inter py-20">
         <div className="col-span-12 flex gap-x-5 mb-5 px-4 dark:text-white">
           <MenuActive label="Laporan Sampah" href="/report" />
@@ -28,10 +28,10 @@ export default function ReportRubbish() {
                   <th scope="col" className="px-6 py-3 md:w-52">
                     Tanggal Laporan
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className="px-6 py-3 w-72">
                     Lokasi
                   </th>
-                  <th scope="col" className="px-6 py-3">
+                  <th scope="col" className="px-6 py-3 w-92">
                     Gambar
                   </th>
                   <th scope="col" className="px-6 py-3 w-40">
@@ -69,7 +69,11 @@ export default function ReportRubbish() {
                       </td>
                       <td className="px-6 py-4">{report.location}</td>
                       <td className="px-6 py-4">
-                        <img src={report.photo} alt="" />
+                        <img
+                          src={report.photo}
+                          alt=""
+                          className="h-32 object-cover"
+                        />
                       </td>
                       <td className="px-6 py-4">
                         {report.category === "report_rubbish"

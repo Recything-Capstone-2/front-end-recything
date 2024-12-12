@@ -15,7 +15,7 @@ const DashboardAdmin = () => {
   return (
     <div>
       <DashboardAdminLayout>
-        <div className="px-4 md:px-24 py-10 bg-neutral-50">
+        <div className="px-4 md:px-24 py-10 bg-neutral-50 max-w-[1440px]">
           <div className="grid grid-cols-12 gap-4 rounded-lg">
             <div className="col-span-12 space-y-3 bg-white rounded-3xl shadow-lg py-5 px-5">
               <h1 className="text-2xl font-bold">Laporan Terbaru</h1>

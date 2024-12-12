@@ -50,7 +50,7 @@ export default function ProfileEdit() {
 
   return (
     <main
-      className="min-h-screen py-12"
+      className="min-h-screen max-w-[1440px] py-12"
       style={{ backgroundImage: `url(${background})`, backgroundSize: "cover" }}
     >
       <section className="container mx-auto bg-white dark:bg-gray-800 grid grid-cols-12 py-12 rounded-lg relative">
