@@ -4,7 +4,7 @@ import image from "../../../assets/images/image-auth.png";
 export default function AuthLayout({ children }) {
   return (
     <main
-      className="min-h-screen flex md:flex-row"
+      className="min-h-screen max-w-[1440px] flex md:flex-row"
       style={{ backgroundImage: `url(${background})` }}
     >
       <section className="md:w-2/5 hidden md:flex flex-col justify-center items-center bg-[${background}] relative">

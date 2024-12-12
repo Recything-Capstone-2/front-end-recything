@@ -1,18 +1,47 @@
 import { DashboardAdminLayout } from "../../dashboard/index.js";
-import useAllDataReport from "../hooks/useAllDataReport.jsx";
-import usePagination from "../hooks/usePagination.jsx";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+import useStatusDataReport from "../hooks/useStatusDataReport.jsx";
 import { LuExternalLink } from "react-icons/lu";
 import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
+import { useState, useEffect } from "react";
+import { useFilter } from "../../dashboard/context/FilterContext.jsx";
+import Button from "../../../components/ui/Button.jsx";
+import StatusBadge from "../../../components/ui/StatusBadge.jsx";
 
-const DashboardAdminReportDone = () => {
-  const { reports, loading, error } = useAllDataReport();
+const DashboardAdminReportApprove = () => {
+  const status = "approved";
+  const { filter } = useFilter();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredReports = reports.filter(
-    (report) => report.status === "completed"
-  );
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const pageFromUrl = parseInt(queryParams.get("page")) || 1;
+    setCurrentPage(pageFromUrl);
+  }, [location.search]);
 
-  const { currentPage, totalPages, currentData, nextPage, prevPage } =
-    usePagination(filteredReports, 10);
+  const { reports, loading, error, totalPages, totalReport } =
+    useStatusDataReport(status, null, null, filter, "desc", currentPage, 10);
+
+  const statusMapping = {
+    process: "Diterima",
+    completed: "Diproses",
+    approved: "Selesai",
+    rejected: "Ditolak",
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      navigate(`?page=${currentPage + 1}`);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      navigate(`?page=${currentPage - 1}`);
+    }
+  };
 
   return (
     <div>
@@ -28,31 +57,25 @@ const DashboardAdminReportDone = () => {
             <table className="w-full table-fixed text-sm text-left text-black-neutral08 border-collapse rounded-lg">
               <thead className="text-sm text-black-neutral08 uppercase bg-primary-01 rounded-t-lg">
                 <tr>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 whitespace-nowrap w-12 rounded-tl-lg"
-                  >
-                    No
+                  <th scope="col" className="px-6 py-3 w-12 rounded-tl-lg">
+                    ID
                   </th>
                   <th scope="col" className="px-6 py-4 w-36">
                     Tanggal
                   </th>
-                  <th scope="col" className="px-6 py-4 w-52">
+                  <th scope="col" className="px-6 py-4 w-80">
                     Lokasi
                   </th>
-                  <th scope="col" className="px-6 py-4 w-60">
-                    Photo
-                  </th>
-                  <th scope="col" className="px-6 py-4 w-96">
-                    Deskripsi
+                  <th scope="col" className="px-6 py-4 w-32">
+                    Status
                   </th>
                   <th scope="col" className="px-6 py-4 w-32 rounded-tr-lg">
-                    Status
+                    Detail
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {currentData.map((report, index) => (
+                {reports.map((report, index) => (
                   <tr
                     key={report.id}
                     className="odd:bg-white even:bg-primary-01 rounded-lg"
@@ -61,7 +84,7 @@ const DashboardAdminReportDone = () => {
                       scope="row"
                       className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
                     >
-                      {(currentPage - 1) * 10 + index + 1}
+                      {report.id}
                     </th>
                     <td className="px-6 py-4">
                       {new Date(report.tanggal_laporan).toLocaleDateString(
@@ -86,27 +109,14 @@ const DashboardAdminReportDone = () => {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="size-52 overflow-hidden">
-                        <img
-                          src={
-                            report.photo ||
-                            "https://fakeimg.pl/600x400?text=Image"
-                          }
-                          alt="Report"
-                          className="w-full object-cover h-full"
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src =
-                              "https://fakeimg.pl/600x400?text=Image";
-                          }}
-                        />
-                      </div>
+                      <StatusBadge status={report.status} />
                     </td>
-                    <td className="px-6 py-4">{report.description}</td>
-                    <td className="px-6 py-4">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-lg bg-green-100 text-green-800">
-                        Selesai
-                      </span>
+                    <td className="px-4 py-4">
+                      <Link to={`/dashboard/report/all/${report.id}`}>
+                        <Button variant="primary" size="sm">
+                          Lihat Detail Laporan
+                        </Button>
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -122,11 +132,11 @@ const DashboardAdminReportDone = () => {
                 </span>{" "}
                 to{" "}
                 <span className="font-semibold text-gray-900">
-                  {Math.min(currentPage * 10, filteredReports.length)}
+                  {Math.min(currentPage * 10, totalReport)}
                 </span>{" "}
                 of{" "}
                 <span className="font-semibold text-gray-900">
-                  {filteredReports.length}
+                  {totalReport}
                 </span>{" "}
                 entries
               </span>
@@ -154,4 +164,4 @@ const DashboardAdminReportDone = () => {
   );
 };
 
-export default DashboardAdminReportDone;
+export default DashboardAdminReportApprove;

@@ -1,13 +1,36 @@
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { DashboardAdminLayout } from "../../dashboard/index.js";
 import useAllDataReport from "../hooks/useAllDataReport.jsx";
-import usePagination from "../hooks/usePagination.jsx";
 import { LuExternalLink } from "react-icons/lu";
 import LoadingSpinner from "../../../components/ui/LoadingSpinner.jsx";
+import { useFilter } from "../../dashboard/context/FilterContext.jsx";
+import Button from "../../../components/ui/Button.jsx";
+import StatusBadge from "../../../components/ui/StatusBadge.jsx";
+import DropdownStatus from "../../../components/ui/DropdownStatus.jsx";
 
 const DashboardAdminReportAll = () => {
-  const { reports, loading, error, updateReportStatus } = useAllDataReport();
-  const { currentPage, totalPages, currentData, nextPage, prevPage } =
-    usePagination(reports, 10);
+  const { filter } = useFilter();
+  const [currentPage, setCurrentPage] = useState(1);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const pageFromUrl = parseInt(queryParams.get("page")) || 1;
+    setCurrentPage(pageFromUrl);
+  }, [location.search]);
+
+  const {
+    reports,
+    loading,
+    error,
+    totalPages,
+    totalReport,
+    updateReportStatus,
+  } = useAllDataReport(null, null, filter, currentPage, 10);
+
+  console.log("Reports Data:", reports);
 
   const statusMapping = {
     process: "Diterima",
@@ -20,13 +43,25 @@ const DashboardAdminReportAll = () => {
     updateReportStatus(id, newStatus);
   };
 
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      navigate(`?page=${currentPage + 1}`);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      navigate(`?page=${currentPage - 1}`);
+    }
+  };
+
+  console.log("Rendering page:", currentPage, "Total pages:", totalPages);
+
   return (
     <div>
       <DashboardAdminLayout header="Semua Laporan">
         {loading ? (
-          <p>
-            <LoadingSpinner />
-          </p>
+          <LoadingSpinner />
         ) : error ? (
           <p className="text-red-500">{error}</p>
         ) : (
@@ -34,11 +69,8 @@ const DashboardAdminReportAll = () => {
             <table className="w-full table-fixed text-sm text-left text-black-neutral08 border-collapse rounded-lg">
               <thead className="text-sm text-black-neutral08 uppercase bg-primary-01 rounded-t-lg">
                 <tr>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 whitespace-nowrap w-12 rounded-tl-lg"
-                  >
-                    No
+                  <th scope="col" className="px-6 py-3 w-12 rounded-tl-lg">
+                    ID
                   </th>
                   <th scope="col" className="px-6 py-4 w-36">
                     Tanggal
@@ -46,32 +78,24 @@ const DashboardAdminReportAll = () => {
                   <th scope="col" className="px-6 py-4 w-52">
                     Lokasi
                   </th>
-                  <th scope="col" className="px-6 py-4 w-60">
-                    Photo
-                  </th>
-                  <th scope="col" className="px-6 py-4 w-96">
-                    Deskripsi
-                  </th>
                   <th scope="col" className="px-6 py-4 w-40">
-                    Action
+                    Aksi
+                  </th>
+                  <th scope="col" className="px-6 py-4 w-32">
+                    Status
                   </th>
                   <th scope="col" className="px-6 py-4 w-32 rounded-tr-lg">
-                    Status
+                    Detail
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {currentData.map((report, index) => (
+                {reports.map((report, index) => (
                   <tr
                     key={report.id}
                     className="odd:bg-white even:bg-primary-01 rounded-lg"
                   >
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                    >
-                      {(currentPage - 1) * 10 + index + 1}
-                    </th>
+                    <th className="px-6 py-4">{report.id}</th>
                     <td className="px-6 py-4">
                       {new Date(report.tanggal_laporan).toLocaleDateString(
                         "id-ID",
@@ -94,68 +118,28 @@ const DashboardAdminReportAll = () => {
                         <span className="flex-1">{report.location}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4">
-                      <div className="size-52 overflow-hidden">
-                        <img
-                          src={
-                            report.photo ||
-                            "https://fakeimg.pl/600x400?text=Image"
-                          }
-                          alt="Report"
-                          className="w-full object-cover h-full"
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src =
-                              "https://fakeimg.pl/600x400?text=Image";
-                          }}
-                        />
-                      </div>
-                    </td>
-                    <td className="px-6 py-4">{report.description}</td>
-                    <td className="px-6 py-4 space-y-3">
-                      {Object.entries(statusMapping).map(
-                        ([dbStatus, label]) => (
-                          <button
-                            key={dbStatus}
-                            className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-lg ${
-                              dbStatus === "process"
-                                ? "bg-slate-200 text-grey-800"
-                                : dbStatus === "completed"
-                                ? "bg-yellow-100 text-yellow-800"
-                                : dbStatus === "approved"
-                                ? "bg-green-100 text-green-800"
-                                : "bg-red-100 text-red-800"
-                            }`}
-                            onClick={() =>
-                              handleStatusChange(report.id, dbStatus)
-                            }
-                          >
-                            {label}
-                          </button>
-                        )
-                      )}
+                    <td className="py-4 space-y-3">
+                      <DropdownStatus
+                        statusMapping={statusMapping}
+                        reportId={report.id}
+                        handleStatusChange={handleStatusChange}
+                      />
                     </td>
                     <td className="px-6 py-4">
-                      <span
-                        className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-lg ${
-                          report.status === "process"
-                            ? "bg-slate-200 text-grey-800"
-                            : report.status === "completed"
-                            ? "bg-yellow-100 text-yellow-800"
-                            : report.status === "approved"
-                            ? "bg-green-100 text-green-800"
-                            : "bg-red-100 text-red-800"
-                        }`}
-                      >
-                        {statusMapping[report.status] || "Unknown"}
-                      </span>
+                      <StatusBadge status={report.status} />
+                    </td>
+                    <td className="px-4 py-4">
+                      <Link to={`/dashboard/report/all/${report.id}`}>
+                        <Button variant="primary" size="sm">
+                          Lihat Detail Laporan
+                        </Button>
+                      </Link>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-
-            {/* Pagination controls */}
+            {/* Pagination Controls */}
             <div className="flex flex-col mt-4">
               <span className="text-sm text-gray-700">
                 Showing{" "}
@@ -164,11 +148,11 @@ const DashboardAdminReportAll = () => {
                 </span>{" "}
                 to{" "}
                 <span className="font-semibold text-gray-900">
-                  {Math.min(currentPage * 10, reports.length)}
+                  {Math.min(currentPage * 10, totalReport)}
                 </span>{" "}
                 of{" "}
                 <span className="font-semibold text-gray-900">
-                  {reports.length}
+                  {totalReport}
                 </span>{" "}
                 entries
               </span>

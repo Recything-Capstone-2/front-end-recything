@@ -4,7 +4,7 @@ import FAQSection from "./FAQSection";
 const FAQChatbotAIPage = () => {
   return (
     <main>
-      <FAQSection />
+      <FAQSection clasname="max-w-[1440px]" />
     </main>
   );
 };

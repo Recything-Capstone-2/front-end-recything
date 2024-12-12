@@ -1,20 +1,23 @@
-import { useEffect, useState } from 'react';
-import ApexCharts from 'react-apexcharts';
-import FormSelect from '../../../components/ui/FormSelect.jsx';
+import { useEffect, useState } from "react";
+import ApexCharts from "react-apexcharts";
+import FormSelect from "../../../components/ui/FormSelect.jsx";
 
 const months = [
-  { value: '1', label: '1 Bulan' },
-  { value: '3', label: '3 Bulan' },
-  { value: '6', label: '6 Bulan' },
-  { value: '9', label: '9 Bulan' },
-  { value: '12', label: '12 Bulan' },
-]
+  { value: "1", label: "1 Bulan" },
+  { value: "3", label: "3 Bulan" },
+  { value: "6", label: "6 Bulan" },
+  { value: "9", label: "9 Bulan" },
+  { value: "12", label: "12 Bulan" },
+];
 
 const generateRandomData = (length, min, max) =>
-  Array.from({ length }, () => Math.floor(Math.random() * (max - min + 1)) + min);
+  Array.from(
+    { length },
+    () => Math.floor(Math.random() * (max - min + 1)) + min
+  );
 
 const LineChart = () => {
-  const [selectedMonth, setSelectedMonth] = useState('12');
+  const [selectedMonth, setSelectedMonth] = useState("12");
 
   const [seriesData, setSeriesData] = useState({
     user: generateRandomData(12, 50, 150),
@@ -52,8 +55,8 @@ const LineChart = () => {
       enabled: false,
     },
     stroke: {
-      width: 6,
-      curve: 'smooth',
+      width: 4,
+      curve: "smooth",
     },
     grid: {
       show: true,
@@ -68,24 +71,37 @@ const LineChart = () => {
       {
         name: "User",
         data: seriesData.user,
-        color: "#1A56DB",
+        color: "#45A135",
       },
       {
         name: "Laporan",
         data: seriesData.laporan,
-        color: "#7E3AF2",
+        color: "#FCCD2A",
       },
     ],
     legend: {
       show: false,
     },
     xaxis: {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      categories: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
       labels: {
         show: true,
         style: {
           fontFamily: "Inter, sans-serif",
-          cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400',
+          cssClass: "text-xs font-normal fill-gray-500 dark:fill-gray-400",
         },
       },
       axisBorder: {
@@ -96,7 +112,8 @@ const LineChart = () => {
       },
     },
     yaxis: {
-      show: false,
+      show: true,
+      tickAmount: 4,
     },
   };
 
@@ -106,26 +123,36 @@ const LineChart = () => {
   };
 
   return (
-    <div className="max-w-full bg-white rounded-lg shadow md:p-6 p-4">
+    <div className="max-w-[1440px] bg-white rounded-lg shadow md:p-6 p-4">
       {/* Chart Header: Title and Dropdown */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-gray-800">Data Laporan</h2>
-        <FormSelect id={"month"} value={selectedMonth} onChange={handleMonthChange} options={months} />
+        <FormSelect
+          id={"month"}
+          value={selectedMonth}
+          onChange={handleMonthChange}
+          options={months}
+        />
       </div>
 
       {/* Chart */}
       <div id="line-chart">
-        <ApexCharts options={options} series={options.series} type="line" height="350" />
+        <ApexCharts
+          options={options}
+          series={options.series}
+          type="line"
+          height="200"
+        />
       </div>
 
       {/* Chart Footer */}
       <div className="mt-4 flex text-sm font-bold gap-x-3">
-        <div className='flex items-center gap-x-2'>
-          <span className='p-2 rounded-full bg-[#1A56DB]'></span>
+        <div className="flex items-center gap-x-2">
+          <span className="p-2 rounded-full bg-[#45A135]"></span>
           <p>Jumlah User</p>
         </div>
-        <div className='flex items-center gap-x-2'>
-          <span className='p-2 rounded-full bg-[#7E3AF2]'></span>
+        <div className="flex items-center gap-x-2">
+          <span className="p-2 rounded-full bg-[#FCCD2A]"></span>
           <p>Jumlah Laporan</p>
         </div>
       </div>

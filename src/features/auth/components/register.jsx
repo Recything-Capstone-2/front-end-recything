@@ -31,7 +31,7 @@ export default function Register() {
   };
 
   return (
-    <main>
+    <main className="max-w-[1440px]">
       <AuthLayout>
         <div>
           <div className="text-center space-y-2">

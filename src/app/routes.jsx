@@ -19,6 +19,10 @@ import DashboardAdminReportAll from "../features/admin-dashboard-report/componen
 import ProfileEdit from "../features/profile/components/form.edit,profile.jsx";
 import AboutUsPage from "../features/about-us/components/index.jsx";
 import AdminDataUsersPage from "../features/admin-data-users/components/index.jsx";
+import DetailReport from "../features/admin-dashboard-report/components/DetailReport.jsx";
+import { FilterProvider } from "../features/dashboard/context/FilterContext.jsx";
+import AdminManageCoins from "../features/admin-manage-coins/components/index.jsx";
+import DetailUser from "../features/admin-data-users/components/DetailUser.jsx";
 
 export default function AppRoutes() {
   return (
@@ -70,7 +74,9 @@ export default function AppRoutes() {
             path="/dashboard-admin"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DashboardAdmin />
+                <FilterProvider>
+                  <DashboardAdmin />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -78,7 +84,9 @@ export default function AppRoutes() {
             path="/dashboard/report/all"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DashboardAdminReportAll />
+                <FilterProvider>
+                  <DashboardAdminReportAll />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -86,7 +94,9 @@ export default function AppRoutes() {
             path="/dashboard/report/process"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DashboardAdminReportProcess />
+                <FilterProvider>
+                  <DashboardAdminReportProcess />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -94,7 +104,9 @@ export default function AppRoutes() {
             path="/dashboard/report/approve"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DashboardAdminReportApprove />
+                <FilterProvider>
+                  <DashboardAdminReportApprove />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -102,7 +114,9 @@ export default function AppRoutes() {
             path="/dashboard/report/done"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DashboardAdminReportDone />
+                <FilterProvider>
+                  <DashboardAdminReportDone />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -110,7 +124,9 @@ export default function AppRoutes() {
             path="/dashboard/report/reject"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <DashboardAdminReportReject />
+                <FilterProvider>
+                  <DashboardAdminReportReject />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
@@ -142,11 +158,43 @@ export default function AppRoutes() {
             path="/dashboard/user"
             element={
               <PrivateRoute allowedRoles={["admin"]}>
-                <AdminDataUsersPage />
+                <FilterProvider>
+                  <AdminDataUsersPage />
+                </FilterProvider>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="dashboard/coin"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <FilterProvider>
+                  <AdminManageCoins />
+                </FilterProvider>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="dashboard/user/:id"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <FilterProvider>
+                  <DetailUser />
+                </FilterProvider>
               </PrivateRoute>
             }
           />
         </Route>
+        <Route
+          path="/dashboard/report/all/:id"
+          element={
+            <PrivateRoute allowedRoles={["admin"]}>
+              <FilterProvider>
+                <DetailReport />
+              </FilterProvider>
+            </PrivateRoute>
+          }
+        />
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

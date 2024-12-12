@@ -41,7 +41,7 @@ export default function ReportRubbish() {
   } = useReportRubbish(address, position);
 
   return (
-    <main className="bg-slate-50 dark:bg-gray-800 font-inter">
+    <main className="bg-slate-50 dark:bg-gray-800 font-inter max-w-[1440px]">
       {success ? (
         <SuccessReport />
       ) : (
