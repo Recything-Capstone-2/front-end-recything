@@ -31,6 +31,9 @@ export default function ReportRubbish() {
                   <th scope="col" className="px-6 py-3">
                     Lokasi
                   </th>
+                  <th scope="col" className="px-6 py-3">
+                    Gambar
+                  </th>
                   <th scope="col" className="px-6 py-3 w-40">
                     Jenis Laporan
                   </th>
@@ -65,6 +68,9 @@ export default function ReportRubbish() {
                         {formatDate(report.tanggal_laporan)}
                       </td>
                       <td className="px-6 py-4">{report.location}</td>
+                      <td className="px-6 py-4">
+                        <img src={report.photo} alt="" />
+                      </td>
                       <td className="px-6 py-4">
                         {report.category === "report_rubbish"
                           ? "Report Rubbish"

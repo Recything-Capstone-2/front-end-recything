@@ -15,9 +15,9 @@ const DashboardAdmin = () => {
   return (
     <div>
       <DashboardAdminLayout>
-        <div className="px-4 md:px-24 py-10 bg-green-50">
-          <div className="grid grid-cols-12 bg-white shadow-md gap-4 px-4 py-5 rounded-lg">
-            <div className="col-span-12 space-y-3">
+        <div className="px-4 md:px-24 py-10 bg-neutral-50">
+          <div className="grid grid-cols-12 gap-4 rounded-lg">
+            <div className="col-span-12 space-y-3 bg-white rounded-3xl shadow-lg py-5 px-5">
               <h1 className="text-2xl font-bold">Laporan Terbaru</h1>
               {/* <p className="text-base font-normal">Admin hebat bergerak cepat! <span className="text-primary-05">18 laporan baru</span> sudah siap untuk ditindaklanjuti.</p> */}
               <p className="text-base font-normal">
@@ -71,12 +71,12 @@ const DashboardAdmin = () => {
                           <td className="px-4 py-4">
                             <StatusBadge status={report.status} />
                           </td>
-                          <td className="px-4 py-4 leading-light font-normal text-neutral-800">
+                          <td className="px-4 py-4 leading-light font-normal text-primary-05">
                             <Link
                               to={`/dashboard/report/all`}
                               className="underline whitespace-nowrap"
                             >
-                              Lihat Detail
+                              Tanggapi
                             </Link>
                           </td>
                         </tr>
@@ -87,35 +87,35 @@ const DashboardAdmin = () => {
               </div>
             </div>
 
-            <div className="col-span-12 md:col-span-6">
+            <div className="col-span-12 md:col-span-6 rounded-3xl bg-white shadow-lg">
               <LineChart />
             </div>
-            <div className="col-span-12 md:col-span-6 flex flex-col p-6 md:gap-y-0 gap-y-4">
+            <div className="col-span-12 md:col-span-6 flex flex-col md:gap-y-4 gap-y-3 md:gap-0">
               <div className="md:h-1/2 flex justify-center items-center">
-                <div className="flex items-center gap-4 rounded-3xl h-fit p-4 md:p-8 bg-blue-600 text-white shadow-lg w-full">
+                <div className="flex items-center gap-4 rounded-3xl h-full p-4 md:p-8 bg-white shadow-lg w-full">
                   <div>
                     <MdPeopleAlt size={70} />
                   </div>
                   <div>
                     <h1 className="text-base md:text-2xl font-bold">
-                      Total User
+                      Jumlah Pengguna
                     </h1>
-                    <h1 className="text-base md:text-2xl font-bold">
+                    <h1 className="text-base md:text-2xl font-bold text-primary-05">
                       {isLoading ? "Loading..." : userCount}
                     </h1>
                   </div>
                 </div>
               </div>
               <div className="md:h-1/2 flex justify-center items-center">
-                <div className="flex items-center gap-4 rounded-3xl bg-violet-500 text-white h-fit p-4 md:p-8 w-full">
+                <div className="flex items-center gap-4 rounded-3xl shadow-lg p-4 md:p-8 w-full h-full">
                   <div>
                     <IoNewspaperOutline size={70} />
                   </div>
                   <div>
                     <h1 className="text-base md:text-2xl font-bold">
-                      Total Laporan
+                      Jumlah Laporan
                     </h1>
-                    <h1 className="text-base md:text-2xl font-bold">
+                    <h1 className="text-base md:text-2xl font-bold text-primary-05">
                       {isLoading ? "Loading..." : reportCount}
                     </h1>
                   </div>
