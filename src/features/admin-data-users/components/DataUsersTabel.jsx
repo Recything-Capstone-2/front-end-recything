@@ -10,9 +10,9 @@ const DataUsersTabel = () => {
   const { users, loading, error, pagination } = useFetchUsers(page);
 
   const handlePrev = () => {
-    if (page > 1) { 
-      setPage((prevPage) => prevPage - 1)
-    };
+    if (page > 1) {
+      setPage((prevPage) => prevPage - 1);
+    }
   };
 
   const handleNext = () => {

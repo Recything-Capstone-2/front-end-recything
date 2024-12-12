@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import instance from "../../../utils/instance";
 
-const useAllDataReport = (
+const useStatusDataReport = (
+  status = "",
   startDate = "",
   endDate = "",
   sortOrder = "desc",
@@ -15,11 +16,12 @@ const useAllDataReport = (
   const [totalReport, setTotalReport] = useState(0);
 
   useEffect(() => {
-    const fetchAllDataReport = async () => {
+    const fetchStatusDataReport = async () => {
       setLoading(true);
       try {
         const response = await instance.get("/admin/report-rubbish", {
           params: {
+            status,
             sort: sortOrder,
             start_date: startDate,
             end_date: endDate,
@@ -28,7 +30,7 @@ const useAllDataReport = (
           },
         });
 
-        console.log("Response Data:", response.data); // Debugging
+        console.log("Response Data:", response.data);
 
         if (
           response.data?.meta?.code === 200 &&
@@ -50,28 +52,8 @@ const useAllDataReport = (
       }
     };
 
-    fetchAllDataReport();
-  }, [startDate, endDate, sortOrder, page, perPage]);
-
-  const updateReportStatus = async (id, newStatus) => {
-    try {
-      const response = await instance.put(`/report-rubbish/${id}/status`, {
-        status: newStatus,
-      });
-
-      if (response.status === 200) {
-        setReports((prevReports) =>
-          prevReports.map((report) =>
-            report.id === id ? { ...report, status: newStatus } : report
-          )
-        );
-      } else {
-        console.error("Failed to update status:", response.data.message);
-      }
-    } catch (error) {
-      console.error("Error updating status:", error);
-    }
-  };
+    fetchStatusDataReport();
+  }, [status, startDate, endDate, sortOrder, page, perPage]);
 
   return {
     reports,
@@ -79,8 +61,7 @@ const useAllDataReport = (
     error,
     totalPages,
     totalReport,
-    updateReportStatus,
   };
 };
 
-export default useAllDataReport;
+export default useStatusDataReport;
