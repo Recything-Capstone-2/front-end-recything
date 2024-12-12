@@ -1,4 +1,3 @@
-import React from "react";
 import { DashboardAdminLayout } from "../../dashboard";
 import DataUsersTabel from "./DataUsersTabel";
 
