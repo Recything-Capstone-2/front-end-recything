@@ -34,12 +34,8 @@ const DataUsersTabel = () => {
               <thead>
                 <tr className="bg-primary-01 border text-left text-sm">
                   <th className="px-4 py-4 rounded-tl-lg w-12">ID</th>
-                  <th className="px-4 py-4 whitespace-nowrap w-32">
-                    NAMA LENGKAP
-                  </th>
-                  <th className="px-4 py-4 whitespace-nowrap w-36">
-                    TANGGAL LAHIR
-                  </th>
+                  <th className="px-4 py-4 whitespace-nowrap w-32">NAMA LENGKAP</th>
+                  <th className="px-4 py-4 whitespace-nowrap w-36">TANGGAL LAHIR</th>
                   <th className="px-4 py-4 w-32">NO. TELEPON</th>
                   <th className="px-4 py-4 w-48">EMAIL</th>
                   <th className="px-4 py-4 w-44">Detail</th>
@@ -57,9 +53,7 @@ const DataUsersTabel = () => {
                   >
                     <td className="px-4 py-4">{user.id_user}</td>
                     <td className="px-4 py-4">{user.nama_lengkap}</td>
-                    <td className="px-4 py-4">
-                      {formatDate(user.tanggal_lahir)}
-                    </td>
+                    <td className="px-4 py-4">{formatDate(user.tanggal_lahir)}</td>
                     <td className="px-4 py-4">{user.no_telepon}</td>
                     <td className="px-4 py-4 break-words">{user.email}</td>
                     <td className="px-4 py-4">

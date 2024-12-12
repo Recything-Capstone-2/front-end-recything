@@ -21,6 +21,8 @@ import AboutUsPage from "../features/about-us/components/index.jsx";
 import AdminDataUsersPage from "../features/admin-data-users/components/index.jsx";
 import DetailReport from "../features/admin-dashboard-report/components/DetailReport.jsx";
 import { FilterProvider } from "../features/dashboard/context/FilterContext.jsx";
+import AdminManageCoins from "../features/admin-manage-coins/components/index.jsx";
+import DetailUser from "../features/admin-data-users/components/DetailUser.jsx";
 
 export default function AppRoutes() {
   return (
@@ -159,6 +161,22 @@ export default function AppRoutes() {
                 <FilterProvider>
                   <AdminDataUsersPage />
                 </FilterProvider>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="dashboard/coin"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <AdminManageCoins />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="dashboard/user/:id"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <DetailUser />
               </PrivateRoute>
             }
           />
