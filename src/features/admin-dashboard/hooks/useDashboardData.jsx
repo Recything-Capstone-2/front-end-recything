@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import instance from "../../../utils/instance.js";
+import { data } from "react-router-dom";
 
 const useDashboardData = () => {
   const [latestReport, setLatestReport] = useState([]);
@@ -38,8 +39,7 @@ const useDashboardData = () => {
   const getUserCount = async () => {
     try {
       const response = await instance.get("/admin/users");
-      const dataUser = response.data.data;
-      const total = dataUser?.length;
+      const total = response?.data?.data?.data?.pagination?.total_users || 0;
       if(!total) {
         setUserCount(0);
         return;
