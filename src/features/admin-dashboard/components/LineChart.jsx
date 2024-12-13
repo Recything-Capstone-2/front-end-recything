@@ -1,36 +1,9 @@
-import { useEffect, useState } from "react";
 import ApexCharts from "react-apexcharts";
 import FormSelect from "../../../components/ui/FormSelect.jsx";
-
-const months = [
-  { value: "1", label: "1 Bulan" },
-  { value: "3", label: "3 Bulan" },
-  { value: "6", label: "6 Bulan" },
-  { value: "9", label: "9 Bulan" },
-  { value: "12", label: "12 Bulan" },
-];
-
-const generateRandomData = (length, min, max) =>
-  Array.from(
-    { length },
-    () => Math.floor(Math.random() * (max - min + 1)) + min
-  );
+import useStatistics from "../hooks/useStatistics.jsx";
 
 const LineChart = () => {
-  const [selectedMonth, setSelectedMonth] = useState("12");
-
-  const [seriesData, setSeriesData] = useState({
-    user: generateRandomData(12, 50, 150),
-    laporan: generateRandomData(12, 60, 160),
-  });
-
-  useEffect(() => {
-    const monthsCount = parseInt(selectedMonth, 10);
-    setSeriesData({
-      user: generateRandomData(monthsCount, 50, 150),
-      laporan: generateRandomData(monthsCount, 60, 160),
-    });
-  }, [selectedMonth]);
+  const { months, selectedMonth, dataUsers, dataReports, handleMonthChange } = useStatistics();
 
   const options = {
     chart: {
@@ -70,12 +43,12 @@ const LineChart = () => {
     series: [
       {
         name: "User",
-        data: seriesData.user,
+        data: dataUsers,
         color: "#45A135",
       },
       {
         name: "Laporan",
-        data: seriesData.laporan,
+        data: dataReports,
         color: "#FCCD2A",
       },
     ],
@@ -115,11 +88,6 @@ const LineChart = () => {
       show: true,
       tickAmount: 4,
     },
-  };
-
-  // Handle month change
-  const handleMonthChange = (e) => {
-    setSelectedMonth(e.target.value);
   };
 
   return (
