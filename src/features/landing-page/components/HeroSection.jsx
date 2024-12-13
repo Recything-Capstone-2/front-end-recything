@@ -1,5 +1,6 @@
 import React from "react";
 import imghero from "../../../assets/images/image-hero.png";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -25,7 +26,7 @@ const HeroSection = () => {
         </p>
         <div className="flex justify-center md:justify-start">
           <button className="bg-primary-05 hover:bg-green-800 text-white font-semibold py-3 px-6 rounded-md w-fit">
-            Mulai Sekarang!
+            <Link to="/login">Mulai Sekarang</Link>
           </button>
         </div>
       </div>
