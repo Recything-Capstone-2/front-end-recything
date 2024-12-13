@@ -11,6 +11,14 @@ const OtherArticlesSection = () => {
     return new Date(dateString).toLocaleDateString('id-ID', options);
   };
 
+  const truncateContent = (content, wordLimit) => {
+    const words = content.split(' ');
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(' ') + '...';
+    }
+    return content;
+  };
+
   useEffect(() => {
     const fetchArticles = async () => {
       try {
@@ -55,7 +63,9 @@ const OtherArticlesSection = () => {
                 {formatDate(article.created_at)}
               </p>
               <h3 className="text-xl font-bold mt-2">{article.judul}</h3>
-              <p className="text-gray-700 mt-2">{article.konten}</p>
+              <p className="text-gray-700 mt-2">
+                {truncateContent(article.konten, 20)}
+              </p>
             </div>
           </div>
         ))}
