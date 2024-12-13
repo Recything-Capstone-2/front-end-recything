@@ -24,25 +24,26 @@ export default function DetailReport() {
           <p className="text-red-500">{error}</p>
         ) : report ? (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-12 pl-7 py-12 rounded-lg border bg-white border-slate-200 shadow-lg items-center mb-6">
-              {/* Elemen H1 di bagian atas */}
+            <div className="grid grid-cols-1 md:grid-cols-12 pl-7 py-12 rounded-lg border bg-white border-slate-200 shadow-lg items-start mb-6">
               <div className="col-span-12 pb-5">
-                <h1 className="text-2xl font-extrabold font-inter mb-5">
+                <h1 className="text-2xl text-center md:text-left font-extrabold font-inter mb-5">
                   Pelapor
                 </h1>
               </div>
-              <div className="col-span-1 md:col-span-2 flex">
+              <div className="col-span-12 md:col-span-2 flex justify-center md:justify-start mb-4 md:mb-0">
                 <img
                   src={report.user.photo || defaultImageUrl}
                   alt=""
-                  className="object-cover w-28 h-28 rounded-full mb-4 md:mb-0"
+                  className="object-cover w-28 h-28 rounded-full"
                 />
               </div>
-              <div className="col-span-1 md:col-span-10 h-full">
-                <h1 className="text-2xl font-bold mb-4">
+              <div className="col-span-12 md:col-span-10">
+                {/* Nama Lengkap */}
+                <h1 className="text-2xl font-bold text-center md:text-left mb-4 md:mb-6">
                   {report.user.nama_lengkap}
                 </h1>
-                <div className="grid grid-cols-1 md:grid-cols-3 md:gap-x-3 space-y-4 md:space-y-0">
+                {/* Detail Laporan */}
+                <div className="grid grid-cols-1 md:grid-cols-3 md:gap-x-3 space-y-4 md:space-y-0 w-full">
                   <div className="col-span-1">
                     <p className="text-sm font-semibold mb-2">Email</p>
                     <p className="text-sm font-normal text-slate-500 break-words">
@@ -64,6 +65,7 @@ export default function DetailReport() {
                 </div>
               </div>
             </div>
+
             <HistoryReports report={report} />
           </>
         ) : (

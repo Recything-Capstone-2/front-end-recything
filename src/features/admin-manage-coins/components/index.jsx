@@ -12,11 +12,19 @@ const options = [
 ];
 
 export default function AdminManageCoins() {
-  const { points, userCoins, loading, loadingAccept, error, handleCoinsChange, handleAcceptCoins } = useAdminPoints();
+  const {
+    points,
+    userCoins,
+    loading,
+    loadingAccept,
+    error,
+    handleCoinsChange,
+    handleAcceptCoins,
+  } = useAdminPoints();
   console.log(points);
 
   return (
-    <DashboardAdminLayout>
+    <DashboardAdminLayout header="Reward Pengguna">
       <div className="relative max-w-[1440px] overflow-x-auto rounded-lg py-10 px-24 bg-green-50">
         {loading ? (
           <p>
