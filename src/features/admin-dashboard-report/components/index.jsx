@@ -72,7 +72,7 @@ const DashboardAdminReportAll = () => {
                   <th scope="col" className="px-6 py-3 w-12 rounded-tl-lg">
                     ID
                   </th>
-                  <th scope="col" className="px-6 py-4 w-36">
+                  <th scope="col" className="px-6 py-4 w-40">
                     Tanggal
                   </th>
                   <th scope="col" className="px-6 py-4 w-52">
@@ -84,7 +84,7 @@ const DashboardAdminReportAll = () => {
                   <th scope="col" className="px-6 py-4 w-32">
                     Status
                   </th>
-                  <th scope="col" className="px-6 py-4 w-32 rounded-tr-lg">
+                  <th scope="col" className="px-6 py-4 w-48 rounded-tr-lg">
                     Detail
                   </th>
                 </tr>
