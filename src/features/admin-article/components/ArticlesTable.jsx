@@ -27,7 +27,7 @@ const ArticlesTable = () => {
     fetchArticles();
   }, []);
 
-  // Function to truncate content to 10 words
+  // Function to truncate content to 17 words
   const truncateContent = (content) => {
     const words = content.split(' ');
     if (words.length > 10) {

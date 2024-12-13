@@ -21,6 +21,7 @@ import AboutUsPage from "../features/about-us/components/index.jsx";
 import AdminDataUsersPage from "../features/admin-data-users/components/index.jsx";
 import Education from "../features/education/components/index.jsx";
 import AdminArticlesPage from "../features/admin-article/components/index.jsx";
+import ArticleDetail from "../features/education/components/ArticleDetail.jsx";
 
 export default function AppRoutes() {
   return (
@@ -41,6 +42,14 @@ export default function AppRoutes() {
             element={
               <PrivateRoute allowedRoles={["user"]}>
                 <Education />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/articles/:id"
+            element={
+              <PrivateRoute allowedRoles={["user"]}>
+                <ArticleDetail />
               </PrivateRoute>
             }
           />

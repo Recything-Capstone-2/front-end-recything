@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import instance from '../../../utils/instance';
 
 const PopularArticle = () => {
@@ -46,7 +47,7 @@ const PopularArticle = () => {
         {/* Artikel Utama */}
         <div className="col-span-2">
           {articles.length > 0 && (
-            <div className="bg-white rounded-lg overflow-hidden">
+            <Link to={`/articles/${articles[0].id}`} className="block bg-white rounded-lg overflow-hidden">
               <img
                 src={articles[0].link_foto}
                 alt={articles[0].judul}
@@ -59,14 +60,15 @@ const PopularArticle = () => {
                 <h3 className="text-xl font-bold mt-2">{articles[0].judul}</h3>
                 <p className="text-gray-700 mt-2">{articles[0].konten}</p>
               </div>
-            </div>
+            </Link>
           )}
         </div>
 
         {/* Artikel Samping */}
         <div className="flex flex-col space-y-4">
           {articles.slice(1).map((article) => (
-            <div
+            <Link
+              to={`/articles/${article.id}`}
               key={article.id}
               className="flex items-start space-x-4 bg-white rounded-lg overflow-hidden"
             >
@@ -81,7 +83,7 @@ const PopularArticle = () => {
                 </p>
                 <h4 className="text-lg font-semibold">{article.judul}</h4>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
