@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import instance from '../../../utils/instance';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import instance from "../../../utils/instance";
 
 const PopularArticle = () => {
   const [articles, setArticles] = useState([]);
@@ -8,19 +8,19 @@ const PopularArticle = () => {
   const [error, setError] = useState(null);
 
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('id-ID', options);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString("id-ID", options);
   };
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await instance.get('/articles');
+        const response = await instance.get("/articles");
         setArticles(response.data.data.items); // Pastikan mengambil `items`
         setLoading(false);
       } catch (err) {
         console.error(err);
-        setError('Terjadi kesalahan saat memuat artikel. Silakan coba lagi.');
+        setError("Terjadi kesalahan saat memuat artikel. Silakan coba lagi.");
         setLoading(false);
       }
     };
@@ -41,13 +41,16 @@ const PopularArticle = () => {
   }
 
   return (
-    <section className="p-6">
+    <section className="pt-16 pb-6 px-6 md:px-24">
       <h2 className="text-2xl font-bold mb-6">Artikel Populer</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Artikel Utama */}
         <div className="col-span-2">
           {articles.length > 0 && (
-            <Link to={`/articles/${articles[0].id}`} className="block bg-white rounded-lg overflow-hidden">
+            <Link
+              to={`/articles/${articles[0].id}`}
+              className="block bg-white rounded-lg overflow-hidden"
+            >
               <img
                 src={articles[0].link_foto}
                 alt={articles[0].judul}

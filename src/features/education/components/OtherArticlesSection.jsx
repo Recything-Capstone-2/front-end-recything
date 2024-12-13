@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import instance from '../../../utils/instance';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import instance from "../../../utils/instance";
 
 const OtherArticlesSection = () => {
   const [articles, setArticles] = useState([]);
@@ -8,14 +8,14 @@ const OtherArticlesSection = () => {
   const [error, setError] = useState(null);
 
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('id-ID', options);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString("id-ID", options);
   };
 
   const truncateContent = (content, wordLimit) => {
-    const words = content.split(' ');
+    const words = content.split(" ");
     if (words.length > wordLimit) {
-      return words.slice(0, wordLimit).join(' ') + '...';
+      return words.slice(0, wordLimit).join(" ") + "...";
     }
     return content;
   };
@@ -23,12 +23,12 @@ const OtherArticlesSection = () => {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await instance.get('/articles');
+        const response = await instance.get("/articles");
         setArticles(response.data.data.items); // Pastikan mengambil `items`
         setLoading(false);
       } catch (err) {
         console.error(err);
-        setError('Terjadi kesalahan saat memuat artikel. Silakan coba lagi.');
+        setError("Terjadi kesalahan saat memuat artikel. Silakan coba lagi.");
         setLoading(false);
       }
     };
@@ -49,8 +49,8 @@ const OtherArticlesSection = () => {
   }
 
   return (
-    <section className="p-6">
-      <h2 className="text-2xl font-bold mb-6">Artikel Lainnya</h2>
+    <section className="pt-16 pb-6 px-6 md:px-24">
+      <h2 className="text-2xl font-bold mb-10">Artikel Lainnya</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article) => (
           <Link
