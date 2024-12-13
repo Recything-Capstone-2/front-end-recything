@@ -74,7 +74,7 @@ const ArticlesTable = () => {
   }
 
   return (
-    <div className="p-16 px-80 bg-green-50 min-h-screen">
+    <div className="p-4 sm:p-8 lg:p-16 bg-green-50 min-h-screen max-w-7xl mx-auto">
       <div className="flex justify-between items-center mb-6 gap-6">
         <h1 className="text-2xl font-bold"></h1>
         <button
@@ -101,12 +101,14 @@ const ArticlesTable = () => {
       )}
 
       {/* Articles Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {articles.map((article) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        {articles.map((article, index) => (
           <div
             key={article.id}
-            className="bg-white rounded-lg shadow overflow-hidden flex flex-col cursor-pointer"
-            style={{ width: '487px', height: '354px' }}
+            className={`bg-white rounded-lg shadow overflow-hidden flex flex-col cursor-pointer ${
+              index % 2 === 0 ? 'col-span-1' : 'col-span-1'
+            }`}
+            style={{ height: '354px' }}
             onClick={() => handleArticleClick(article)}  // Click to view details
           >
             <img

@@ -24,7 +24,7 @@ const ArticleDetailModal = ({ article, onClose, onEdit, onDelete }) => {
       alert('Artikel berhasil dihapus.');
 
       // Refresh halaman setelah artikel dihapus
-      window.location.reload(); 
+      window.location.reload();
     } catch (error) {
       console.error('Error menghapus artikel:', error);
       alert('Terjadi kesalahan saat menghapus artikel.');
@@ -36,7 +36,7 @@ const ArticleDetailModal = ({ article, onClose, onEdit, onDelete }) => {
   return (
     <div>
       <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-        <div className="bg-white p-8 rounded-lg w-full md:w-1/2">
+        <div className="bg-white p-8 rounded-lg max-w-7xl w-full md:w-1/2 lg:w-1/2 xl:w-1/2">
           {/* Header Section with Title and Close Button */}
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-xl font-bold">{article.judul}</h2>
@@ -62,13 +62,13 @@ const ArticleDetailModal = ({ article, onClose, onEdit, onDelete }) => {
           <div className="flex justify-between">
             <button
               onClick={() => setEditModalOpen(true)} // Membuka modal edit
-              className="px-4 py-2 border border-1 border-blue-500 text-blue-500 rounded-md "
+              className="px-4 py-2 border border-1 border-blue-500 text-blue-500 rounded-md"
             >
               Edit
             </button>
             <button
               onClick={() => handleDelete(article.id)} // Memanggil fungsi handleDelete saat tombol Hapus ditekan
-              className="px-4 py-2 border border-1 border-red-500 text-red-500 rounded-md "
+              className="px-4 py-2 border border-1 border-red-500 text-red-500 rounded-md"
             >
               Hapus
             </button>
