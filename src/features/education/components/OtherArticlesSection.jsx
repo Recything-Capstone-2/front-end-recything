@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import instance from '../../../utils/instance';
 
 const OtherArticlesSection = () => {
@@ -52,7 +53,11 @@ const OtherArticlesSection = () => {
       <h2 className="text-2xl font-bold mb-6">Artikel Lainnya</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {articles.map((article) => (
-          <div key={article.id} className="bg-white rounded-lg overflow-hidden">
+          <Link
+            to={`/articles/${article.id}`} // Menambahkan tautan ke halaman detail artikel
+            key={article.id}
+            className="block bg-white rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          >
             <img
               src={article.link_foto}
               alt={article.judul}
@@ -67,7 +72,7 @@ const OtherArticlesSection = () => {
                 {truncateContent(article.konten, 20)}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
