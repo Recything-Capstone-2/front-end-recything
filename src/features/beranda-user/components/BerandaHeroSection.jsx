@@ -15,6 +15,19 @@ const BerandaHeroSection = () => {
     navigate("/report");
   };
 
+  const handleTukarClick = () => {
+    const userName = currentUser?.nama_lengkap || "User";
+    const userEmail = currentUser?.email || "Email tidak tersedia";
+
+    const message = `Halo, saya ${userName}. Saya ingin menukar poin saya. Email saya: ${userEmail}.`;
+
+    const encodedMessage = encodeURIComponent(message);
+
+    const whatsappURL = `https://wa.me/6285357549320?text=${encodedMessage}`;
+
+    window.open(whatsappURL, "_blank");
+  };
+
   return (
     <div className="flex flex-col lg:flex-row bg-green-50 dark:bg-gray-800 pt-8 lg:pt-16 pb-8 px-6 lg:px-24 rounded-lg gap-4 lg:items-end">
       <div className="flex flex-col bg-green-50 dark:bg-gray-800 px-0 md:px-6 rounded-lg space-y-4 basis-full lg:basis-5/12">
@@ -58,7 +71,10 @@ const BerandaHeroSection = () => {
                     userPoints
                   )}
                 </span>
-                <button className="mt-5 text-sm text-green-600 hover:text-green-800 text-right">
+                <button
+                  className="mt-5 text-sm text-green-600 hover:text-green-800 text-right"
+                  onClick={handleTukarClick}
+                >
                   Tukar Poin &gt;
                 </button>
               </div>
