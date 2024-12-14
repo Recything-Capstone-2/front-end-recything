@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../assets/logo/logo-greenly.png";
+import logoDarkmode from "../../assets/logo/logo-darkmode-main.png";
 import { FaBell } from "react-icons/fa";
 import { MdOutlineWbSunny, MdNightlightRound } from "react-icons/md";
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -70,7 +71,11 @@ const Header = () => {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 relative">
         {/* Logo Section */}
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src={logo} alt="Greenly Logo" className="" />
+          <img
+            src={isDarkMode ? logoDarkmode : logo}
+            alt="Greenly Logo"
+            className="h-8 md:h-10"
+          />
         </a>
 
         {/* User Menu & Mobile Menu Button */}
@@ -227,7 +232,7 @@ const Header = () => {
                 <li key={index}>
                   <a
                     href={item.path}
-                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-05 md:p-0 dark:text-white"
+                    className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-05 md:p-0 dark:text-primary-05"
                   >
                     {item.name}
                   </a>
@@ -268,7 +273,7 @@ const MenuActive = ({ label, href }) => {
         `block py-2 pl-3 pr-4 text-gray-900 dark:text-white rounded hover:bg-gray-100 dark:hover:bg-gray-700 dark:bg-gray-700 md:hover:bg-transparent md:border-0 md:p-0 ${
           isActive
             ? "md:text-primary-05 md:bg-transparent bg-primary-05 dark:text-primary-05 text-white dark:bg-gray-700"
-            : "md:hover:text-primary-05 dark:text-white"
+            : "md:hover:text-primary-05 dark:text-primary-05"
         }`
       }
     >

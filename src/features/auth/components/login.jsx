@@ -3,6 +3,7 @@ import Button from "../../../components/ui/Button.jsx";
 import FormInput from "../../../components/ui/FormInput.jsx";
 import AuthLayout from "./auth.layout.jsx";
 import imglogo from "../../../assets/logo/logo-greenly.png";
+import logoDarkmodeSmall from "../../../assets/logo/logo-darkmode-small.png";
 import { FaLock } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import useLogin from "../hooks/useLogin.jsx";
@@ -22,7 +23,19 @@ export default function Login() {
       <AuthLayout>
         <div>
           <div className="text-center space-y-6">
-            <img src={imglogo} alt="Greenly Logo" className="mx-auto" />
+            <div className="flex justify-center">
+              <img
+                src={imglogo}
+                alt="Greenly Logo"
+                className="mx-auto block dark:hidden"
+              />
+              <img
+                src={logoDarkmodeSmall}
+                alt="Greenly Logo Dark"
+                className="mx-auto hidden dark:block"
+              />
+            </div>
+
             <h1 className="text-4xl font-bold dark:text-white">Masuk Akun</h1>
             <p className="text-base font-normal dark:text-white">
               Selamat datang kembali! Kelola daur ulang Anda dengan mudah.

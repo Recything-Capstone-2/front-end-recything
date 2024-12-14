@@ -3,6 +3,7 @@ import AuthLayout from "./auth.layout.jsx";
 import Button from "../../../components/ui/Button.jsx";
 import { Link } from "react-router-dom";
 import imglogo from "../../../assets/logo/logo-greenly.png";
+import logoDarkmodeExtrasmall from "../../../assets/logo/logo-darkmode-extrasmall.png";
 import { IoPersonSharp } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 import { FaPhoneAlt } from "react-icons/fa";
@@ -35,7 +36,19 @@ export default function Register() {
       <AuthLayout>
         <div>
           <div className="text-center space-y-2">
-            <img src={imglogo} alt="Greenly Logo" className="mx-auto h-7" />
+            <div className="flex justify-center">
+              <img
+                src={imglogo}
+                alt="Greenly Logo"
+                className="mx-auto h-7 block dark:hidden"
+              />
+              <img
+                src={logoDarkmodeExtrasmall}
+                alt="Greenly Logo Dark Mode"
+                className="mx-auto h-7 hidden dark:block"
+              />
+            </div>
+
             <h1 className="text-4xl font-bold dark:text-white">Daftar</h1>
             <p className="text-base font-normal dark:text-white">
               Isi data Anda dengan benar untuk pengalaman terbaik bersama
