@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import instance from "../../../utils/instance";
+import LoadingSpinner from "../../../components/ui/LoadingSpinner";
 
 const PopularArticle = () => {
   const [articles, setArticles] = useState([]);
@@ -29,7 +30,11 @@ const PopularArticle = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   if (error) {
@@ -41,50 +46,54 @@ const PopularArticle = () => {
   }
 
   return (
-    <section className="pt-16 pb-6 px-6 md:px-24">
-      <h2 className="text-2xl font-bold mb-6">Artikel Populer</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section className="pt-16 pb-6 px-6 md:px-24 max-w-[1440px] dark:bg-gray-800">
+      <h2 className="text-2xl font-bold mb-6 dark:text-white">
+        Artikel Populer
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Artikel Utama */}
-        <div className="col-span-2">
+        <div className="bg-white dark:bg-gray-800 overflow-hidden">
           {articles.length > 0 && (
-            <Link
-              to={`/articles/${articles[0].id}`}
-              className="block bg-white rounded-lg overflow-hidden"
-            >
+            <Link to={`/articles/${articles[0].id}`} className="block">
               <img
                 src={articles[0].link_foto}
                 alt={articles[0].judul}
-                className="w-full h-64 object-cover"
+                className="w-full h-1/2 object-cover"
               />
-              <div className="p-4">
-                <p className="text-gray-500 text-sm">
+              <div className="p-4 px-0 1/2">
+                <p className="text-gray-500 dark:text-gray-200 text-sm">
                   {formatDate(articles[0].created_at)}
                 </p>
-                <h3 className="text-xl font-bold mt-2">{articles[0].judul}</h3>
-                <p className="text-gray-700 mt-2">{articles[0].konten}</p>
+                <h3 className="text-xl md:text-3xl dark:text-white font-bold mt-2">
+                  {articles[0].judul}
+                </h3>
               </div>
             </Link>
           )}
         </div>
 
-        {/* Artikel Samping */}
+        {/* Artikel Samping (Maksimal 3 Artikel) */}
         <div className="flex flex-col space-y-4">
-          {articles.slice(1).map((article) => (
+          {articles.slice(1, 4).map((article) => (
             <Link
               to={`/articles/${article.id}`}
               key={article.id}
-              className="flex items-start space-x-4 bg-white rounded-lg overflow-hidden"
+              className="flex items-center bg-white dark:bg-gray-800 overflow-hidden"
             >
               <img
                 src={article.link_foto}
                 alt={article.judul}
-                className="w-24 h-24 object-cover"
+                className="w-1/2 h-[180px] object-cover"
               />
-              <div>
-                <p className="text-gray-500 text-sm">
+              <div className="w-1/2 flex flex-col justify-center px-4">
+                {" "}
+                {/* Menengahkan konten secara vertikal */}
+                <p className="text-gray-500 dark:text-gray-200 text-sm mb-2">
                   {formatDate(article.created_at)}
                 </p>
-                <h4 className="text-lg font-semibold">{article.judul}</h4>
+                <h4 className="text-lg dark:text-white font-semibold">
+                  {article.judul}
+                </h4>
               </div>
             </Link>
           ))}
