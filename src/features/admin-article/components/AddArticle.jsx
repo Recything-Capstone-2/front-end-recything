@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import instance from '../../../utils/instance';
+import { showAlert } from '../../../components/share/Alert.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const AddArticle = ({ onClose }) => {
   const [judul, setJudul] = useState('');
@@ -34,6 +36,17 @@ const AddArticle = ({ onClose }) => {
 
     try {
       const response = await instance.post('/admin/articles', articleData);
+      if (response.status === 200) {
+        showAlert({
+          icon: 'success',
+          title: 'Berhasil',
+          text: 'Artikel berhasil ditambahkan',
+          onConfirm: () => {
+            window.location.reload();
+          },
+        });
+      }
+
       setSuccess('Artikel berhasil ditambahkan!');
       // Optionally, clear form fields
       setJudul('');
