@@ -105,83 +105,83 @@ export default function DashboardAdminContainer({ children, header }) {
                   className="hover:bg-[#F8FCF7]"
                 />
               </li>
-            {/* </ul> */}
+              {/* </ul> */}
 
-            {/* Dropdown menu */}
-            <li>
-              <button
-                onClick={toggleDropdown}
-                className={`flex items-center justify-between w-full ${
-                  dropdownActive ? "text-primary-05" : "text-gray-500"
-                } hover:bg-[#F8FCF7] p-2 rounded-lg`}
-              >
-                <div className="flex items-center gap-x-3">
-                  <FaFileCirclePlus size={24} />
-                  <span className={`text-base font-medium`}>
-                    Data Pelaporan
-                  </span>
-                </div>
-                <svg
-                  className={`w-5 h-5 ${isDropdownOpen ? "rotate-180" : ""}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              {/* Dropdown menu */}
+              <li>
+                <button
+                  onClick={toggleDropdown}
+                  className={`flex items-center justify-between w-full ${
+                    dropdownActive ? "text-primary-05" : "text-gray-500"
+                  } hover:bg-[#F8FCF7] p-2 rounded-lg`}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              {isDropdownOpen && (
-                <ul className="space-y-2 mt-2 pl-10">
-                  <li>
-                    <Menu
-                      label="Semua Laporan"
-                      href="/dashboard/report/all"
-                      className="hover:bg-[#F8FCF7]"
+                  <div className="flex items-center gap-x-3">
+                    <FaFileCirclePlus size={24} />
+                    <span className={`text-base font-medium`}>
+                      Data Pelaporan
+                    </span>
+                  </div>
+                  <svg
+                    className={`w-5 h-5 ${isDropdownOpen ? "rotate-180" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M19 9l-7 7-7-7"
                     />
-                  </li>
-                  <li>
-                    <Menu
-                      label="Laporan Diterima"
-                      href="/dashboard/report/approve"
-                      className="hover:bg-[#F8FCF7]"
-                    />
-                  </li>
-                  <li>
-                    <Menu
-                      label="Laporan Diproses"
-                      href="/dashboard/report/process"
-                      className="hover:bg-[#F8FCF7]"
-                    />
-                  </li>
-                  <li>
-                    <Menu
-                      label="Laporan Selesai"
-                      href="/dashboard/report/done"
-                      className="hover:bg-[#F8FCF7]"
-                    />
-                  </li>
-                  <li>
-                    <Menu
-                      label="Laporan Ditolak"
-                      href="/dashboard/report/reject"
-                      className="hover:bg-[#F8FCF7]"
-                    />
-                  </li>
-                </ul>
-              )}
-            </li>
+                  </svg>
+                </button>
+                {isDropdownOpen && (
+                  <ul className="space-y-2 mt-2 pl-10">
+                    <li>
+                      <Menu
+                        label="Semua Laporan"
+                        href="/dashboard/report/all"
+                        className="hover:bg-[#F8FCF7]"
+                      />
+                    </li>
+                    <li>
+                      <Menu
+                        label="Laporan Diterima"
+                        href="/dashboard/report/approve"
+                        className="hover:bg-[#F8FCF7]"
+                      />
+                    </li>
+                    <li>
+                      <Menu
+                        label="Laporan Diproses"
+                        href="/dashboard/report/process"
+                        className="hover:bg-[#F8FCF7]"
+                      />
+                    </li>
+                    <li>
+                      <Menu
+                        label="Laporan Selesai"
+                        href="/dashboard/report/done"
+                        className="hover:bg-[#F8FCF7]"
+                      />
+                    </li>
+                    <li>
+                      <Menu
+                        label="Laporan Ditolak"
+                        href="/dashboard/report/reject"
+                        className="hover:bg-[#F8FCF7]"
+                      />
+                    </li>
+                  </ul>
+                )}
+              </li>
 
-            {/* <ul className="font-medium"> */}
+              {/* <ul className="font-medium"> */}
               <li>
                 <Menu
                   label="Kelola Artikel"
-                  href="/"
+                  href="/dashboard/article"
                   icon={<FaNewspaper size={24} />}
                   className="hover:bg-[#F8FCF7]"
                 />
