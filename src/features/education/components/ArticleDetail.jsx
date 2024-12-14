@@ -89,13 +89,25 @@ const ArticleDetail = () => {
           </div>
         </div>
 
-        {/* Article Image */}
+        {/* Article Video (YouTube Embed) */}
         <div className="flex items-center justify-center mt-4">
-          <img
-            src={article.link_foto}
-            alt={article.judul}
-            className="w-full max-h-[300px] md:max-h-[500px] object-cover"
-          />
+          {article.link_video ? (
+            <div className="w-full max-h-[500px]">
+              <iframe
+                className="w-full h-[300px] md:h-[500px]"
+                src={article.link_video.replace("watch?v=", "embed/")}
+                title={article.judul}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          ) : (
+            <img
+              src={article.link_foto}
+              alt={article.judul}
+              className="w-full max-h-[300px] md:max-h-[500px] object-cover"
+            />
+          )}
         </div>
 
         {/* Article Content */}
