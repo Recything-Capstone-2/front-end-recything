@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import instance from '../../../utils/instance';
+import { confirmAlert } from '../../../components/share/Confirm.jsx';
+import { showAlert } from '../../../components/share/Alert.jsx';
 
 const EditArticle = ({ article, onSave, onCancel }) => {
   const [judul, setJudul] = useState(article.judul);
@@ -21,6 +23,20 @@ const EditArticle = ({ article, onSave, onCancel }) => {
   const handleSave = async () => {
     setLoading(true);
     try {
+      const confirm = await confirmAlert({
+        title: 'Perbarui Artikel',
+        message: 'Apakah Anda yakin ingin memperbarui artikel ini?',
+        confirmButtonText: 'Ya, Perbarui',
+        cancelButtonText: 'Batal',
+        confirmButtonColor: 'bg-red-600 hover:bg-red-700',
+        cancelButtonColor: 'bg-blue-600 hover:bg-blue-700 ml-2',
+      })
+
+      if (!confirm.isConfirmed) {
+        setLoading(false);
+        return;
+      }
+
       const response = await instance.put(`/admin/articles/${article.id}`, {
         judul,
         author, 
@@ -34,7 +50,13 @@ const EditArticle = ({ article, onSave, onCancel }) => {
         setLoading(false);
   
         // Reload the page after successful save
-        window.location.reload();
+        showAlert({
+          text: 'Artikel berhasil diperbarui.',
+          icon: 'success',
+          onConfirm: () => {
+            window.location.reload();
+          }
+        })
       }
     } catch (err) {
       console.error(err);

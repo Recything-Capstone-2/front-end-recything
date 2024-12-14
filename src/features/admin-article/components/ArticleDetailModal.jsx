@@ -14,23 +14,6 @@ const ArticleDetailModal = ({ article, onClose, onEdit, onDelete }) => {
     setEditModalOpen(false); // Menutup modal edit
   };
 
-  const handleDelete = async (id) => {
-    try {
-      // Memanggil API untuk menghapus artikel berdasarkan id
-      await instance.delete(`admin/article/${id}`);
-      // Panggil onDelete untuk menghapus artikel dari daftar di UI (misalnya dari daftar artikel di parent component)
-      onDelete(id);
-      onClose(); // Menutup modal setelah artikel berhasil dihapus
-      alert("Artikel berhasil dihapus.");
-
-      // Refresh halaman setelah artikel dihapus
-      window.location.reload();
-    } catch (error) {
-      console.error("Error menghapus artikel:", error);
-      alert("Terjadi kesalahan saat menghapus artikel.");
-    }
-  };
-
   if (!article) return null;
 
   return (
@@ -67,7 +50,7 @@ const ArticleDetailModal = ({ article, onClose, onEdit, onDelete }) => {
               Edit
             </button>
             <button
-              onClick={() => handleDelete(article.id)}
+              onClick={() => onDelete(article.id)}
               className="px-4 py-2 border border-red-500 text-red-500 rounded-md"
             >
               Hapus

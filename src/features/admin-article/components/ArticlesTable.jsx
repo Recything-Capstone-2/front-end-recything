@@ -3,6 +3,8 @@ import instance from "../../../utils/instance";
 import AddArticle from "./AddArticle";
 import ArticleDetailModal from "./ArticleDetailModal"; // Import the modal component
 import LoadingSpinner from "../../../components/ui/LoadingSpinner";
+import { confirmAlert } from "../../../components/share/Confirm.jsx";
+import { showAlert } from "../../../components/share/Alert.jsx";
 
 const ArticlesTable = () => {
   const [articles, setArticles] = useState([]);
@@ -59,9 +61,27 @@ const ArticlesTable = () => {
 
   const handleDeleteArticle = async (id) => {
     try {
-      await instance.delete(`/articles/${id}`);
-      setArticles(articles.filter((article) => article.id !== id)); // Remove article from state
+      const confirm = await confirmAlert({
+        title: "Hapus Artikel",
+        message: "Apakah Anda yakin ingin menghapus artikel ini?",
+        confirmButtonText: "Ya, Hapus",
+        cancelButtonText: "Batal",
+        confirmButtonColor: "bg-red-600 hover:bg-red-700",
+        cancelButtonColor: "bg-blue-600 hover:bg-blue-700 ml-2",
+      });
+  
+      if (!confirm.isConfirmed) return;
+
       handleCloseModal(); // Close the modal after deletion
+
+      const response = await instance.delete(`/admin/article/${id}`);
+      setArticles(articles.filter((article) => article.id !== id)); // Remove article from state
+
+      showAlert({
+        text: "Artikel berhasil dihapus.",
+        icon: "success",
+      });
+
     } catch (err) {
       setError("Terjadi kesalahan saat menghapus artikel. Silakan coba lagi.");
     }
