@@ -72,7 +72,7 @@ export default function ReportRubbish() {
                         <img
                           src={report.photo}
                           alt=""
-                          className="h-32 object-cover"
+                          className="h-16 md:h-32 object-cover"
                         />
                       </td>
                       <td className="px-6 py-4">

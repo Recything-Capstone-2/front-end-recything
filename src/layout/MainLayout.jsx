@@ -6,35 +6,14 @@ import Footer from "../components/share/Footer";
 const MainLayout = () => {
   const location = useLocation();
 
-  const hideHeaderPaths = [
-    "/login",
-    "/register",
-    "/dashboard-admin",
-    "/dashboard/report/process",
-    "/dashboard/report/approve",
-    "/dashboard/report/done",
-    "/dashboard/report/reject",
-    "/dashboard/report/all",
-    "/dashboard/user",
-    "/dashboard/coin",
-    "/dashboard/user/:id",
-  ];
+  const hideHeaderPaths = [];
 
   const hideFooterPaths = [
     "/login",
     "/register",
     "/aichatbot",
-    "/dashboard-admin",
     "/profile",
-    "/dashboard/report/all",
-    "/dashboard/report/process",
-    "/dashboard/report/approve",
-    "/dashboard/report/done",
-    "/dashboard/report/reject",
     "/profile/edit",
-    "/dashboard/user",
-    "/dashboard/coin",
-    "/dashboard/user/:id",
   ];
 
   const isPathHidden = (pathList) =>
