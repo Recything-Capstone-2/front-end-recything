@@ -13,6 +13,11 @@ export default function HistoryReports({ report }) {
   const isEmpty = !report || Object.keys(report).length === 0;
   const reportData = isEmpty ? [defaultReport] : [report];
 
+  const categoryMapping = {
+    report_littering: "Report Littering",
+    report_rubbish: "Report Rubbish",
+  };
+
   return (
     <div className="relative max-w-[1440px] w-full overflow-x-auto bg-white border py-10 px-6 rounded-lg shadow-lg">
       <h1 className="text-2xl font-extrabold font-inter mb-5">Laporan</h1>
@@ -27,6 +32,9 @@ export default function HistoryReports({ report }) {
             </th>
             <th scope="col" className="px-6 py-3 w-56">
               Lokasi
+            </th>
+            <th scope="col" className="px-6 py-3 w-44">
+              Jenis Laporan
             </th>
             <th scope="col" className="px-6 py-3 w-60">
               Deskripsi
@@ -55,6 +63,9 @@ export default function HistoryReports({ report }) {
                   <LuExternalLink className=" flex-none w-4 h-4" />
                   <span className="flex-1">{report.location}</span>
                 </div>
+              </td>
+              <td className="px-6 py-4">
+                {categoryMapping[report.category] || report.category}
               </td>
               <td className="px-6 py-4">{report.description}</td>
               <td className="px-6 py-4">
