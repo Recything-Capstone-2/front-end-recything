@@ -8,6 +8,7 @@ import { useFilter } from "../../dashboard/context/FilterContext.jsx";
 import Button from "../../../components/ui/Button.jsx";
 import StatusBadge from "../../../components/ui/StatusBadge.jsx";
 import DropdownStatus from "../../../components/ui/DropdownStatus.jsx";
+import { formatDate } from "../../../utils/formatdate.js";
 
 const DashboardAdminReportAll = () => {
   const { filter } = useFilter();
@@ -90,21 +91,14 @@ const DashboardAdminReportAll = () => {
                 </tr>
               </thead>
               <tbody>
-                {reports.map((report, index) => (
+                {reports.map((report) => (
                   <tr
                     key={report.id}
                     className="odd:bg-white even:bg-primary-01 rounded-lg"
                   >
                     <th className="px-6 py-4">{report.id}</th>
                     <td className="px-6 py-4">
-                      {new Date(report.tanggal_laporan).toLocaleDateString(
-                        "id-ID",
-                        {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        }
-                      )}
+                      {formatDate(report.tanggal_laporan)}
                     </td>
                     <td
                       className="px-6 py-4 text-black-neutral08 hover:text-blue-600 cursor-pointer"

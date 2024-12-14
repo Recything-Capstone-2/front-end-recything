@@ -95,39 +95,6 @@ const Header = () => {
           {user && (
             <button
               type="button"
-              className="flex text-sm rounded-full focus:ring-2 focus:ring-gray-300 relative"
-              onClick={toggleDropDownBell}
-            >
-              <span className="absolute -top-2 -right-2 inline-flex items-center justify-center w-4 h-4 text-xs font-semibold text-white bg-red-500 rounded-full">
-                1
-              </span>
-              <FaBell size={24} className="text-secondary-04" />
-            </button>
-          )}
-
-          {isDropDownBellOpen && (
-            <div className="z-50 absolute top-full right-0 mt-2 w-48 bg-white divide-y divide-gray-100 rounded-lg shadow">
-              <div className="px-4 py-3">
-                <span className="block text-sm text-gray-900">
-                  Notifications
-                </span>
-              </div>
-              <ul className="py-2">
-                <li>
-                  <a
-                    href="/"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Notifications
-                  </a>
-                </li>
-              </ul>
-            </div>
-          )}
-
-          {user && (
-            <button
-              type="button"
               className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
               // onClick={toggleDropdown}
               onClick={() => {

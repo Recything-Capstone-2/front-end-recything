@@ -60,7 +60,7 @@ const PopularArticle = () => {
                 alt={articles[0].judul}
                 className="w-full h-1/2 object-cover"
               />
-              <div className="p-4 px-0 1/2">
+              <div className="p-4 px-0 h-1/2">
                 <p className="text-gray-500 dark:text-gray-200 text-sm">
                   {formatDate(articles[0].created_at)}
                 </p>

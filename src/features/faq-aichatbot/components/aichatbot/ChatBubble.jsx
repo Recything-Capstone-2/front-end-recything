@@ -16,7 +16,7 @@ const ChatBubble = ({ message, user, time }) => {
     >
       {/* Foto profil untuk masing-masing user */}
       <img
-        className="w-8 h-8 rounded-full"
+        className="w-8 h-8 object-cover rounded-full"
         src={
           isUser
             ? currentUser?.photo ||
