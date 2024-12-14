@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import instance from "../../../utils/instance";
 import AddArticle from "./AddArticle";
 import ArticleDetailModal from "./ArticleDetailModal"; // Import the modal component
+import LoadingSpinner from "../../../components/ui/LoadingSpinner";
 
 const ArticlesTable = () => {
   const [articles, setArticles] = useState([]);
@@ -85,7 +86,11 @@ const ArticlesTable = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   if (error) {
