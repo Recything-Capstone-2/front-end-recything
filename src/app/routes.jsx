@@ -24,6 +24,8 @@ import DetailReport from "../features/admin-dashboard-report/components/DetailRe
 import { FilterProvider } from "../features/dashboard/context/FilterContext.jsx";
 import AdminManageCoins from "../features/admin-manage-coins/components/index.jsx";
 import DetailUser from "../features/admin-data-users/components/DetailUser.jsx";
+import ArticleDetail from "../features/education/components/ArticleDetail.jsx";
+import AdminArticlesPage from "../features/admin-article/components/index.jsx";
 
 export default function AppRoutes() {
   return (
