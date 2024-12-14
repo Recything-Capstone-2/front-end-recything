@@ -19,6 +19,7 @@ import DashboardAdminReportAll from "../features/admin-dashboard-report/componen
 import ProfileEdit from "../features/profile/components/form.edit,profile.jsx";
 import AboutUsPage from "../features/about-us/components/index.jsx";
 import AdminDataUsersPage from "../features/admin-data-users/components/index.jsx";
+import Education from "../features/education/components/index.jsx";
 import DetailReport from "../features/admin-dashboard-report/components/DetailReport.jsx";
 import { FilterProvider } from "../features/dashboard/context/FilterContext.jsx";
 import AdminManageCoins from "../features/admin-manage-coins/components/index.jsx";
@@ -35,6 +36,22 @@ export default function AppRoutes() {
             element={
               <PrivateRoute allowedRoles={["user"]}>
                 <FAQChatbotAI />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/education"
+            element={
+              <PrivateRoute allowedRoles={["user"]}>
+                <Education />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/articles/:id"
+            element={
+              <PrivateRoute allowedRoles={["user"]}>
+                <ArticleDetail />
               </PrivateRoute>
             }
           />
@@ -195,7 +212,16 @@ export default function AppRoutes() {
             </PrivateRoute>
           }
         />
-
+        <Route
+          path="/dashboard/article"
+          element={
+            <PrivateRoute allowedRoles={["admin"]}>
+              <FilterProvider>
+                <AdminArticlesPage />{" "}
+              </FilterProvider>
+            </PrivateRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
