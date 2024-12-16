@@ -1,5 +1,9 @@
 import React from "react";
 import logo from "../../../assets/logo/logo-only-big.png";
+import foto1 from "../../../assets/images/foto1-about.jpeg";
+import foto2 from "../../../assets/images/foto2-about.jpeg";
+import foto3 from "../../../assets/images/foto3-about.jpeg";
+import foto4 from "../../../assets/images/foto4-about.jpeg";
 
 const SolutionSection = () => {
   return (
@@ -20,28 +24,28 @@ const SolutionSection = () => {
         <div className="md:flex flex relative justify-center items-center gap-4 px-10 md:px-24">
           <div className="w-1/2 md:w-1/4 h-52 md:h-80  relative z-20">
             <img
-              src="https://s3-alpha-sig.figma.com/img/89cf/7900/234965c5aa64889f9fa7913eb9223dfc?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=faWLhzaC-JRiTE2UAO5~ZumWFrjPaJvZ37g1Smk2ntpfMCsHDHouieTmwnvVUdIbHrlyhoWK-YaiKqRMagObUvi02mjmuy4X30JnmmNI2~EdRfWAqLNuTV4KnY4x5i-bWr8O3mceOk1ZAOARJRiVkZClu7nBdGCRZJuLV0yIT6nrcpctNY9U5TGZ504AM2DRnF8SSAdqPjzS7TiheOnmvg4cZ-GWTOsR5SxBB68Kw6CTvTqIMllRBmnqKdmFd8jF3t7UheL25XPUNmZpdshXjHkqcKFXiZrz59VDwp~rV7lw~SXGgGlMRuUFxvEjs86thVOFn3xQ9bCGIaB2JMvdjQ__"
+              src={foto1}
               alt="Foto 1"
               className="rounded-lg object-cover h-full w-full translate-y-[70%] md:translate-y-[25%]"
             />
           </div>
           <div className="w-1/2 md:w-1/4 h-32 md:h-40  relative z-20">
             <img
-              src="https://s3-alpha-sig.figma.com/img/7fac/cece/711d35f16d373c696c1064cd25ff0d62?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gCt4MDZsXdwwWhGHe~5Tm2nTT5BLNONLdj8ZMJRvs~YJhNgsHKPakhgNzDnoOlmZVIhOLjVuvO1w1gCZUW5inGP5KKjc25zDVtWm9zlKJMMlqwDBGqZ2d1Z9L8P0l7a8o-jFzII5mamLFTb7u7yefw~SaJa61k~Wq5L7vmmkyVyqSKuj0A2t52suh-aR~sbj9WslJO1bwOE6ZI6UeTKdgC6GtqmfXuFH0A9hLAu3Co7Am7wZpWyGkD8cBu8wPl~oSDsdVItgH0qC0HXeezIvXUFLrPFyxk46AEdWpYNeJfGDNzV4sMQONKH-QY6S3IdSztbexD9ZLzGwSPXKpZ-qRw__"
+              src={foto2}
               alt="Foto 2"
               className="rounded-lg object-cover h-full w-full translate-y-[140%] md:translate-y-[60%]"
             />
           </div>
           <div className="w-1/4 h-80 relative z-20 hidden md:block">
             <img
-              src="https://s3-alpha-sig.figma.com/img/7aed/31d0/a6f56bbab094d55f3ca628dedbf1369c?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OUk8UZicgdvsnK-hMv0j7SyDUjmGifI-QGO70BNEy86E1mJG7TZ4tkno2YWPPJykAj2v0IrBmm2nznMgDVKuFxMfIa9SpI75pzCshz~1~CkDu62VBYiFgqVhG0O96is2I4mGFbeMfMvzZ9gmQhhwYyO7c84uvEzACrt6bv12CBRLelzh9fgyemyUbSqXVanQfnb3mtSVWQPDcp-XqsJJKXxZ4Q58cY9G-XuhMenNIIDqfG3cATsc9ih5p1LBrhnwckFIZ~3qC9zNQxiV6SRoqCU~vlHdJtsPG46pcIYi3eNJO-EJg9HMZozba-e9hy~rhVyEOD3sMjsg8CpoP8m6CQ__"
+              src={foto3}
               alt="Foto 3"
               className="rounded-lg object-cover h-full w-full translate-y-[25%]"
             />
           </div>
           <div className="w-1/4 h-40 relative z-20 hidden md:block">
             <img
-              src="https://s3-alpha-sig.figma.com/img/51f1/c4ce/84462e2e70bfc9eadb291976498a195c?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=oGhlD~wtfBH9BvN~LwHM~bj6Q4va~n9997akcbJxLFRJyOSrqMvJts2Bh0Vy39w~cnXVZNiQxQ~14cn9BGXzB4xtchmoJazXKhEAMhzR~Rv4KyDHM0pB4Oo1Iu-2hthvp7lU9e-E1r6t2z8NqvKtbVvVX-yg4n-SIlgomzZm~kl59wG7f8AetF87RNQazJ0sXnYeX2CAKjlGTxr4fA23xbtfPsqsCk1~Monw~vO67t2tFdyLFWBpPTGaMaSRdUPOuegTu1TyENAHDkdq09ndppQjDTo3VQ~p06rNv9HwzGipH9BWRVRqD8iVtuWmsYU9LIMJcviY3DwFBKooai-wiQ__"
+              src={foto4}
               alt="Foto 4"
               className="rounded-lg object-cover h-full w-full translate-y-[60%]"
             />

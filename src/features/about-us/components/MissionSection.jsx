@@ -1,4 +1,5 @@
 import React from "react";
+import fotoMisi from "../../../assets/images/foto-misi.jpeg";
 
 const MissionSection = () => {
   return (
@@ -7,7 +8,7 @@ const MissionSection = () => {
         {/* Section Kiri (Gambar) */}
         <div className="md:w-1/2 order-2 md:order-1 overflow-hidden">
           <img
-            src="https://s3-alpha-sig.figma.com/img/1149/d077/f09c8ac9dca83914fb9af682838b2944?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qavsZ~XkXG7aDTWyVVtIiLcb2iSN~jdx3x9b6HLu8oh7IH5t-IfLfexe2tbXvuIZfdHmUEa1vO6dsGVexJB~RpClBodQThUQpu4kAJpO7-oBVFXdA9w7wICPq-8br3EJwN1OI2W20z9Du30RAXwVXJ5-xQQw-l6fviNRvUNBQhATuJmUVEM~KHDsNTZpVd7uEVoNsfIwnCADVMMTqErI5Nv7spze~zOOUVNDC3~gGuEWvFHBxjIYZEC8CaTjIPLAADDeHUQY2Uj61e~OVf~4kYoHtBBRxbRI~KtSnqDz60Dym~6CKfr20BPBCmFLD~8nW1a9uMYMHy4~Af5Np64uIg__"
+            src={fotoMisi}
             alt="Foto Misi"
             className="rounded-lg shadow-lg object-cover object-center w-full md:h-[500px]"
           />

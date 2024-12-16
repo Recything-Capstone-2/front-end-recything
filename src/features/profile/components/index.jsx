@@ -5,12 +5,8 @@ import { SiGooglemaps } from "react-icons/si";
 import useUser from "../../../store/userStore.js";
 import { useNavigate } from "react-router-dom";
 import useUpdatePhoto from "../hooks/useUpdatePhoto.jsx";
-
-const image =
-  "https://s3-alpha-sig.figma.com/img/4235/914f/770551e87140cb0652c365d2d7a7d9e4?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=QBrNmoEB9PTkDqZ26olTdRNLs1xjgecfdR341-tVz1ZsniopYNasR20u0DO7dqSFqAosDNTyxv7YA6NADINrTSYu2flN0akLTGTeCIZtyC1Hsa4dAlerB~d1gkLs2i3IBmeaxCvEd8DWS1EPNUG4kQRinzn78Mvva0N7yPX4HH~xdqST1mYJTZ1DVr7amkVtcNGve11pNukj1dwmzlLS-ZTGG-IY79VL3frF9Vt3OhUUab2Tsi849t17Qv7mmtF7Me5CY~F6sZu0l4e2CiGdbqMlUaGV4JqzQLIgnftAI1qeF71fBP4TUSQGHV~aVZN6jjENmIs2z1Bm6aMe10aBHA__";
-
-const image2 =
-  "https://s3-alpha-sig.figma.com/img/9afa/40e6/7f9adfb6486c67063d80474f4d89a506?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Z0XVl44YZBON7R4DCoDwDykGv-W5Q3XfhfAVN0h5-x~5Qiz1SHOjXDy9MfRoN5DpVzkcTIRNcra9XLlcGqM6njoKkOHyPrJd0EtuxpDfnQ6X46CVq5jLL89LXo9AjdPK3wZ3R3QHANo0GRG-b9HJnk9eE0fj7DiGa5mjg5fPkCL-sJgzmPPAEl8d4z8ZpWsiQbt6eVTdZ1O5H33GG5S0wAEErSpJBBmY7~5qRYyXfuMBl8Q9HelVHRlmQB-A4Bp349l-U47iix7L6NJABkeuQQSb1zoj4EM-tH2Teg-EieTD4gv9kYwT1dWbqhbUIr28U38ZPdsMhjVMxlHtUkgWAw__";
+import bgfoto from "../../../assets/images/bg-profile.jpeg";
+import profilefoto from "../../../assets/images/profile-foto.jpg";
 
 export default function Profile() {
   const { user } = useUser();
@@ -30,8 +26,8 @@ export default function Profile() {
       <section className="container mx-auto bg-white dark:bg-gray-800 grid grid-cols-12 py-12 rounded-lg relative">
         <div className="col-span-10 col-start-2">
           <img
-            src={image}
-            alt=""
+            src={bgfoto}
+            alt="ilustration"
             className="h-64 object-cover w-full rounded"
           />
         </div>
@@ -39,7 +35,7 @@ export default function Profile() {
         <div className="col-span-10 col-start-2 grid grid-cols-10 md:px-4 px-2 items-end gap-x-4 absolute top-52">
           <div className="col-span-6 md:col-span-2 relative">
             <img
-              src={user.photo || image2}
+              src={user.photo || profilefoto}
               alt=""
               className={`h-48 object-cover w-full rounded ${
                 loadingChangePhoto ? "blur-sm" : ""
