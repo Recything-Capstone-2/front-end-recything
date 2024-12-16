@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import point from "../../../assets/images/poin.png";
+import gambarPoin from "../../../assets/images/gambar-poin.png";
 import useUser from "../../../store/userStore";
 import usePoints from "../hooks/usePoints";
 import LoadingSpinnerInComponent from "../../../components/ui/LoadingSpinnerInComponent";
@@ -43,9 +44,9 @@ const BerandaHeroSection = () => {
         <div className="flex flex-col lg:flex-row bg-primary-01 rounded-lg shadow-inner overflow-hidden">
           <div className="flex-shrink-0 w-full lg:w-2/4">
             <img
-              src="https://s3-alpha-sig.figma.com/img/165b/588a/0b0a2cf7ce0a991f666abbedccec0d27?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=VkzVLftOpvCe5KLb-Qx1ar5DoJr3GH-Xfnh80zyukRZsBPeXc6bE7csUXFcyM90UgCUnb~E4QJQhU5vXv~ExaflS~IkpyZkNTySIxbSnRjZ7uwg7AJEZV8k3NuuuvdnvLtCOWPyrS9hgwhbzFrHKG31QJRp-jykUQrI1MX0HVwYQaIjGdZSd8O2E1S6MJKiGr0-Jbg9a2q20MvlmXaIvOzW1PkOQkOSWU7bjC8ZfNOD7o5FVHf1IBhUg8LUXVymMPbtmirF9r7VPNqv6KIJlMg1aD15AIeu7xJ-xr7vbuokk093IEHPEaO1OKTpsM0~VyUR~7LRX5esqu50zo8NrRA__"
+              src={gambarPoin}
               alt="Illustration"
-              className="w-full h-full object-cover transform scale-x-[-1] rounded-t-lg lg:rounded-s-lg"
+              className="w-full h-full object-cover rounded-t-lg lg:rounded-s-lg"
             />
           </div>
 

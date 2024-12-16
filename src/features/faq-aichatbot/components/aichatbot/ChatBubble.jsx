@@ -1,5 +1,6 @@
 import React from "react";
 import useUser from "../../../../store/userStore.js";
+import avatarAI from "../../../../assets/images/avatar-ai.png";
 
 const ChatBubble = ({ message, user, time }) => {
   const isUser = user !== "Greenly Assistant";
@@ -21,7 +22,7 @@ const ChatBubble = ({ message, user, time }) => {
           isUser
             ? currentUser?.photo ||
               "https://i.pinimg.com/736x/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg"
-            : "https://s3-alpha-sig.figma.com/img/89a0/09b7/37013342c9970b94dd4fd014220e545f?Expires=1734307200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=T20oUcKmoWYp-OJgS1hFuMbQsvnY4fw4aOJH95yRhvHTT5el3idBAop50B1cCDr7pkMq0Q2dvlMZUVQ2cvGUNX8TGNDyiPFnG2pFEpkh9o18gra8dxfbA3s0gIyPir278QbQn~H8I0sJmOWk45vrgWpoPfPmVCrLRlmGFzlsSt5KE2Z28hjMlya7IWoEV4Y49teFK8wEbMvFjZwuVL95M9~yBb8JGAYjcd7rccAVK7B9zuh0uzTEkL04sWmBUGcySF2-44K7KcGQBKOL990-YZ-D6jeqV04S8A1beQtloAO6rvkjLpehK1nuuJgjC4fz2OPdId-pTo9SixIxGSvP0w__"
+            : avatarAI
         }
         alt={`${userName} image`}
       />
